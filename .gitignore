@@ -1,0 +1,12 @@
+﻿# Vendored third-party tools (cloned repos with their own .git; re-clone from upstream)
+GLM/002/ppt-master/
+
+# Secrets
+.env
+.env.local
+.env.*.local
+
+# OS junk
+Thumbs.db
+Desktop.ini
+.DS_Store
