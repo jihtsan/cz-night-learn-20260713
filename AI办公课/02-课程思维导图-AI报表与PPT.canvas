@@ -1,0 +1,54 @@
+{
+	"nodes":[
+		{"id":"a10f2c3d4e5b6789","type":"group","x":-1840,"y":-220,"width":1100,"height":700,"color":"6","label":"阶段一｜让 AI 正确理解任务"},
+		{"id":"b20f3c4d5e6a7891","type":"group","x":-680,"y":-220,"width":740,"height":700,"color":"5","label":"阶段二｜把想法变成可执行方案"},
+		{"id":"c30f4d5e6a7b8912","type":"group","x":120,"y":-220,"width":740,"height":700,"color":"4","label":"阶段三｜生成、检查与汇报"},
+		{"id":"e50f6a7b8c9d1234","type":"text","text":"# 1. 建立 AI 协作认知\n\n输入越清楚，输出越可用","x":-1780,"y":-100,"width":300,"height":120,"color":"6"},
+		{"id":"f60a7b8c9d1e2345","type":"text","text":"## 相关内容\n\n- AI 没有读心术\n- 第一次回答只是初稿\n- 可以持续追问和修改\n- 人负责最终判断\n\n**阶段产出：** 明确业务目标、使用对象与交付物","x":-1780,"y":70,"width":300,"height":300},
+		{"id":"071b8c9d1e2f3456","type":"text","text":"# 2. 写六段式提示词\n\n把提示词当作工作说明书","x":-1420,"y":-100,"width":300,"height":120,"color":"6"},
+		{"id":"182c9d1e2f3a4567","type":"text","text":"## 六个模块\n\n1. 角色\n2. 背景\n3. 任务\n4. 材料\n5. 输出格式\n6. 约束与检查\n\n**重点：** 先说目的，写清验收标准","x":-1420,"y":70,"width":300,"height":300},
+		{"id":"293d1e2f3a4b5678","type":"text","text":"# 3. 用多轮对话控制过程\n\n先确认，再生成","x":-1060,"y":-100,"width":300,"height":120,"color":"6"},
+		{"id":"3a4e2f3a4b5c6789","type":"text","text":"## 六步对话法\n\n1. 澄清缺失信息\n2. 复述理解\n3. 输出 Markdown 方案\n4. 小样试做\n5. 完整生成\n6. 自检与修改\n\n**阶段产出：** 已确认的执行方案","x":-1060,"y":70,"width":300,"height":300},
+		{"id":"4b5f3a4b5c6d7891","type":"text","text":"# 4. 整理业务需求\n\n把模糊想法结构化","x":-620,"y":-100,"width":300,"height":120,"color":"5"},
+		{"id":"5c6a4b5c6d7e8912","type":"text","text":"## 需求卡\n\n- 业务目标与使用对象\n- 数据来源与统计范围\n- 字段、维度、指标\n- 筛选条件与计算口径\n- 交付格式、截止时间\n\n**阶段产出：** 可执行的需求清单","x":-620,"y":70,"width":300,"height":300},
+		{"id":"d40f5e6a7b8c9123","type":"text","text":"# AI 报表与 PPT 课程思维导图\n\n**主线：业务目标 → 提示词澄清 → Markdown 方案 → 报表生成 → 结论 → PPT**","x":-500,"y":-540,"width":1000,"height":180,"color":"3"},
+		{"id":"6d7b5c6d7e8f9123","type":"text","text":"# 5. 选择文档格式\n\nMarkdown 为主，HTML 为辅","x":-260,"y":-100,"width":300,"height":120,"color":"5"},
+		{"id":"7e8c6d7e8f9a1234","type":"text","text":"## 格式分工\n\n- **Markdown：** 需求、表格、步骤、PPT 大纲\n- **HTML：** 浏览器页面与丰富布局\n- **DTD：** 理解文档结构约束\n\n`<!doctype html>` 只需认识\n\n**阶段产出：** Markdown 执行方案","x":-260,"y":70,"width":300,"height":300},
+		{"id":"8f9d7e8f9a1b2345","type":"text","text":"# 6. 生成并校验报表\n\n生成完成不等于工作完成","x":180,"y":-100,"width":300,"height":120,"color":"4"},
+		{"id":"9a1e8f9a1b2c3456","type":"text","text":"## 操作与检查\n\n- 生成结构、数据与公式\n- 完整性、一致性检查\n- 异常值与计算复核\n- 关键数字可追溯\n- 抽样核对原始资料\n- 保留原始文件\n\n**阶段产出：** 可信的报表","x":180,"y":70,"width":300,"height":300},
+		{"id":"ab2f9a1b2c3d4567","type":"text","text":"# 7. 提炼结论并生成 PPT\n\n用结论推动行动","x":540,"y":-100,"width":300,"height":120,"color":"4"},
+		{"id":"bc3a1b2c3d4e5678","type":"text","text":"## 汇报四问\n\n1. 发生了什么？\n2. 为什么发生？\n3. 意味着什么？\n4. 接下来做什么？\n\n一页一个结论，标题直接表达观点\n\n**最终产出：** 结构清晰的 PPT","x":540,"y":70,"width":300,"height":300},
+		{"id":"cd4b2c3d4e5f6789","type":"text","text":"# 贯穿全程的四项原则\n\n- **不编造：** 缺少数据就标记并提问\n- **重安全：** 敏感数据先脱敏\n- **可追溯：** 数字、公式和结论注明依据\n- **人复核：** AI 负责加速，人负责最终判断","x":-450,"y":560,"width":900,"height":190,"color":"1"},
+		{"id":"de5c3d4e5f6a7891","type":"file","file":"AI办公课/01-课前必备知识-AI编写Excel与生成PPT.md","x":980,"y":-120,"width":420,"height":360}
+	],
+	"edges":[
+		{"id":"ef6d4e5f6a7b8912","fromNode":"d40f5e6a7b8c9123","fromSide":"left","toNode":"e50f6a7b8c9d1234","toSide":"top","label":"开始"},
+		{"id":"f07e5f6a7b8c9123","fromNode":"e50f6a7b8c9d1234","fromSide":"bottom","toNode":"f60a7b8c9d1e2345","toSide":"top"},
+		{"id":"129a7b8c9d1e2345","fromNode":"071b8c9d1e2f3456","fromSide":"bottom","toNode":"182c9d1e2f3a4567","toSide":"top"},
+		{"id":"23ab8c9d1e2f3456","fromNode":"071b8c9d1e2f3456","fromSide":"right","toNode":"293d1e2f3a4b5678","toSide":"left"},
+		{"id":"34bc9d1e2f3a4567","fromNode":"293d1e2f3a4b5678","fromSide":"bottom","toNode":"3a4e2f3a4b5c6789","toSide":"top"},
+		{"id":"45cd1e2f3a4b5678","fromNode":"293d1e2f3a4b5678","fromSide":"right","toNode":"4b5f3a4b5c6d7891","toSide":"left","label":"进入方案"},
+		{"id":"56de2f3a4b5c6789","fromNode":"4b5f3a4b5c6d7891","fromSide":"bottom","toNode":"5c6a4b5c6d7e8912","toSide":"top"},
+		{"id":"67ef3a4b5c6d7891","fromNode":"4b5f3a4b5c6d7891","fromSide":"right","toNode":"6d7b5c6d7e8f9123","toSide":"left"},
+		{"id":"781f4b5c6d7e8912","fromNode":"6d7b5c6d7e8f9123","fromSide":"bottom","toNode":"7e8c6d7e8f9a1234","toSide":"top"},
+		{"id":"892a5c6d7e8f9123","fromNode":"6d7b5c6d7e8f9123","fromSide":"right","toNode":"8f9d7e8f9a1b2345","toSide":"left","label":"开始交付"},
+		{"id":"9a3b6d7e8f9a1234","fromNode":"8f9d7e8f9a1b2345","fromSide":"bottom","toNode":"9a1e8f9a1b2c3456","toSide":"top"},
+		{"id":"ab4c7e8f9a1b2345","fromNode":"8f9d7e8f9a1b2345","fromSide":"right","toNode":"ab2f9a1b2c3d4567","toSide":"left"},
+		{"id":"bc5d8f9a1b2c3456","fromNode":"ab2f9a1b2c3d4567","fromSide":"bottom","toNode":"bc3a1b2c3d4e5678","toSide":"top"},
+		{"id":"cd6e9a1b2c3d4567","fromNode":"d40f5e6a7b8c9123","fromSide":"bottom","toNode":"cd4b2c3d4e5f6789","toSide":"top","color":"1","label":"全程遵守"},
+		{"id":"de7f1b2c3d4e5678","fromNode":"d40f5e6a7b8c9123","fromSide":"right","toNode":"de5c3d4e5f6a7891","toSide":"top","label":"完整讲义"},
+		{
+			"id":"8f61e33709fc8154",
+			"styleAttributes":{},
+			"toFloating":false,
+			"fromNode":"e50f6a7b8c9d1234",
+			"fromSide":"right",
+			"toNode":"071b8c9d1e2f3456",
+			"toSide":"left"
+		}
+	],
+	"metadata":{
+		"version":"1.0-1.0",
+		"frontmatter":{}
+	}
+}
