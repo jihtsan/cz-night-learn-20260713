@@ -5,10 +5,10 @@ import {
   ArrowUpRight,
   Bot,
   ChevronRight,
+  Clock3,
   Command,
   Grid2X2,
   Heart,
-  Info,
   MessagesSquare,
   Pause,
   Palette,
@@ -24,6 +24,7 @@ import {
 import {
   SiApplemusic,
   SiAnthropic,
+  SiBaidu,
   SiBilibili,
   SiDribbble,
   SiFigma,
@@ -46,6 +47,7 @@ import { Tabs, TabsList, TabsTrigger } from './components/ui/tabs'
 import { cn } from './lib/utils'
 
 type Category = 'all' | 'ai' | 'design' | 'development' | 'productivity' | 'learning'
+type SearchEngine = 'x' | 'baidu' | 'google'
 
 const ColorBends = lazy(() => import('./components/react-bits/color-bends').then((module) => ({ default: module.ColorBends })))
 
@@ -110,6 +112,30 @@ const categories: { value: Category; label: string }[] = [
   { value: 'productivity', label: '效率办公' },
   { value: 'learning', label: '视频学习' },
 ]
+
+const searchEngines: {
+  id: SearchEngine
+  label: string
+  icon: ComponentType<{ className?: string }>
+  searchUrl: (query: string) => string
+}[] = [
+  { id: 'x', label: 'X', icon: SiX, searchUrl: (query) => `https://x.com/search?q=${encodeURIComponent(query)}` },
+  { id: 'baidu', label: '百度', icon: SiBaidu, searchUrl: (query) => `https://www.baidu.com/s?wd=${encodeURIComponent(query)}` },
+  { id: 'google', label: 'Google', icon: SiGoogle, searchUrl: (query) => `https://www.google.com/search?q=${encodeURIComponent(query)}` },
+]
+
+const timeFormatter = new Intl.DateTimeFormat('zh-CN', {
+  hour: '2-digit',
+  minute: '2-digit',
+  second: '2-digit',
+  hour12: false,
+})
+
+const dateFormatter = new Intl.DateTimeFormat('zh-CN', {
+  month: 'short',
+  day: 'numeric',
+  weekday: 'short',
+})
 
 const sites: Site[] = [
   { name: 'ChatGPT', description: 'AI 对话与创作助手', url: 'https://chatgpt.com', category: 'ai', icon: Bot, color: '#edf8f4', iconColor: '#10a37f' },
@@ -309,7 +335,9 @@ function TrendingList({ repositories, duplicate = false }: { repositories: Trend
 
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
+  const [activeEngine, setActiveEngine] = useState<SearchEngine>('google')
   const [query, setQuery] = useState('')
+  const [currentTime, setCurrentTime] = useState(() => new Date())
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
   const [progress, setProgress] = useState(0)
@@ -320,6 +348,11 @@ function App() {
   const [trendSource, setTrendSource] = useState<'loading' | 'live' | 'fallback'>('loading')
   const searchRef = useRef<HTMLInputElement>(null)
   const audioRef = useRef<HTMLAudioElement>(null)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setCurrentTime(new Date()), 1000)
+    return () => window.clearInterval(timer)
+  }, [])
 
   useEffect(() => {
     const controller = new AbortController()
@@ -413,9 +446,16 @@ function App() {
     })
   }, [activeCategory, query])
 
+  const selectedEngine = searchEngines.find((engine) => engine.id === activeEngine) ?? searchEngines[2]
+
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
-    document.getElementById('site-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    const searchTerm = query.trim()
+    if (!searchTerm) {
+      searchRef.current?.focus()
+      return
+    }
+    window.open(selectedEngine.searchUrl(searchTerm), '_blank', 'noopener,noreferrer')
   }
 
   const togglePlayback = async () => {
@@ -463,23 +503,40 @@ function App() {
       <div className="reactbits-dot-grid pointer-events-none fixed inset-0" />
       <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_bottom,rgba(14,11,20,.12),rgba(14,11,20,.62)_68%,#0e0b14_100%)]" />
 
-      <header className="relative z-20 mx-auto flex w-full max-w-[1440px] items-center gap-4 px-5 py-5 md:px-8 lg:py-7">
-        <a href="#" className="flex shrink-0 items-center gap-3" aria-label="导航站首页">
-          <span className="grid size-11 place-items-center rounded-[14px] border border-white/15 bg-white/[0.07] text-white shadow-[0_10px_30px_rgba(92,42,150,.22)] backdrop-blur-xl">
-            <Command className="size-5" />
-          </span>
-          <span className="hidden text-[17px] font-semibold tracking-[-0.02em] sm:block">拾光导航</span>
-        </a>
+      <header className="relative z-20 mx-auto flex w-full max-w-[1440px] flex-wrap items-center gap-3 px-5 py-5 md:px-8 lg:flex-nowrap lg:py-7">
+        <div className="flex shrink-0 items-center gap-1.5" role="group" aria-label="选择搜索引擎">
+          {searchEngines.map((engine) => (
+            <button
+              key={engine.id}
+              type="button"
+              title={`使用 ${engine.label} 搜索`}
+              aria-label={`使用 ${engine.label} 搜索`}
+              aria-pressed={activeEngine === engine.id}
+              onClick={() => {
+                setActiveEngine(engine.id)
+                searchRef.current?.focus()
+              }}
+              className={cn(
+                'grid size-10 place-items-center rounded-[13px] border backdrop-blur-xl transition-all',
+                activeEngine === engine.id
+                  ? 'border-[#c084fc]/55 bg-[#9b4dff] text-white shadow-[0_8px_24px_rgba(155,77,255,.32)]'
+                  : 'border-white/8 bg-white/[0.045] text-white/42 hover:border-white/18 hover:bg-white/[0.08] hover:text-white',
+              )}
+            >
+              <engine.icon className="size-[17px]" />
+            </button>
+          ))}
+        </div>
 
-        <form onSubmit={handleSearch} className="mx-auto flex w-full max-w-3xl items-center gap-2 rounded-[18px] border border-white/10 bg-[#17131f]/76 p-1.5 pl-4 shadow-[0_18px_55px_rgba(0,0,0,.22)] backdrop-blur-2xl">
+        <form onSubmit={handleSearch} className="order-3 mx-auto flex w-full items-center gap-2 rounded-[18px] border border-white/10 bg-[#17131f]/76 p-1.5 pl-4 shadow-[0_18px_55px_rgba(0,0,0,.22)] backdrop-blur-2xl sm:order-none sm:max-w-3xl sm:flex-1">
           <Search className="size-[18px] shrink-0 text-white/38" aria-hidden="true" />
           <Input
             ref={searchRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="搜索网站、工具或内容"
+            placeholder={`使用 ${selectedEngine.label} 搜索`}
             className="h-10 border-0 bg-transparent px-1 text-[15px] text-white shadow-none placeholder:text-white/32 focus-visible:ring-0"
-            aria-label="搜索导航站"
+            aria-label={`使用 ${selectedEngine.label} 搜索`}
           />
           <span className="hidden items-center gap-1 rounded-lg border border-white/8 bg-white/[0.05] px-2 py-1 text-[11px] font-medium text-white/38 md:flex">
             <Command className="size-3" />K
@@ -487,9 +544,15 @@ function App() {
           <Button type="submit" className="h-10 rounded-[15px] px-5">搜索</Button>
         </form>
 
-        <Button variant="ghost" size="icon" className="hidden shrink-0 rounded-full border border-white/10 bg-white/[0.04] md:inline-flex" aria-label="关于导航站">
-          <Info className="size-[18px]" />
-        </Button>
+        <div className="hidden min-w-[168px] shrink-0 items-center justify-end gap-3 rounded-[16px] border border-white/8 bg-white/[0.04] px-3.5 py-2 backdrop-blur-xl xl:flex">
+          <Clock3 className="size-[17px] text-[#c084fc]" />
+          <div className="text-right">
+            <time className="block font-mono text-[13px] font-semibold tabular-nums text-white/90" dateTime={currentTime.toISOString()}>
+              {timeFormatter.format(currentTime)}
+            </time>
+            <span className="mt-0.5 block text-[9px] text-white/32">{dateFormatter.format(currentTime)}</span>
+          </div>
+        </div>
       </header>
 
       <main className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 md:px-8">
@@ -613,29 +676,31 @@ function App() {
                 </span>
               </div>
 
-              <motion.div
-                className="relative mx-auto mt-5 grid aspect-square w-full max-w-[190px] place-items-center overflow-hidden rounded-[30px] border border-white/20 bg-[radial-gradient(circle_at_35%_30%,#ffd9d0_0%,#ed91aa_24%,#925c9b_58%,#313450_100%)] shadow-[0_26px_60px_rgba(41,32,68,.38)]"
-                animate={isPlaying ? { scale: [1, 1.015, 1] } : { scale: 1 }}
-                transition={{ repeat: isPlaying ? Infinity : 0, duration: 3.2, ease: 'easeInOut' }}
-              >
-                {musicTrack.artwork && (
-                  <img src={musicTrack.artwork} alt={`${musicTrack.title} 专辑封面`} className="absolute inset-0 size-full object-cover" />
-                )}
-                <Button
-                  size="icon"
-                  disabled={!musicTrack.previewUrl}
-                  className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-white/88 text-[#5d4f72] shadow-[0_12px_30px_rgba(28,20,48,.28)] backdrop-blur-xl hover:bg-white"
-                  onClick={togglePlayback}
-                  aria-label={isPlaying ? '暂停' : '播放'}
+              <div className="flex flex-1 items-center justify-center pb-1 pt-8">
+                <motion.div
+                  className="relative grid aspect-square w-full max-w-[190px] translate-y-3 place-items-center overflow-hidden rounded-[30px] border border-white/20 bg-[radial-gradient(circle_at_35%_30%,#ffd9d0_0%,#ed91aa_24%,#925c9b_58%,#313450_100%)] shadow-[0_26px_60px_rgba(41,32,68,.38)]"
+                  animate={isPlaying ? { scale: [1, 1.015, 1] } : { scale: 1 }}
+                  transition={{ repeat: isPlaying ? Infinity : 0, duration: 3.2, ease: 'easeInOut' }}
                 >
-                  {isPlaying ? <Pause className="size-5 fill-current" /> : <Play className="ml-0.5 size-5 fill-current" />}
-                </Button>
-                <span className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-[12px] border border-white/20 bg-black/25 text-white backdrop-blur-xl">
-                  <SiApplemusic className="size-[17px]" />
-                </span>
-              </motion.div>
+                  {musicTrack.artwork && (
+                    <img src={musicTrack.artwork} alt={`${musicTrack.title} 专辑封面`} className="absolute inset-0 size-full object-cover" />
+                  )}
+                  <Button
+                    size="icon"
+                    disabled={!musicTrack.previewUrl}
+                    className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-white/88 text-[#5d4f72] shadow-[0_12px_30px_rgba(28,20,48,.28)] backdrop-blur-xl hover:bg-white"
+                    onClick={togglePlayback}
+                    aria-label={isPlaying ? '暂停' : '播放'}
+                  >
+                    {isPlaying ? <Pause className="size-5 fill-current" /> : <Play className="ml-0.5 size-5 fill-current" />}
+                  </Button>
+                  <span className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-[12px] border border-white/20 bg-black/25 text-white backdrop-blur-xl">
+                    <SiApplemusic className="size-[17px]" />
+                  </span>
+                </motion.div>
+              </div>
 
-              <div className="mt-auto pt-5">
+              <div className="pt-4">
                 <div className="flex items-end justify-between gap-4">
                   <div>
                     <h2 className="text-[23px] font-semibold tracking-[-0.04em]">{musicTrack.title}</h2>
@@ -749,7 +814,7 @@ function App() {
         </section>
 
         <footer className="flex flex-col items-center justify-between gap-2 px-2 pt-6 text-xs text-white/30 sm:flex-row">
-          <p>拾光导航 · 把时间留给更重要的事</p>
+          <p>快捷搜索 · 精选工具 · 实时趋势</p>
           <p>持续收录好用的数字工具</p>
         </footer>
       </main>
