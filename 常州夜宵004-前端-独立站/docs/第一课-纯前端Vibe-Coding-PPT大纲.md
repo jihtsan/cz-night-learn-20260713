@@ -17,6 +17,7 @@ status: 初稿
 
 - 用自己的话解释 HTML、CSS 和 JavaScript 分别负责什么。
 - 大致分清 React、Vue、Angular、Node.js、Vite 和组件库。
+- 知道企业组件库、动画库和酷炫组件集合的区别。
 - 知道本课程为什么选择一套统一的前端技术路线。
 - 向 AI 说清楚自己想做的页面、风格、内容和交互。
 - 在 AI 的帮助下完成一个可以在浏览器中打开的个人导航页。
@@ -28,7 +29,7 @@ status: 初稿
 |---|---:|---|
 | 开场与作品预览 | 5 分钟 | 让学生先看到今天能做出的结果 |
 | 前端基础概念 | 10 分钟 | 认识 HTML、CSS、JavaScript |
-| 现代前端生态地图 | 10 分钟 | 分清框架、工具和组件库的位置 |
+| 前端生态与组件灵感 | 10 分钟 | 分清框架、工具、组件库和动画方案 |
 | 教师现场示范 | 10 分钟 | 展示如何把想法交给 AI 并运行页面 |
 | 学生自由创作 | 40 分钟 | 完成自己的导航页并持续迭代 |
 | 作品展示与互评 | 10 分钟 | 分享创意、发现差异、互相借鉴 |
@@ -245,7 +246,85 @@ Vite：启动项目，并把项目打包成网页文件
 
 ---
 
-### 第 10 页｜这门课选择一条简单的实践路线
+### 第 10 页｜大厂组件库让产品快速达到“可用”
+
+**页面内容：**
+
+| 来源 | 代表方案 | 更擅长 |
+|---|---|---|
+| 蚂蚁集团 | Ant Design | 表格、表单、后台和企业产品 |
+| 蚂蚁集团 | Ant Design X | AI 对话、消息气泡、引用和流式内容 |
+| 阿里体系 | Fusion Design | 企业中后台和品牌主题 |
+| 字节跳动 | Semi Design | 现代企业应用、SaaS 和内容平台 |
+| 字节跳动 | Arco Design | 企业组件、主题与物料体系 |
+
+**核心结论：**
+
+> 大厂组件库主要解决“完整、统一、可靠”，不等于“动画特别酷炫”。
+
+**讲师提示：**
+
+- Ant Design 更准确地说来自蚂蚁集团和开源社区，而不是直接归为阿里组件库。
+- 只快速展示官网效果，不展开安装和 API。
+- 说明第一课不会同时使用多套完整组件库。
+
+---
+
+### 第 11 页｜动画库负责让组件“动起来”
+
+**页面内容：**
+
+| 想要的效果 | 推荐方案 |
+|---|---|
+| 简单悬停和颜色变化 | CSS Transition |
+| 卡片进出、拖拽、布局变化 | Motion |
+| 列表添加、删除和排序 | AutoAnimate |
+| 复杂时间线和滚动叙事 | GSAP |
+| 弹簧和物理运动 | React Spring |
+| 互动插画 | Rive / Lottie |
+| 三维场景 | React Three Fiber |
+
+**本课推荐：**
+
+```text
+基础动画优先使用 Motion
+列表变化可以使用 AutoAnimate
+GSAP 和 3D 只作为进阶方向展示
+```
+
+**核心结论：**
+
+> 动画不是越多越好，而是要让点击、切换和页面变化更容易理解。
+
+---
+
+### 第 12 页｜酷炫组件可以成为作品的视觉亮点
+
+**页面内容：**
+
+| 方案 | 视觉特点 | 适合加入导航页的效果 |
+|---|---|---|
+| React Bits | 创意、实验感强 | 极光背景、动态文字、聚光卡片 |
+| Magic UI | 独立站和产品官网风格 | Bento Grid、Dock、光束、粒子 |
+| Aceternity UI | 科技感和视觉冲击力强 | 3D 卡片、视差、聚光灯、动态边框 |
+| Animate UI | 基于 Motion 的开放动画组件 | 动画弹窗、菜单、图标和基础交互 |
+| shadcn/ui | 简洁、可修改的产品组件 | 输入框、按钮、对话框、侧边栏 |
+
+**创作规则：**
+
+```text
+一套基础组件体系
++ 一个动画方案
++ 最多两个视觉亮点
+```
+
+**讲师提示：**
+
+现场只展示几个有代表性的组件，让学生产生创作灵感，不逐个讲解组件名称。
+
+---
+
+### 第 13 页｜这门课选择一条简单的实践路线
 
 **页面内容：**
 
@@ -253,7 +332,9 @@ Vite：启动项目，并把项目打包成网页文件
 React
 + Vite
 + Tailwind CSS
++ Motion 作为默认动画方案
 + 必要时使用少量 shadcn/ui
++ 自选一个酷炫视觉组件
 ```
 
 它们分别负责：
@@ -261,7 +342,9 @@ React
 - React：把导航页拆成组件。
 - Vite：启动和打包项目。
 - Tailwind CSS：完成页面视觉设计。
+- Motion：完成卡片进入、悬停和切换动画。
 - shadcn/ui：需要弹窗、输入框等组件时再使用。
+- React Bits 或 Magic UI：只选择一个效果作为视觉亮点。
 
 **为什么这样选：**
 
@@ -276,11 +359,15 @@ React
 
 ---
 
-### 第 11 页｜现场示范：把一句想法变成页面
+### 第 14 页｜现场示范：把一句想法变成页面
 
 **第一轮提示词：**
 
 > 使用 React、Vite 和 Tailwind CSS 创建一个个人导航页。页面顶部显示标题和搜索框，下面按照学习、工作、娱乐三个分类展示网站卡片。整体使用简洁的浅色风格，暂时不使用后端。
+
+**第二轮提示词：**
+
+> 保留现有结构和功能，使用 Motion 为网站卡片增加依次进入、鼠标悬停和点击反馈。再加入一个低强度的动态背景作为视觉亮点，确保文字清楚、手机端可以正常使用。
 
 **示范流程：**
 
@@ -297,11 +384,12 @@ React
 
 - 不追求一次生成完美结果。
 - 展示如何说清楚“只修改哪里”。
+- 演示“基础页面完成后，再增加动画和视觉组件”的顺序。
 - 展示修改以后一定要回到浏览器检查。
 
 ---
 
-### 第 12 页｜你的创作任务：设计自己的首页
+### 第 15 页｜你的创作任务：设计自己的首页
 
 **基础要求：**
 
@@ -324,12 +412,22 @@ React
 - 欢迎语。
 - 是否加入时间、天气、待办或每日一句。
 
+学生还可以选择一种增强方案：
+
+- 产品风：shadcn/ui + Motion。
+- 酷炫风：React Bits + Motion。
+- 独立站风：Magic UI + Motion。
+- 企业产品风：Ant Design、Semi Design 或 Arco Design 三选一。
+
 > [!important] 创作要求
 > 必须在 AI 第一次生成结果的基础上，完成至少两轮自己主动提出的修改。
 
+> [!warning] 组件限制
+> 只选择一套基础组件体系、一个动画方案和最多两个视觉亮点，不要在同一页面混用多套完整组件库。
+
 ---
 
-### 第 13 页｜不知道做什么，可以从这些主题开始
+### 第 16 页｜不知道做什么，可以从这些主题开始
 
 **创作方向：**
 
@@ -348,7 +446,7 @@ React
 
 ---
 
-### 第 14 页｜让 AI 听懂你的四个问题
+### 第 17 页｜让 AI 听懂你的四个问题
 
 **提示词结构：**
 
@@ -369,10 +467,12 @@ React
 - 把网站卡片改成每行四张。
 - 手机端改成每行两张卡片。
 - 保留现有功能，增加深色模式按钮。
+- 使用 Motion 为卡片增加轻微的进入和悬停动画。
+- 使用 React Bits 或 Magic UI 增加一个背景效果，不改变现有内容。
 
 ---
 
-### 第 15 页｜自由创作时的检查点
+### 第 18 页｜自由创作时的检查点
 
 **完成第一版后检查：**
 
@@ -381,6 +481,8 @@ React
 - 页面有没有明显错位？
 - 卡片上的文字是否清楚？
 - 风格是否符合自己的设想？
+- 动画是否影响文字阅读或页面操作？
+- 手机尺寸下是否仍然可用？
 - 有没有完成至少两轮主动修改？
 
 **如果出现问题：**
@@ -396,7 +498,7 @@ React
 
 ---
 
-### 第 16 页｜作品展示：没有唯一正确答案
+### 第 19 页｜作品展示：没有唯一正确答案
 
 **每位展示者回答三个问题：**
 
@@ -417,7 +519,7 @@ React
 
 ---
 
-### 第 17 页｜今天，我们完成了第一个版本
+### 第 20 页｜今天，我们完成了第一个版本
 
 **页面内容：**
 
@@ -463,6 +565,15 @@ React
 
 如果学生提出复杂想法，可以记录到“下一版本”，先保证基础页面完成。
 
+### 4. 控制组件与动画数量
+
+- 是否只使用了一套基础组件体系。
+- 是否因为重复引入组件库造成风格冲突。
+- AI 是否补全了新组件需要的依赖。
+- 动画是否影响阅读、点击和页面性能。
+- 鼠标特效在手机端是否能够自动关闭或正常退化。
+- 学生是否为了“酷炫”加入了过多无关效果。
+
 ## 五、时间不足时的删减顺序
 
 如果现场实践需要更多时间，可以依次压缩：
@@ -470,7 +581,8 @@ React
 1. 第 7 页框架生态只讲 React、Vue、Angular 的一句话区别。
 2. 第 8 页只保留“Node.js 运行工具，npm 安装工具，Vite 启动项目”。
 3. 第 9 页只比较 Tailwind 和组件库。
-4. 第 13 页创作主题作为学生操作时的提示页循环展示。
+4. 第 10～12 页只说结论，组件官网效果放到学生操作时循环展示。
+5. 第 16 页创作主题作为学生操作时的提示页循环展示。
 
 不建议压缩：
 
@@ -507,6 +619,307 @@ React
 - Headless UI / Radix UI。
 - shadcn/ui。
 
+### 附录 D｜蚂蚁与阿里组件生态
+
+#### Ant Design
+
+定位：企业级 React 设计系统和组件库。
+
+适合：
+
+- 企业后台。
+- 管理系统。
+- 数据平台。
+- 表单和表格密集的产品。
+
+常见组件：
+
+- Button、Input、Form。
+- Table、List、Pagination。
+- Modal、Drawer、Popover。
+- Menu、Tabs、Breadcrumb。
+- DatePicker、Upload、Tree。
+- Tour、Splitter、Masonry。
+
+特点：
+
+- 组件覆盖完整。
+- 中文文档和社区资源丰富。
+- 主题系统成熟。
+- 默认视觉更接近企业产品。
+- 官方提供面向 AI Agent 的结构化文档和工具。
+
+#### Ant Design Pro / ProComponents
+
+定位：在 Ant Design 之上进一步封装企业中后台场景。
+
+代表组件：
+
+- ProTable：高级数据表格。
+- ProForm：高级表单。
+- ProLayout：后台整体布局。
+- ProCard：信息和数据卡片。
+- ProDescriptions：详情展示。
+
+第一课只介绍，不作为导航页的默认技术。
+
+#### Ant Design X
+
+定位：面向 React 生态的 AI 界面解决方案。
+
+代表组件：
+
+- Bubble：消息气泡。
+- Conversations：会话管理。
+- Sender：AI 输入框。
+- Prompts：推荐提示词。
+- Attachments：附件输入。
+- Think / ThoughtChain：执行状态和步骤展示。
+- Sources：引用来源。
+- CodeHighlighter：代码展示。
+- XMarkdown：流式 Markdown 渲染。
+- XCard：通过结构化数据动态渲染交互卡片。
+
+适合：AI 助手、智能客服、知识问答和 Agent 产品；不适合为了展示效果而强行加入普通导航页。
+
+#### Fusion Design
+
+定位：阿里体系的企业级设计系统，React 组件方案通常使用 Fusion Next。
+
+适合：
+
+- 企业中后台。
+- 品牌主题定制。
+- 阿里体系相关产品。
+
+课堂上只需让学生知道：Fusion 更偏阿里自身企业设计体系，Ant Design 的公开 React 生态更广。
+
+### 附录 E｜字节跳动组件生态
+
+#### Semi Design
+
+来源：抖音前端团队和产品设计团队。
+
+React 包：
+
+```text
+@douyinfe/semi-ui
+```
+
+特点：
+
+- 面向现代企业应用和中后台。
+- 支持主题定制和深色模式。
+- 国际化能力较完整。
+- 默认视觉相对轻量、现代。
+- 适合 SaaS、内容平台和创作者工具。
+
+#### Arco Design
+
+来源：字节跳动 GIP UED 团队与基础架构前端团队。
+
+React 包：
+
+```text
+@arco-design/web-react
+```
+
+特点：
+
+- 提供完整企业级组件。
+- 同时拥有 React 和 Vue 版本。
+- 支持 Design Lab 和主题定制。
+- 有组件物料市场和 Arco Pro 项目模板。
+- 适合需要统一设计和物料管理的团队。
+
+#### IconPark
+
+定位：字节跳动的跨框架图标生态。
+
+适合导航页：
+
+- 给网站分类增加统一图标。
+- 避免到处下载风格不一致的 PNG。
+- 在 React 中使用可定制 SVG 图标。
+
+### 附录 F｜React 动画方案
+
+#### Motion
+
+原名 Framer Motion，目前推荐从 `motion/react` 导入。
+
+适合：
+
+- 元素进入和退出。
+- 卡片悬停和点击反馈。
+- 拖拽与手势。
+- 布局变化和列表重排。
+- 滚动触发动画。
+- SVG 动画。
+
+示例：
+
+```jsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  whileHover={{ scale: 1.03 }}
+  whileTap={{ scale: 0.97 }}
+>
+  网站卡片
+</motion.div>
+```
+
+本课把 Motion 作为 React 基础动画的首选。
+
+#### AutoAnimate
+
+定位：几乎零配置的列表动画工具。
+
+适合：
+
+- 添加或删除网站卡片。
+- 列表自动排序。
+- 分类切换。
+- 待办事项列表。
+
+优点是上手简单；不足是对复杂动画过程的精细控制较少。
+
+#### GSAP
+
+定位：专业级 JavaScript 动画和时间线工具。
+
+适合：
+
+- 多元素动画编排。
+- 滚动叙事和视差效果。
+- SVG、Canvas、Three.js 和 WebGL。
+- 品牌发布页和沉浸式网站。
+
+React 中可以配合 `@gsap/react` 的 `useGSAP()`，帮助处理作用域和组件卸载时的动画清理。
+
+第一课只做效果展示，不要求学生使用。
+
+#### React Spring
+
+定位：以弹簧物理模型为核心的 React 动画方案。
+
+适合拖拽回弹、有重量感的卡片和自然的数据变化。第一课不建议与 Motion 同时引入。
+
+#### Lottie、Rive 与 React Three Fiber
+
+| 方案 | 适合场景 | 第一课建议 |
+|---|---|---|
+| Lottie | 加载、成功提示和动画插画 | 可以少量使用 |
+| Rive | 可交互吉祥物、状态机动画 | 作为进阶方向 |
+| React Three Fiber | 3D 地球、产品模型和粒子场景 | 只展示，不实践 |
+
+### 附录 G｜酷炫 React 组件集合
+
+#### React Bits
+
+特点：创意、动态和实验感强。
+
+适合导航页：
+
+- Aurora 等动态背景。
+- Blur Text、Split Text 等标题动画。
+- Spotlight Card、Tilted Card 等卡片效果。
+- Magnet、Blob Cursor 等互动效果。
+
+注意：一页不要叠加多个动态背景、鼠标特效和粒子效果。
+
+#### Magic UI
+
+特点：更接近独立站、SaaS 官网和产品宣传页。
+
+适合导航页：
+
+- Bento Grid：组织网站分类。
+- Dock：展示高频入口。
+- Magic Card：制作导航卡片。
+- Animated Grid Pattern：制作背景。
+- Text Animate：制作标题。
+- Border Beam：突出重点卡片。
+
+#### Aceternity UI
+
+特点：科技感和视觉冲击力更强。
+
+代表效果：
+
+- 3D Card。
+- Spotlight。
+- Background Beams。
+- Hero Parallax。
+- Floating Dock。
+- Infinite Moving Cards。
+- Moving Border。
+
+适合作品集和科技产品首页，但需要特别检查手机端、性能和信息可读性。
+
+#### Animate UI
+
+特点：基于 Tailwind CSS、Motion 和 shadcn Registry 的开放动画组件集合。
+
+适合：
+
+- 动画弹窗和菜单。
+- 动画基础组件。
+- 动画图标。
+- 希望直接获得组件源代码并让 AI 修改的项目。
+
+#### shadcn/ui
+
+定位：开放代码的基础产品组件体系，本身不以炫技动画为核心。
+
+推荐组合：
+
+```text
+shadcn/ui：负责可靠的基础组件
+Motion 或 Animate UI：负责交互动画
+React Bits 或 Magic UI：负责一两个视觉亮点
+```
+
+### 附录 H｜组件与动画选型地图
+
+| 想做的页面 | 基础组件 | 动画或视觉方案 |
+|---|---|---|
+| 企业后台 | Ant Design、Semi、Arco 三选一 | 少量 Motion |
+| AI 聊天产品 | Ant Design X | Motion |
+| 极简个人导航 | shadcn/ui | Motion |
+| 酷炫个人导航 | shadcn/ui | React Bits + Motion |
+| SaaS 独立站 | shadcn/ui | Magic UI + Motion |
+| 科技产品首页 | shadcn/ui | Aceternity UI 或 GSAP |
+| 自动排序列表 | 任意一种基础组件体系 | AutoAnimate |
+| 互动吉祥物 | 任意一种基础组件体系 | Rive |
+| 3D 展示页 | 自定义组件 | React Three Fiber |
+
+### 附录 I｜组件与动画提示词
+
+#### 基础动画
+
+> 当前项目使用 React、Vite 和 Tailwind CSS。请使用 Motion 为网站卡片增加依次淡入和向上移动的进入动画。鼠标经过时卡片放大到 1.03，点击时缩小到 0.97。保留现有页面结构和链接，不要修改其他功能，并支持减少动态效果的系统设置。
+
+#### 酷炫导航页
+
+> 保留当前 React 导航页的内容，使用 React Bits 风格增加一个低强度的动态极光背景，并为卡片增加跟随鼠标的聚光效果。动画不能影响文字阅读，手机端关闭鼠标跟随效果。
+
+#### 独立站风格
+
+> 使用 Magic UI 风格优化首页。使用 Bento Grid 展示网站分类，使用 Dock 展示最常用的五个入口，并为标题增加轻微的文字动画。不要添加与导航功能无关的复杂内容。
+
+#### 企业产品风格
+
+> 使用 Semi Design 的输入框、按钮、卡片和弹窗组件重构当前页面。保持浅色、简洁、现代的企业产品风格，不要同时引入其他完整组件库。
+
+### 附录 J｜使用组件和动画的四条规则
+
+1. 一页只需要一个主要视觉亮点。
+2. 一套基础组件体系、一个动画方案、最多两个特殊效果。
+3. 所有动画都要检查手机端、低性能设备和减少动态效果设置。
+4. 让 AI 在安装前核对官方文档、依赖名称、当前版本和授权方式。
+
 ## 七、后续修改建议
 
 下一轮可以继续确定：
@@ -526,3 +939,18 @@ React
 - [Node.js 官方文档](https://nodejs.org/learn)
 - [Tailwind CSS 官方文档](https://tailwindcss.com/docs)
 - [shadcn/ui 官方文档](https://ui.shadcn.com/docs)
+- [Ant Design 官方文档](https://ant.design/)
+- [Ant Design X 官方文档](https://x.ant.design/docs/react/introduce/)
+- [Fusion Design 官方网站](https://fusion.design/)
+- [Semi Design 官方文档](https://semi.design/en-US/start/introduction)
+- [Arco Design 官方文档](https://arco.design/react/docs/start)
+- [IconPark 官方仓库](https://github.com/bytedance/IconPark)
+- [Motion for React 官方文档](https://motion.dev/docs/react)
+- [GSAP React 官方指南](https://gsap.com/resources/React/)
+- [React Spring 官方文档](https://react-spring.dev/docs)
+- [AutoAnimate 官方文档](https://auto-animate.formkit.com/)
+- [Rive React 官方文档](https://rive.app/docs/runtimes/react/react)
+- [React Bits 官方网站](https://www.reactbits.dev/)
+- [Magic UI 官方文档](https://magicui.design/docs)
+- [Aceternity UI 官方网站](https://ui.aceternity.com/explore)
+- [Animate UI 官方文档](https://animate-ui.com/docs)
