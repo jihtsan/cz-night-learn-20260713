@@ -262,6 +262,48 @@ function InsightList({ duplicate = false }: { duplicate?: boolean }) {
   )
 }
 
+function TrendingList({ repositories, duplicate = false }: { repositories: TrendingRepository[]; duplicate?: boolean }) {
+  return (
+    <div className="pb-1" aria-hidden={duplicate || undefined}>
+      {repositories.map((repository, index) => (
+        <motion.a
+          key={`${duplicate ? 'copy-' : ''}${repository.fullName}`}
+          href={repository.url}
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={duplicate ? -1 : undefined}
+          className="group flex h-[58px] items-center gap-3 rounded-[15px] px-2.5 text-left transition-colors hover:bg-white/90"
+          initial={duplicate ? false : { opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.055 * index, duration: 0.3 }}
+          whileHover={{ y: -1 }}
+        >
+          <span className={cn(
+            'grid size-7 shrink-0 place-items-center rounded-[10px] text-xs font-bold tabular-nums',
+            index === 0 ? 'bg-[#1d1d1f] text-white' : 'bg-[#f0f0f2] text-[#737378]',
+          )}>
+            {index + 1}
+          </span>
+          <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-[#f2f2f4] text-[#242427]">
+            <SiGithub className="size-[17px]" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block truncate text-[13px] font-semibold tracking-[-0.01em]">{repository.fullName}</span>
+            <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#929298]">
+              <span className="size-1.5 rounded-full" style={{ backgroundColor: languageColors[repository.language] ?? '#8b8b91' }} />
+              <span className="truncate">{repository.language}</span>
+            </span>
+          </span>
+          <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold tabular-nums text-[#737378]">
+            <Star className="size-3 fill-[#f3c963] text-[#d9aa35]" />
+            {compactNumber.format(repository.stars)}
+          </span>
+        </motion.a>
+      ))}
+    </div>
+  )
+}
+
 function App() {
   const [activeCategory, setActiveCategory] = useState<Category>('all')
   const [query, setQuery] = useState('')
@@ -436,8 +478,8 @@ function App() {
 
       <main className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 md:px-8">
         <section className="grid gap-4 lg:grid-cols-[1.16fr_.46fr_1fr]">
-          <Card className="glass-card overflow-hidden p-5 md:p-6">
-            <div className="mb-3.5 flex items-end justify-between gap-4">
+          <Card className="glass-card flex h-[360px] flex-col overflow-hidden p-5 md:p-6">
+            <div className="mb-2 flex items-end justify-between gap-4">
               <div>
                 <p className="eyebrow">GitHub Trending</p>
                 <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em]">趋势项目 Top 5</h1>
@@ -447,49 +489,21 @@ function App() {
                 {trendSource === 'live' ? '实时' : trendSource === 'fallback' ? '本周' : '更新中'}
               </span>
             </div>
-            <div className="space-y-1">
-              {trendingRepositories.map((repository, index) => (
-                <motion.a
-                  key={repository.fullName}
-                  href={repository.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="group flex items-center gap-3 rounded-[16px] px-2.5 py-2.5 text-left transition-colors hover:bg-white/90"
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.055 * index, duration: 0.3 }}
-                  whileHover={{ y: -2 }}
-                >
-                  <span className={cn(
-                    'grid size-7 shrink-0 place-items-center rounded-[10px] text-xs font-bold tabular-nums',
-                    index === 0 ? 'bg-[#1d1d1f] text-white' : 'bg-[#f0f0f2] text-[#737378]',
-                  )}>
-                    {index + 1}
-                  </span>
-                  <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-[#f2f2f4] text-[#242427]">
-                    <SiGithub className="size-[17px]" />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-[13px] font-semibold tracking-[-0.01em]">{repository.fullName}</span>
-                    <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#929298]">
-                      <span className="size-1.5 rounded-full" style={{ backgroundColor: languageColors[repository.language] ?? '#8b8b91' }} />
-                      <span className="truncate">{repository.language}</span>
-                    </span>
-                  </span>
-                  <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold tabular-nums text-[#737378]">
-                    <Star className="size-3 fill-[#f3c963] text-[#d9aa35]" />
-                    {compactNumber.format(repository.stars)}
-                  </span>
-                </motion.a>
-              ))}
+            <div className="trend-viewport relative min-h-0 flex-1 overflow-hidden">
+              <div className="trend-scroll-track">
+                <TrendingList repositories={trendingRepositories} />
+                <TrendingList repositories={trendingRepositories} duplicate />
+              </div>
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-white/80 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white/80 to-transparent" />
             </div>
-            <a href="https://github.com/trending?since=weekly" target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-1.5 border-t border-[#ededf0] pt-3 text-[11px] font-semibold text-[#77777d] transition-colors hover:text-[#1d1d1f]">
+            <a href="https://github.com/trending?since=weekly" target="_blank" rel="noreferrer" className="mt-2 flex items-center justify-center gap-1.5 border-t border-[#ededf0] pt-2.5 text-[11px] font-semibold text-[#77777d] transition-colors hover:text-[#1d1d1f]">
               <TrendingUp className="size-3.5" />
               查看 GitHub 完整趋势榜
             </a>
           </Card>
 
-          <Card className="glass-card flex min-h-[410px] flex-col items-center overflow-hidden p-4 text-center">
+          <Card className="glass-card flex h-[360px] flex-col items-center overflow-hidden p-4 text-center">
             <div className="w-full text-left">
               <p className="eyebrow">AI Creators</p>
               <p className="mt-1 text-[15px] font-semibold tracking-[-0.025em]">值得关注的博主</p>
@@ -498,8 +512,8 @@ function App() {
             <div className="relative -my-1 grid flex-1 place-items-center">
               <RadialIntro
                 orbitItems={aiCreators}
-                stageSize={260}
-                imageSize={46}
+                stageSize={230}
+                imageSize={42}
                 className="relative scale-[.9] overflow-visible sm:scale-100 lg:scale-[.78]"
               />
               <a
@@ -517,10 +531,10 @@ function App() {
             <p className="mt-1 text-[10px] text-[#96969c]">点击头像前往 X 主页</p>
           </Card>
 
-          <Card className="relative min-h-[410px] overflow-hidden border-0 bg-[#232326] p-0 text-white shadow-[0_25px_70px_rgba(25,25,30,.17)]">
+          <Card className="relative h-[360px] overflow-hidden border-0 bg-[#232326] p-0 text-white shadow-[0_25px_70px_rgba(25,25,30,.17)]">
             <div className="absolute -right-8 -top-12 size-44 rounded-full bg-[#8e78ff]/40 blur-[58px]" />
             <div className="absolute -bottom-16 left-1/4 size-48 rounded-full bg-[#5179d9]/20 blur-[70px]" />
-            <div className="relative flex h-full min-h-[410px] flex-col">
+            <div className="relative flex h-full flex-col">
               <div className="flex items-center justify-between px-5 pb-3 pt-5">
                 <div>
                   <p className="text-[10px] font-semibold uppercase tracking-[0.17em] text-white/40">X / AI Signals</p>
