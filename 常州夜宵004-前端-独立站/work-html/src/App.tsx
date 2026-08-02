@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useRef, useState } from 'react'
 import type { ComponentType, CSSProperties, FormEvent } from 'react'
 import { motion } from 'motion/react'
 import {
@@ -39,7 +39,6 @@ import {
 } from 'react-icons/si'
 
 import { RadialIntro, type RadialIntroItem } from './components/animate-ui/radial-intro'
-import { AnimatedGridPattern } from './components/magicui/animated-grid-pattern'
 import { Button } from './components/ui/button'
 import { Card } from './components/ui/card'
 import { Input } from './components/ui/input'
@@ -47,6 +46,8 @@ import { Tabs, TabsList, TabsTrigger } from './components/ui/tabs'
 import { cn } from './lib/utils'
 
 type Category = 'all' | 'ai' | 'design' | 'development' | 'productivity' | 'learning'
+
+const ColorBends = lazy(() => import('./components/react-bits/color-bends').then((module) => ({ default: module.ColorBends })))
 
 type Site = {
   name: string
@@ -215,6 +216,8 @@ const creatorInsights: CreatorInsight[] = [
   },
 ]
 
+const reactBitsColors = ['#a855f7', '#6d28d9', '#d946ef', '#4c1d95']
+
 function formatTime(seconds: number) {
   const wholeSeconds = Math.round(seconds)
   const minutes = Math.floor(wholeSeconds / 60)
@@ -272,7 +275,7 @@ function TrendingList({ repositories, duplicate = false }: { repositories: Trend
           target="_blank"
           rel="noreferrer"
           tabIndex={duplicate ? -1 : undefined}
-          className="group flex h-[58px] items-center gap-3 rounded-[15px] px-2.5 text-left transition-colors hover:bg-white/90"
+          className="group flex h-[58px] items-center gap-3 rounded-[15px] px-2.5 text-left transition-colors hover:bg-white/[0.07]"
           initial={duplicate ? false : { opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.055 * index, duration: 0.3 }}
@@ -280,21 +283,21 @@ function TrendingList({ repositories, duplicate = false }: { repositories: Trend
         >
           <span className={cn(
             'grid size-7 shrink-0 place-items-center rounded-[10px] text-xs font-bold tabular-nums',
-            index === 0 ? 'bg-[#1d1d1f] text-white' : 'bg-[#f0f0f2] text-[#737378]',
+            index === 0 ? 'bg-[#9b4dff] text-white shadow-[0_5px_16px_rgba(155,77,255,.3)]' : 'bg-white/[0.07] text-white/45',
           )}>
             {index + 1}
           </span>
-          <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-[#f2f2f4] text-[#242427]">
+          <span className="grid size-9 shrink-0 place-items-center rounded-[12px] border border-white/8 bg-white/[0.06] text-white/80">
             <SiGithub className="size-[17px]" />
           </span>
           <span className="min-w-0 flex-1">
             <span className="block truncate text-[13px] font-semibold tracking-[-0.01em]">{repository.fullName}</span>
-            <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#929298]">
+            <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-white/38">
               <span className="size-1.5 rounded-full" style={{ backgroundColor: languageColors[repository.language] ?? '#8b8b91' }} />
               <span className="truncate">{repository.language}</span>
             </span>
           </span>
-          <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold tabular-nums text-[#737378]">
+          <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold tabular-nums text-white/45">
             <Star className="size-3 fill-[#f3c963] text-[#d9aa35]" />
             {compactNumber.format(repository.stars)}
           </span>
@@ -442,36 +445,49 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen overflow-hidden text-[#1d1d1f]">
-      <AnimatedGridPattern className="pointer-events-none fixed inset-0 h-full w-full opacity-45" />
-      <div className="pointer-events-none fixed -left-32 top-[-8rem] h-[32rem] w-[32rem] rounded-full bg-[#d9e8ff]/65 blur-[120px]" />
-      <div className="pointer-events-none fixed -right-20 top-32 h-[28rem] w-[28rem] rounded-full bg-[#f5dfff]/60 blur-[120px]" />
+    <div className="reactbits-theme relative min-h-screen overflow-hidden text-[#f8f6ff]">
+      <div className="pointer-events-none fixed inset-0 bg-[#0e0b14]" />
+      <Suspense fallback={null}>
+        <ColorBends
+          className="pointer-events-none fixed inset-0 opacity-65"
+          colors={reactBitsColors}
+          rotation={90}
+          speed={0.12}
+          scale={1.15}
+          frequency={1}
+          noise={0.1}
+          intensity={1.15}
+          bandWidth={5.8}
+        />
+      </Suspense>
+      <div className="reactbits-dot-grid pointer-events-none fixed inset-0" />
+      <div className="pointer-events-none fixed inset-0 bg-[linear-gradient(to_bottom,rgba(14,11,20,.12),rgba(14,11,20,.62)_68%,#0e0b14_100%)]" />
 
       <header className="relative z-20 mx-auto flex w-full max-w-[1440px] items-center gap-4 px-5 py-5 md:px-8 lg:py-7">
         <a href="#" className="flex shrink-0 items-center gap-3" aria-label="导航站首页">
-          <span className="grid size-11 place-items-center rounded-[15px] bg-[#1d1d1f] text-white shadow-[0_8px_24px_rgba(0,0,0,.16)]">
+          <span className="grid size-11 place-items-center rounded-[14px] border border-white/15 bg-white/[0.07] text-white shadow-[0_10px_30px_rgba(92,42,150,.22)] backdrop-blur-xl">
             <Command className="size-5" />
           </span>
           <span className="hidden text-[17px] font-semibold tracking-[-0.02em] sm:block">拾光导航</span>
         </a>
 
-        <form onSubmit={handleSearch} className="mx-auto flex w-full max-w-3xl items-center gap-2 rounded-[22px] border border-white/90 bg-white/75 p-1.5 pl-4 shadow-[0_16px_50px_rgba(38,42,50,.08)] backdrop-blur-2xl">
-          <Search className="size-[18px] shrink-0 text-[#85858a]" aria-hidden="true" />
+        <form onSubmit={handleSearch} className="mx-auto flex w-full max-w-3xl items-center gap-2 rounded-[18px] border border-white/10 bg-[#17131f]/76 p-1.5 pl-4 shadow-[0_18px_55px_rgba(0,0,0,.22)] backdrop-blur-2xl">
+          <Search className="size-[18px] shrink-0 text-white/38" aria-hidden="true" />
           <Input
             ref={searchRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
             placeholder="搜索网站、工具或内容"
-            className="h-10 border-0 bg-transparent px-1 text-[15px] shadow-none focus-visible:ring-0"
+            className="h-10 border-0 bg-transparent px-1 text-[15px] text-white shadow-none placeholder:text-white/32 focus-visible:ring-0"
             aria-label="搜索导航站"
           />
-          <span className="hidden items-center gap-1 rounded-lg bg-[#f0f0f2] px-2 py-1 text-[11px] font-medium text-[#77777c] md:flex">
+          <span className="hidden items-center gap-1 rounded-lg border border-white/8 bg-white/[0.05] px-2 py-1 text-[11px] font-medium text-white/38 md:flex">
             <Command className="size-3" />K
           </span>
           <Button type="submit" className="h-10 rounded-[15px] px-5">搜索</Button>
         </form>
 
-        <Button variant="ghost" size="icon" className="hidden shrink-0 rounded-full bg-white/60 md:inline-flex" aria-label="关于导航站">
+        <Button variant="ghost" size="icon" className="hidden shrink-0 rounded-full border border-white/10 bg-white/[0.04] md:inline-flex" aria-label="关于导航站">
           <Info className="size-[18px]" />
         </Button>
       </header>
@@ -484,7 +500,7 @@ function App() {
                 <p className="eyebrow">GitHub Trending</p>
                 <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em]">趋势项目 Top 5</h1>
               </div>
-              <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#edf7f0] px-2.5 py-1 text-[11px] font-semibold text-[#348255]">
+              <span className="flex shrink-0 items-center gap-1.5 rounded-full border border-[#57d792]/15 bg-[#57d792]/10 px-2.5 py-1 text-[11px] font-semibold text-[#7fe7a9]">
                 <span className={cn('size-1.5 rounded-full bg-[#42a66c]', trendSource === 'loading' && 'animate-pulse')} />
                 {trendSource === 'live' ? '实时' : trendSource === 'fallback' ? '本周' : '更新中'}
               </span>
@@ -494,10 +510,10 @@ function App() {
                 <TrendingList repositories={trendingRepositories} />
                 <TrendingList repositories={trendingRepositories} duplicate />
               </div>
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-white/80 to-transparent" />
-              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-white/80 to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 top-0 h-4 bg-gradient-to-b from-[#17131f] to-transparent" />
+              <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#17131f] to-transparent" />
             </div>
-            <a href="https://github.com/trending?since=weekly" target="_blank" rel="noreferrer" className="mt-2 flex items-center justify-center gap-1.5 border-t border-[#ededf0] pt-2.5 text-[11px] font-semibold text-[#77777d] transition-colors hover:text-[#1d1d1f]">
+            <a href="https://github.com/trending?since=weekly" target="_blank" rel="noreferrer" className="mt-2 flex items-center justify-center gap-1.5 border-t border-white/8 pt-2.5 text-[11px] font-semibold text-white/38 transition-colors hover:text-white">
               <TrendingUp className="size-3.5" />
               查看 GitHub 完整趋势榜
             </a>
@@ -521,17 +537,17 @@ function App() {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="打开 X"
-                className="absolute left-1/2 top-1/2 z-20 grid size-[4.35rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-[#1d1d1f] transition-transform hover:scale-105"
+                className="absolute left-1/2 top-1/2 z-20 grid size-[4.35rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-white transition-transform hover:scale-105"
               >
                 <SiX className="size-6" />
               </a>
             </div>
 
             <p className="text-[12px] font-semibold">OpenAI · Claude Code · AI</p>
-            <p className="mt-1 text-[10px] text-[#96969c]">点击头像前往 X 主页</p>
+            <p className="mt-1 text-[10px] text-white/35">点击头像前往 X 主页</p>
           </Card>
 
-          <Card className="relative h-[360px] overflow-hidden border-0 bg-[#232326] p-0 text-white shadow-[0_25px_70px_rgba(25,25,30,.17)]">
+          <Card className="relative h-[360px] overflow-hidden border border-white/10 bg-[#15111d]/92 p-0 text-white shadow-[0_25px_70px_rgba(0,0,0,.24)]">
             <div className="absolute -right-8 -top-12 size-44 rounded-full bg-[#8e78ff]/40 blur-[58px]" />
             <div className="absolute -bottom-16 left-1/4 size-48 rounded-full bg-[#5179d9]/20 blur-[70px]" />
             <div className="relative flex h-full flex-col">
@@ -551,8 +567,8 @@ function App() {
                   <InsightList />
                   <InsightList duplicate />
                 </div>
-                <div className="pointer-events-none absolute inset-x-0 top-0 h-7 bg-gradient-to-b from-[#232326] to-transparent" />
-                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-[#232326] to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-7 bg-gradient-to-b from-[#15111d] to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-[#15111d] to-transparent" />
               </div>
 
               <div className="flex items-center justify-between border-t border-white/[0.07] px-5 py-3 text-[10px] text-white/35">
@@ -677,14 +693,14 @@ function App() {
                 <p className="eyebrow">导航分类</p>
                 <h2 className="mt-1 text-[26px] font-semibold tracking-[-0.04em]">发现值得收藏的网站</h2>
               </div>
-              <div className="flex items-center gap-2 text-xs text-[#85858a]">
+              <div className="flex items-center gap-2 text-xs text-white/38">
                 <Grid2X2 className="size-3.5" />
                 <span>{filteredSites.length} 个结果</span>
               </div>
             </div>
 
             <Tabs value={activeCategory} onValueChange={(value) => setActiveCategory(value as Category)} className="mt-6">
-              <TabsList className="scrollbar-none flex w-full justify-start gap-1 overflow-x-auto rounded-[18px] bg-[#f1f1f3]/85 p-1.5">
+              <TabsList className="scrollbar-none flex w-full justify-start gap-1 overflow-x-auto rounded-[16px] border border-white/8 bg-white/[0.045] p-1.5">
                 {categories.map((category) => (
                   <TabsTrigger key={category.value} value={category.value} className="shrink-0 rounded-[13px] px-4 py-2 text-[13px]">
                     {category.label}
@@ -701,7 +717,7 @@ function App() {
                   href={site.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="site-tile group flex min-h-[94px] items-center gap-3.5 rounded-[21px] border border-[#eeeeef] bg-white/78 p-3.5"
+                  className="site-tile group flex min-h-[94px] items-center gap-3.5 rounded-[19px] border border-white/8 bg-white/[0.045] p-3.5"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: Math.min(index * 0.035, 0.25), duration: 0.3 }}
@@ -711,9 +727,9 @@ function App() {
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-[14px] font-semibold">{site.name}</span>
-                    <span className="mt-1 block truncate text-xs text-[#8a8a90]">{site.description}</span>
+                    <span className="mt-1 block truncate text-xs text-white/36">{site.description}</span>
                   </span>
-                  <ChevronRight className="size-4 shrink-0 text-[#c1c1c5] transition-transform group-hover:translate-x-0.5 group-hover:text-[#6e6e73]" />
+                  <ChevronRight className="size-4 shrink-0 text-white/22 transition-transform group-hover:translate-x-0.5 group-hover:text-[#c084fc]" />
                 </motion.a>
               ))}
             </motion.div>
@@ -721,9 +737,9 @@ function App() {
             {filteredSites.length === 0 && (
               <div className="grid min-h-52 place-items-center text-center">
                 <div>
-                  <Search className="mx-auto size-7 text-[#b4b4b8]" />
+                  <Search className="mx-auto size-7 text-white/30" />
                   <p className="mt-3 text-sm font-medium">没有找到相关网站</p>
-                  <button type="button" onClick={() => { setQuery(''); setActiveCategory('all') }} className="mt-1 text-xs text-[#737379] underline underline-offset-4">
+                  <button type="button" onClick={() => { setQuery(''); setActiveCategory('all') }} className="mt-1 text-xs text-[#c084fc] underline underline-offset-4">
                     清除筛选条件
                   </button>
                 </div>
@@ -732,7 +748,7 @@ function App() {
           </Card>
         </section>
 
-        <footer className="flex flex-col items-center justify-between gap-2 px-2 pt-6 text-xs text-[#8c8c91] sm:flex-row">
+        <footer className="flex flex-col items-center justify-between gap-2 px-2 pt-6 text-xs text-white/30 sm:flex-row">
           <p>拾光导航 · 把时间留给更重要的事</p>
           <p>持续收录好用的数字工具</p>
         </footer>

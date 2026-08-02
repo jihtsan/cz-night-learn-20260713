@@ -107,8 +107,8 @@ function RadialIntro({ orbitItems, stageSize = 260, imageSize = 48, className }:
         style={{ width: stageSize, height: stageSize }}
         initial={false}
       >
-        <div className="pointer-events-none absolute inset-[19%] rounded-full border border-dashed border-[#cfd3dc]/80" />
-        <div className="pointer-events-none absolute inset-1/2 size-[4.35rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(circle_at_35%_30%,#fff_0%,#eceff5_72%,#dfe3eb_100%)] shadow-[0_14px_35px_rgba(67,75,91,.16)]" />
+        <div className="pointer-events-none absolute inset-[19%] rounded-full border border-dashed border-[#a855f7]/45 shadow-[0_0_30px_rgba(168,85,247,.1)]" />
+        <div className="pointer-events-none absolute inset-1/2 size-[4.35rem] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-[radial-gradient(circle_at_35%_30%,#352044_0%,#1d1627_72%,#120e19_100%)] shadow-[0_14px_38px_rgba(109,40,217,.28)]" />
 
         {orbitItems.map((item, index) => (
           <motion.div
@@ -126,7 +126,7 @@ function RadialIntro({ orbitItems, stageSize = 260, imageSize = 48, className }:
               rel="noreferrer"
               title={`${item.name} · ${item.handle}`}
               aria-label={`在 X 上查看 ${item.name}`}
-              className="group absolute left-1/2 top-1/2 grid -translate-x-1/2 place-items-center overflow-hidden rounded-full border-[3px] border-white bg-[#e8ebf1] shadow-[0_9px_24px_rgba(48,52,61,.18)] ring-1 ring-black/5 transition-shadow hover:shadow-[0_12px_30px_rgba(45,52,68,.28)] focus-visible:outline-none"
+              className="group absolute left-1/2 top-1/2 grid -translate-x-1/2 place-items-center overflow-hidden rounded-full border-[3px] border-[#2b2138] bg-[#18121f] shadow-[0_9px_24px_rgba(0,0,0,.32)] ring-1 ring-[#a855f7]/25 transition-shadow hover:shadow-[0_10px_30px_rgba(168,85,247,.32)] focus-visible:outline-none"
               style={{
                 width: imageSize,
                 height: imageSize,
