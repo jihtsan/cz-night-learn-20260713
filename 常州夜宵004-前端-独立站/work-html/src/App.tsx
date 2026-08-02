@@ -4,9 +4,7 @@ import { motion } from 'motion/react'
 import {
   ArrowUpRight,
   Bot,
-  Bookmark,
   ChevronRight,
-  Clock3,
   Command,
   Grid2X2,
   Heart,
@@ -19,8 +17,8 @@ import {
   Search,
   SkipBack,
   SkipForward,
-  Sparkles,
   Star,
+  TrendingUp,
   Volume2,
   VolumeX,
 } from 'lucide-react'
@@ -58,6 +56,40 @@ type Site = {
   iconColor: string
 }
 
+type TrendingRepository = {
+  fullName: string
+  url: string
+  language: string
+  stars: number
+}
+
+type GitHubSearchRepository = {
+  full_name: string
+  html_url: string
+  language: string | null
+  stargazers_count: number
+}
+
+type MusicTrack = {
+  title: string
+  artist: string
+  album: string
+  artwork: string
+  previewUrl: string
+  trackUrl: string
+  duration: number
+}
+
+type ITunesTrack = {
+  trackName: string
+  artistName: string
+  collectionName: string
+  artworkUrl100?: string
+  previewUrl?: string
+  trackViewUrl?: string
+  trackTimeMillis?: number
+}
+
 const categories: { value: Category; label: string }[] = [
   { value: 'all', label: '全部' },
   { value: 'ai', label: 'AI 工具' },
@@ -85,11 +117,38 @@ const sites: Site[] = [
   { name: '哔哩哔哩', description: '中文视频与学习社区', url: 'https://www.bilibili.com', category: 'learning', icon: SiBilibili, color: '#edf8ff', iconColor: '#00aeec' },
 ]
 
-const quickLinks = [
-  { label: '收藏夹', meta: '12 个网站', icon: Bookmark, color: 'bg-[#fff0e8] text-[#e67838]' },
-  { label: '最近使用', meta: '今天更新', icon: Clock3, color: 'bg-[#ecf6ff] text-[#3786d6]' },
-  { label: '精选推荐', meta: '每周更新', icon: Star, color: 'bg-[#f4edff] text-[#8b5bd9]' },
+const fallbackTrendingRepositories: TrendingRepository[] = [
+  { fullName: 'block/buzz', url: 'https://github.com/block/buzz', language: 'Rust', stars: 20724 },
+  { fullName: 'virgiliojr94/book-to-skill', url: 'https://github.com/virgiliojr94/book-to-skill', language: 'Python', stars: 15077 },
+  { fullName: 'ayghri/i-have-adhd', url: 'https://github.com/ayghri/i-have-adhd', language: 'Python', stars: 15425 },
+  { fullName: 'microsoft/AI-For-Beginners', url: 'https://github.com/microsoft/AI-For-Beginners', language: 'Jupyter Notebook', stars: 58352 },
+  { fullName: '1jehuang/jcode', url: 'https://github.com/1jehuang/jcode', language: 'Rust', stars: 15094 },
 ]
+
+const languageColors: Record<string, string> = {
+  Rust: '#dea584',
+  Python: '#3572A5',
+  TypeScript: '#3178c6',
+  JavaScript: '#f1e05a',
+  Go: '#00ADD8',
+  Swift: '#F05138',
+  'Jupyter Notebook': '#DA5B0B',
+}
+
+const compactNumber = new Intl.NumberFormat('en', {
+  notation: 'compact',
+  maximumFractionDigits: 1,
+})
+
+const fallbackTrack: MusicTrack = {
+  title: 'That Girl',
+  artist: 'Olly Murs',
+  album: '24 HRS (Expanded Edition)',
+  artwork: '',
+  previewUrl: '',
+  trackUrl: 'https://music.apple.com/us/song/1520411331',
+  duration: 176,
+}
 
 function formatTime(seconds: number) {
   const wholeSeconds = Math.round(seconds)
@@ -102,8 +161,86 @@ function App() {
   const [query, setQuery] = useState('')
   const [isPlaying, setIsPlaying] = useState(false)
   const [isMuted, setIsMuted] = useState(false)
-  const [progress, setProgress] = useState(38)
+  const [progress, setProgress] = useState(0)
+  const [previewDuration, setPreviewDuration] = useState(30)
+  const [musicTrack, setMusicTrack] = useState(fallbackTrack)
+  const [musicSource, setMusicSource] = useState<'loading' | 'live' | 'fallback'>('loading')
+  const [trendingRepositories, setTrendingRepositories] = useState(fallbackTrendingRepositories)
+  const [trendSource, setTrendSource] = useState<'loading' | 'live' | 'fallback'>('loading')
   const searchRef = useRef<HTMLInputElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const since = new Date()
+    since.setDate(since.getDate() - 7)
+    const createdAfter = since.toISOString().slice(0, 10)
+
+    fetch(`https://api.github.com/search/repositories?q=created:%3E%3D${createdAfter}&sort=stars&order=desc&per_page=5`, {
+      cache: 'no-store',
+      headers: { Accept: 'application/vnd.github+json' },
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('GitHub trending request failed')
+        return response.json() as Promise<{ items?: GitHubSearchRepository[] }>
+      })
+      .then((data) => {
+        if (!data.items || data.items.length < 5) throw new Error('GitHub trending data is incomplete')
+        setTrendingRepositories(data.items.slice(0, 5).map((repository) => ({
+          fullName: repository.full_name,
+          url: repository.html_url,
+          language: repository.language ?? '其他',
+          stars: repository.stargazers_count,
+        })))
+        setTrendSource('live')
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        setTrendSource('fallback')
+      })
+
+    return () => controller.abort()
+  }, [])
+
+  useEffect(() => {
+    const controller = new AbortController()
+    const searchTerm = encodeURIComponent('That Girl Olly Murs')
+
+    fetch(`https://itunes.apple.com/search?term=${searchTerm}&entity=song&limit=10&country=US`, {
+      cache: 'no-store',
+      signal: controller.signal,
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error('iTunes music request failed')
+        return response.json() as Promise<{ results?: ITunesTrack[] }>
+      })
+      .then((data) => {
+        const result = data.results?.find((track) => (
+          track.trackName.toLowerCase() === 'that girl'
+          && track.artistName.toLowerCase().includes('olly murs')
+          && track.previewUrl
+        ))
+        if (!result?.previewUrl) throw new Error('That Girl preview is unavailable')
+
+        setMusicTrack({
+          title: result.trackName,
+          artist: result.artistName,
+          album: result.collectionName,
+          artwork: result.artworkUrl100?.replace('100x100bb', '600x600bb') ?? '',
+          previewUrl: result.previewUrl,
+          trackUrl: result.trackViewUrl ?? fallbackTrack.trackUrl,
+          duration: Math.round((result.trackTimeMillis ?? fallbackTrack.duration * 1000) / 1000),
+        })
+        setMusicSource('live')
+      })
+      .catch((error: unknown) => {
+        if (error instanceof DOMException && error.name === 'AbortError') return
+        setMusicSource('fallback')
+      })
+
+    return () => controller.abort()
+  }, [])
 
   useEffect(() => {
     const handleShortcut = (event: KeyboardEvent) => {
@@ -115,14 +252,6 @@ function App() {
     window.addEventListener('keydown', handleShortcut)
     return () => window.removeEventListener('keydown', handleShortcut)
   }, [])
-
-  useEffect(() => {
-    if (!isPlaying) return
-    const timer = window.setInterval(() => {
-      setProgress((current) => (current >= 100 ? 0 : current + 100 / 196))
-    }, 1000)
-    return () => window.clearInterval(timer)
-  }, [isPlaying])
 
   const filteredSites = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -141,6 +270,32 @@ function App() {
   const selectCategory = (category: Category) => {
     setActiveCategory(category)
     document.getElementById('navigation')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+  }
+
+  const togglePlayback = async () => {
+    const audio = audioRef.current
+    if (!audio || !musicTrack.previewUrl) return
+
+    if (audio.paused) {
+      try {
+        await audio.play()
+        setIsPlaying(true)
+      } catch {
+        setIsPlaying(false)
+      }
+      return
+    }
+
+    audio.pause()
+    setIsPlaying(false)
+  }
+
+  const updateProgress = (value: number) => {
+    setProgress(value)
+    const audio = audioRef.current
+    if (audio && Number.isFinite(audio.duration)) {
+      audio.currentTime = (value / 100) * audio.duration
+    }
   }
 
   return (
@@ -181,34 +336,56 @@ function App() {
       <main className="relative z-10 mx-auto w-full max-w-[1440px] px-5 pb-10 md:px-8">
         <section className="grid gap-4 lg:grid-cols-[1.16fr_.46fr_1fr]">
           <Card className="glass-card overflow-hidden p-5 md:p-6">
-            <div className="mb-5 flex items-center justify-between">
+            <div className="mb-3.5 flex items-end justify-between gap-4">
               <div>
-                <p className="eyebrow">快捷入口</p>
-                <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em]">今天想去哪里？</h1>
+                <p className="eyebrow">GitHub Trending</p>
+                <h1 className="mt-1 text-2xl font-semibold tracking-[-0.04em]">趋势项目 Top 5</h1>
               </div>
-              <Sparkles className="size-5 text-[#9368d8]" />
+              <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-[#edf7f0] px-2.5 py-1 text-[11px] font-semibold text-[#348255]">
+                <span className={cn('size-1.5 rounded-full bg-[#42a66c]', trendSource === 'loading' && 'animate-pulse')} />
+                {trendSource === 'live' ? '实时' : trendSource === 'fallback' ? '本周' : '更新中'}
+              </span>
             </div>
-            <div className="grid gap-2.5 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
-              {quickLinks.map((item, index) => (
-                <motion.button
-                  key={item.label}
-                  type="button"
-                  className="group flex items-center gap-3 rounded-[19px] bg-[#f6f6f8]/90 p-3 text-left transition-colors hover:bg-white"
+            <div className="space-y-1">
+              {trendingRepositories.map((repository, index) => (
+                <motion.a
+                  key={repository.fullName}
+                  href={repository.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center gap-3 rounded-[16px] px-2.5 py-2.5 text-left transition-colors hover:bg-white/90"
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.08 * index, duration: 0.35 }}
+                  transition={{ delay: 0.055 * index, duration: 0.3 }}
                   whileHover={{ y: -2 }}
                 >
-                  <span className={cn('grid size-10 shrink-0 place-items-center rounded-[14px]', item.color)}>
-                    <item.icon className="size-[18px]" />
+                  <span className={cn(
+                    'grid size-7 shrink-0 place-items-center rounded-[10px] text-xs font-bold tabular-nums',
+                    index === 0 ? 'bg-[#1d1d1f] text-white' : 'bg-[#f0f0f2] text-[#737378]',
+                  )}>
+                    {index + 1}
                   </span>
-                  <span className="min-w-0">
-                    <span className="block truncate text-[14px] font-semibold">{item.label}</span>
-                    <span className="block truncate text-xs text-[#8b8b91]">{item.meta}</span>
+                  <span className="grid size-9 shrink-0 place-items-center rounded-[12px] bg-[#f2f2f4] text-[#242427]">
+                    <SiGithub className="size-[17px]" />
                   </span>
-                </motion.button>
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-[13px] font-semibold tracking-[-0.01em]">{repository.fullName}</span>
+                    <span className="mt-0.5 flex items-center gap-1.5 text-[11px] text-[#929298]">
+                      <span className="size-1.5 rounded-full" style={{ backgroundColor: languageColors[repository.language] ?? '#8b8b91' }} />
+                      <span className="truncate">{repository.language}</span>
+                    </span>
+                  </span>
+                  <span className="flex shrink-0 items-center gap-1 text-[11px] font-semibold tabular-nums text-[#737378]">
+                    <Star className="size-3 fill-[#f3c963] text-[#d9aa35]" />
+                    {compactNumber.format(repository.stars)}
+                  </span>
+                </motion.a>
               ))}
             </div>
+            <a href="https://github.com/trending?since=weekly" target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-1.5 border-t border-[#ededf0] pt-3 text-[11px] font-semibold text-[#77777d] transition-colors hover:text-[#1d1d1f]">
+              <TrendingUp className="size-3.5" />
+              查看 GitHub 完整趋势榜
+            </a>
           </Card>
 
           <Card className="glass-card flex min-h-44 flex-col items-center justify-center p-5 text-center">
@@ -248,10 +425,29 @@ function App() {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_18%,rgba(255,255,255,.34),transparent_28%),linear-gradient(145deg,#ef87a2_0%,#b467a9_40%,#42446f_100%)]" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/35" />
             <div className="relative flex h-full min-h-[480px] flex-col p-6">
+              <audio
+                ref={audioRef}
+                src={musicTrack.previewUrl || undefined}
+                preload="none"
+                muted={isMuted}
+                onLoadedMetadata={(event) => setPreviewDuration(Number.isFinite(event.currentTarget.duration) ? event.currentTarget.duration : 30)}
+                onTimeUpdate={(event) => {
+                  const duration = event.currentTarget.duration
+                  if (Number.isFinite(duration) && duration > 0) {
+                    setProgress((event.currentTarget.currentTime / duration) * 100)
+                  }
+                }}
+                onEnded={() => {
+                  setIsPlaying(false)
+                  setProgress(0)
+                }}
+              />
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/60">Now playing</p>
-                  <p className="mt-1 text-[13px] font-medium text-white/85">今日单曲</p>
+                  <p className="mt-1 text-[13px] font-medium text-white/85">
+                    {musicSource === 'live' ? 'Apple Music 在线试听' : musicSource === 'fallback' ? '今日单曲' : '正在获取音乐'}
+                  </p>
                 </div>
                 <Music2 className="size-5 text-white/80" />
               </div>
@@ -261,17 +457,20 @@ function App() {
                 animate={isPlaying ? { scale: [1, 1.015, 1] } : { scale: 1 }}
                 transition={{ repeat: isPlaying ? Infinity : 0, duration: 3.2, ease: 'easeInOut' }}
               >
-                <div className="relative grid size-[46%] place-items-center rounded-full border border-white/20 bg-black/15 backdrop-blur-xl">
-                  <div className="absolute inset-3 rounded-full border border-white/20" />
-                  <Music2 className="size-9 text-white/85" strokeWidth={1.5} />
-                </div>
+                {musicTrack.artwork && (
+                  <img src={musicTrack.artwork} alt={`${musicTrack.title} 专辑封面`} className="absolute inset-0 size-full object-cover" />
+                )}
+                <span className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full border border-white/20 bg-black/25 text-white backdrop-blur-xl">
+                  <Music2 className="size-5" />
+                </span>
               </motion.div>
 
               <div className="mt-auto pt-7">
                 <div className="flex items-end justify-between gap-4">
                   <div>
-                    <h2 className="text-[26px] font-semibold tracking-[-0.04em]">That Girl</h2>
-                    <p className="mt-1 text-[14px] text-white/65">Olly Murs</p>
+                    <h2 className="text-[26px] font-semibold tracking-[-0.04em]">{musicTrack.title}</h2>
+                    <p className="mt-1 text-[14px] text-white/65">{musicTrack.artist}</p>
+                    <p className="mt-1 max-w-52 truncate text-[11px] text-white/45">{musicTrack.album}</p>
                   </div>
                   <Button variant="ghost" size="icon" className="rounded-full text-white hover:bg-white/15 hover:text-white" aria-label="收藏歌曲">
                     <Heart className="size-[19px]" />
@@ -283,14 +482,14 @@ function App() {
                   min="0"
                   max="100"
                   value={progress}
-                  onChange={(event) => setProgress(Number(event.target.value))}
+                  onChange={(event) => updateProgress(Number(event.target.value))}
                   className="music-progress mt-5 w-full"
                   style={{ '--progress': `${progress}%` } as CSSProperties}
                   aria-label="歌曲进度"
                 />
                 <div className="mt-1.5 flex justify-between text-[11px] font-medium text-white/55">
-                  <span>{formatTime((progress / 100) * 196)}</span>
-                  <span>3:16</span>
+                  <span>{formatTime((progress / 100) * previewDuration)}</span>
+                  <span>{formatTime(previewDuration)} 试听</span>
                 </div>
 
                 <div className="mt-4 flex items-center justify-between">
@@ -301,7 +500,7 @@ function App() {
                     <Button variant="ghost" size="icon" className="rounded-full text-white hover:bg-white/10 hover:text-white" aria-label="上一首">
                       <SkipBack className="size-5 fill-current" />
                     </Button>
-                    <Button size="icon" className="size-12 rounded-full bg-white text-[#5d4f72] shadow-lg hover:bg-white/90" onClick={() => setIsPlaying((value) => !value)} aria-label={isPlaying ? '暂停' : '播放'}>
+                    <Button size="icon" disabled={!musicTrack.previewUrl} className="size-12 rounded-full bg-white text-[#5d4f72] shadow-lg hover:bg-white/90" onClick={togglePlayback} aria-label={isPlaying ? '暂停' : '播放'}>
                       {isPlaying ? <Pause className="size-5 fill-current" /> : <Play className="ml-0.5 size-5 fill-current" />}
                     </Button>
                     <Button variant="ghost" size="icon" className="rounded-full text-white hover:bg-white/10 hover:text-white" aria-label="下一首">
@@ -310,6 +509,10 @@ function App() {
                   </div>
                   <span className="size-10" aria-hidden="true" />
                 </div>
+                <a href={musicTrack.trackUrl} target="_blank" rel="noreferrer" className="mt-4 flex items-center justify-center gap-1 text-[10px] font-medium text-white/48 transition-colors hover:text-white/75">
+                  在 Apple Music 上查看 · provided courtesy of iTunes
+                  <ArrowUpRight className="size-3" />
+                </a>
               </div>
             </div>
           </Card>
