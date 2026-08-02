@@ -35,8 +35,10 @@ import {
   SiStackoverflow,
   SiVercel,
   SiYoutube,
+  SiX,
 } from 'react-icons/si'
 
+import { RadialIntro, type RadialIntroItem } from './components/animate-ui/radial-intro'
 import { AnimatedGridPattern } from './components/magicui/animated-grid-pattern'
 import { Button } from './components/ui/button'
 import { Card } from './components/ui/card'
@@ -88,6 +90,15 @@ type ITunesTrack = {
   previewUrl?: string
   trackViewUrl?: string
   trackTimeMillis?: number
+}
+
+type CreatorInsight = {
+  name: string
+  handle: string
+  avatar: string
+  text: string
+  href: string
+  topic: string
 }
 
 const categories: { value: Category; label: string }[] = [
@@ -150,10 +161,105 @@ const fallbackTrack: MusicTrack = {
   duration: 176,
 }
 
+const aiCreators: RadialIntroItem[] = [
+  { id: 1, name: 'Boris Cherny', handle: '@bcherny', src: 'https://unavatar.io/x/bcherny', href: 'https://x.com/bcherny' },
+  { id: 2, name: 'Thariq', handle: '@trq212', src: 'https://unavatar.io/x/trq212', href: 'https://x.com/trq212' },
+  { id: 3, name: 'Andrej Karpathy', handle: '@karpathy', src: 'https://unavatar.io/x/karpathy', href: 'https://x.com/karpathy' },
+  { id: 4, name: 'Sam Altman', handle: '@sama', src: 'https://unavatar.io/x/sama', href: 'https://x.com/sama' },
+  { id: 5, name: 'Greg Brockman', handle: '@gdb', src: 'https://unavatar.io/x/gdb', href: 'https://x.com/gdb' },
+  { id: 6, name: 'swyx', handle: '@swyx', src: 'https://unavatar.io/x/swyx', href: 'https://x.com/swyx' },
+  { id: 7, name: 'Simon Willison', handle: '@simonw', src: 'https://unavatar.io/x/simonw', href: 'https://x.com/simonw' },
+  { id: 8, name: '0xDesigner', handle: '@0xDesigner', src: 'https://unavatar.io/x/0xDesigner', href: 'https://x.com/0xDesigner' },
+]
+
+const creatorInsights: CreatorInsight[] = [
+  {
+    name: 'Simon Willison',
+    handle: '@simonw',
+    avatar: 'https://unavatar.io/x/simonw',
+    text: '让 Claude Code 在后台启动开发服务并随时查看日志，是一个非常实用的工作流。',
+    href: 'https://x.com/simonw/status/1954282856529945063',
+    topic: 'Claude Code',
+  },
+  {
+    name: 'Andrej Karpathy',
+    handle: '@karpathy',
+    avatar: 'https://unavatar.io/x/karpathy',
+    text: 'CLI 之所以适合 Agent，是因为模型能在终端中原生地调用、组合和自动化它们。',
+    href: 'https://x.com/code_rams/status/2026428310402572726',
+    topic: 'Agent UX',
+  },
+  {
+    name: 'Thariq',
+    handle: '@trq212',
+    avatar: 'https://unavatar.io/x/trq212',
+    text: 'Skills 应从少量规则开始，通过 Gotchas、日志和辅助脚本持续累积经验。',
+    href: 'https://x.com/NickSpisak_/status/2033974734723887333',
+    topic: 'Claude Skills',
+  },
+  {
+    name: 'swyx',
+    handle: '@swyx',
+    avatar: 'https://unavatar.io/x/swyx',
+    text: 'AI 软件开发正在从代码补全、编程 Agent，继续走向新的工作形态。',
+    href: 'https://x.com/swyx/status/2026869648034255037',
+    topic: 'AI Engineer',
+  },
+  {
+    name: '0xDesigner',
+    handle: '@0xDesigner',
+    avatar: 'https://unavatar.io/x/0xDesigner',
+    text: 'Claude Code 不只用来写应用，也能进入研究、运营和个人管理工作流。',
+    href: 'https://x.com/0xDesigner/status/2008202211738648767',
+    topic: 'AI Workflow',
+  },
+]
+
 function formatTime(seconds: number) {
   const wholeSeconds = Math.round(seconds)
   const minutes = Math.floor(wholeSeconds / 60)
   return `${minutes}:${String(wholeSeconds % 60).padStart(2, '0')}`
+}
+
+function InsightList({ duplicate = false }: { duplicate?: boolean }) {
+  return (
+    <div className="space-y-3 pb-3" aria-hidden={duplicate || undefined}>
+      {creatorInsights.map((insight) => (
+        <a
+          key={`${duplicate ? 'copy-' : ''}${insight.handle}`}
+          href={insight.href}
+          target="_blank"
+          rel="noreferrer"
+          tabIndex={duplicate ? -1 : undefined}
+          className="group flex min-h-[92px] gap-3 rounded-[20px] border border-white/10 bg-white/[0.07] p-3.5 transition-colors hover:bg-white/[0.12]"
+        >
+          <span className="relative grid size-10 shrink-0 place-items-center overflow-hidden rounded-full bg-white/10 text-xs font-bold text-white">
+            {insight.name.slice(0, 1)}
+            <img
+              src={insight.avatar}
+              alt=""
+              loading="lazy"
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 size-full object-cover"
+              onError={(event) => { event.currentTarget.style.display = 'none' }}
+            />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="flex items-center justify-between gap-2">
+              <span className="min-w-0 truncate text-[12px] font-semibold text-white/90">
+                {insight.name} <span className="font-normal text-white/40">{insight.handle}</span>
+              </span>
+              <span className="flex shrink-0 items-center gap-1.5">
+                <span className="hidden rounded-full bg-white/[0.08] px-2 py-0.5 text-[9px] font-medium text-white/45 sm:inline">{insight.topic}</span>
+                <ArrowUpRight className="size-3.5 text-white/35 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+              </span>
+            </span>
+            <span className="mt-1.5 block text-[12px] leading-[1.55] text-white/62">{insight.text}</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  )
 }
 
 function App() {
@@ -265,11 +371,6 @@ function App() {
   const handleSearch = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     document.getElementById('site-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
-
-  const selectCategory = (category: Category) => {
-    setActiveCategory(category)
-    document.getElementById('navigation')?.scrollIntoView({ behavior: 'smooth', block: 'center' })
   }
 
   const togglePlayback = async () => {
@@ -388,33 +489,61 @@ function App() {
             </a>
           </Card>
 
-          <Card className="glass-card flex min-h-44 flex-col items-center justify-center p-5 text-center">
-            <motion.button
-              type="button"
-              className="grid grid-cols-3 gap-2 rounded-[25px] bg-[#f4f4f6] p-4 shadow-inner"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => selectCategory('all')}
-              aria-label="查看全部网站"
-            >
-              {['#1d1d1f', '#73a7ff', '#f8a56f', '#9f7aea', '#71c6a3', '#f2cc60', '#d36f86', '#6d7a8d', '#c7ccd4'].map((color) => (
-                <span key={color} className="size-2.5 rounded-full" style={{ backgroundColor: color }} />
-              ))}
-            </motion.button>
-            <p className="mt-4 text-[14px] font-semibold">全部应用</p>
-            <p className="mt-1 text-xs text-[#8a8a90]">{sites.length} 个精选网站</p>
+          <Card className="glass-card flex min-h-[410px] flex-col items-center overflow-hidden p-4 text-center">
+            <div className="w-full text-left">
+              <p className="eyebrow">AI Creators</p>
+              <p className="mt-1 text-[15px] font-semibold tracking-[-0.025em]">值得关注的博主</p>
+            </div>
+
+            <div className="relative -my-1 grid flex-1 place-items-center">
+              <RadialIntro
+                orbitItems={aiCreators}
+                stageSize={260}
+                imageSize={46}
+                className="relative scale-[.9] overflow-visible sm:scale-100 lg:scale-[.78]"
+              />
+              <a
+                href="https://x.com"
+                target="_blank"
+                rel="noreferrer"
+                aria-label="打开 X"
+                className="absolute left-1/2 top-1/2 z-20 grid size-[4.35rem] -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full text-[#1d1d1f] transition-transform hover:scale-105"
+              >
+                <SiX className="size-6" />
+              </a>
+            </div>
+
+            <p className="text-[12px] font-semibold">OpenAI · Claude Code · AI</p>
+            <p className="mt-1 text-[10px] text-[#96969c]">点击头像前往 X 主页</p>
           </Card>
 
-          <Card className="relative overflow-hidden border-0 bg-[#232326] p-6 text-white shadow-[0_25px_70px_rgba(25,25,30,.17)]">
+          <Card className="relative min-h-[410px] overflow-hidden border-0 bg-[#232326] p-0 text-white shadow-[0_25px_70px_rgba(25,25,30,.17)]">
             <div className="absolute -right-8 -top-12 size-44 rounded-full bg-[#8e78ff]/40 blur-[58px]" />
-            <div className="relative flex h-full min-h-32 flex-col justify-between">
-              <div className="flex items-start justify-between">
-                <span className="rounded-full bg-white/10 px-3 py-1 text-[11px] font-medium text-white/70">本周精选</span>
-                <ArrowUpRight className="size-5 text-white/60" />
+            <div className="absolute -bottom-16 left-1/4 size-48 rounded-full bg-[#5179d9]/20 blur-[70px]" />
+            <div className="relative flex h-full min-h-[410px] flex-col">
+              <div className="flex items-center justify-between px-5 pb-3 pt-5">
+                <div>
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.17em] text-white/40">X / AI Signals</p>
+                  <p className="mt-1 text-[17px] font-semibold tracking-[-0.025em]">AI 博主正在说</p>
+                </div>
+                <span className="flex items-center gap-1.5 rounded-full bg-white/[0.08] px-2.5 py-1 text-[10px] text-white/55">
+                  <span className="size-1.5 rounded-full bg-[#70d79b]" />
+                  自动滚动
+                </span>
               </div>
-              <div className="mt-8">
-                <p className="text-xl font-semibold tracking-[-0.035em]">让好工具，更容易被找到。</p>
-                <p className="mt-2 max-w-sm text-[13px] leading-5 text-white/55">收录值得长期使用的网站，每周五更新。</p>
+
+              <div className="x-insight-viewport relative mx-2 min-h-0 flex-1 overflow-hidden px-3">
+                <div className="x-insight-track">
+                  <InsightList />
+                  <InsightList duplicate />
+                </div>
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-7 bg-gradient-to-b from-[#232326] to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 h-9 bg-gradient-to-t from-[#232326] to-transparent" />
+              </div>
+
+              <div className="flex items-center justify-between border-t border-white/[0.07] px-5 py-3 text-[10px] text-white/35">
+                <span>观点摘要 · 点击阅读原帖</span>
+                <SiX className="size-3.5" />
               </div>
             </div>
           </Card>
