@@ -109,6 +109,26 @@ input:focus-visible {
   display: none;
 }
 
+.trend-scroll-track {
+  animation: trend-scroll 18s linear infinite;
+  will-change: transform;
+}
+
+.trend-viewport:hover .trend-scroll-track,
+.trend-viewport:focus-within .trend-scroll-track {
+  animation-play-state: paused;
+}
+
+@keyframes trend-scroll {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
 .x-insight-track {
   animation: x-insight-scroll 32s linear infinite;
   will-change: transform;
@@ -148,5 +168,13 @@ input:focus-visible {
 
   .x-insight-track {
     animation: none !important;
+  }
+
+  .trend-scroll-track {
+    animation: none !important;
+  }
+
+  .trend-viewport {
+    overflow-y: auto;
   }
 }
