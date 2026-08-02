@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "AI 导航新标签页",
+  "short_name": "AI 导航",
+  "version": "1.0.0",
+  "description": "将 AI 导航、GitHub 趋势、X 博主观点和音乐播放器设为 Chrome 新标签页。",
+  "chrome_url_overrides": {
+    "newtab": "index.html"
+  },
+  "host_permissions": [
+    "https://api.github.com/*",
+    "https://itunes.apple.com/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none';"
+  }
+}

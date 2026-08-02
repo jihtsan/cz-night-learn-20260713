@@ -1,0 +1,10 @@
+{
+  "name": "ai-navigation-chrome-extension",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "pnpm --dir ../work-html run build && node ./scripts/assemble-extension.mjs",
+    "assemble": "node ./scripts/assemble-extension.mjs"
+  }
+}
