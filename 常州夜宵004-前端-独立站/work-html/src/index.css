@@ -71,17 +71,28 @@ input:focus-visible {
 }
 
 .site-tile {
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.75) inset;
+  border: 1px solid transparent;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.035)) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.22), rgba(192, 132, 252, 0.16) 45%, rgba(255, 255, 255, 0.06)) border-box;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.075) inset,
+    0 12px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
   transition:
     transform 180ms ease,
+    background 180ms ease,
     box-shadow 180ms ease,
     border-color 180ms ease;
 }
 
 .site-tile:hover {
   z-index: 1;
-  border-color: rgba(192, 132, 252, 0.32);
-  background: rgba(255, 255, 255, 0.075);
+  border-color: transparent;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.115), rgba(168, 85, 247, 0.07)) padding-box,
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34), rgba(192, 132, 252, 0.42), rgba(255, 255, 255, 0.1)) border-box;
   box-shadow: 0 13px 34px rgba(0, 0, 0, 0.22), 0 0 24px rgba(168, 85, 247, 0.08);
   transform: translateY(-2px);
 }
