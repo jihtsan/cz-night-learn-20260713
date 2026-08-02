@@ -109,6 +109,26 @@ input:focus-visible {
   display: none;
 }
 
+.x-insight-track {
+  animation: x-insight-scroll 32s linear infinite;
+  will-change: transform;
+}
+
+.x-insight-viewport:hover .x-insight-track,
+.x-insight-viewport:focus-within .x-insight-track {
+  animation-play-state: paused;
+}
+
+@keyframes x-insight-scroll {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50%);
+  }
+}
+
 @media (max-width: 767px) {
   .glass-card {
     backdrop-filter: blur(18px) saturate(135%);
@@ -124,5 +144,9 @@ input:focus-visible {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .x-insight-track {
+    animation: none !important;
   }
 }
