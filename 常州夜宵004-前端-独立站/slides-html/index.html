@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="纯前端 Vibe Coding 第一课 HTML 幻灯片" />
+    <meta name="theme-color" content="#090b10" />
+    <title>纯前端 Vibe Coding｜第一课</title>
+    <link rel="icon" href="assets/logos/react.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="deck" id="deck" aria-live="polite">
+      <section class="slide cover active" data-title="纯前端 Vibe Coding" data-theme="electric">
+        <div class="cover-grid" aria-hidden="true"></div>
+        <div class="eyebrow">常州夜宵 004 · 第一课</div>
+        <h1>纯前端<br /><span>Vibe Coding</span></h1>
+        <p class="lead">不用先学会写代码，也可以开始创造。</p>
+        <div class="cover-orbit" aria-label="课程技术栈">
+          <span class="logo-bubble bubble-react"><img src="assets/logos/react.svg" alt="React" /></span>
+          <span class="logo-bubble bubble-vite"><img src="assets/logos/vite.svg" alt="Vite" /></span>
+          <span class="logo-bubble bubble-tailwind"><img src="assets/logos/tailwindcss.svg" alt="Tailwind CSS" /></span>
+          <span class="logo-bubble bubble-js"><img src="assets/logos/javascript.svg" alt="JavaScript" /></span>
+        </div>
+        <p class="cover-hint">方向键翻页 · F 全屏 · O 目录 · N 讲师备注</p>
+        <aside class="speaker-note">
+          开场先展示几个不同风格的导航页或最终作品。强调本课不背语法，目标是把想法变成可运行页面。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="今天不是来背代码的">
+        <div class="eyebrow">01 · 今天的任务</div>
+        <h2>今天不是来背代码的</h2>
+        <p class="statement">把你脑海中的一个页面，变成浏览器里真正可以打开的作品。</p>
+        <div class="flow-line" role="list" aria-label="创作流程">
+          <span role="listitem">提出想法</span><b>→</b>
+          <span role="listitem">描述需求</span><b>→</b>
+          <span role="listitem">AI 生成</span><b>→</b>
+          <span role="listitem">浏览器查看</span><b>→</b>
+          <span role="listitem">继续修改</span>
+        </div>
+        <div class="bottom-quote">AI 帮你写代码；创意、选择和验收仍然属于你。</div>
+        <aside class="speaker-note">
+          降低学生对编程的恐惧。先展示结果，再介绍过程。提醒学生第一次生成只是起点。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="浏览器只认识三样东西">
+        <div class="eyebrow">02 · Web 的三种基础材料</div>
+        <h2>浏览器最终只认识三样东西</h2>
+        <div class="trinity">
+          <article>
+            <img src="assets/logos/html5.svg" alt="HTML5 图标" />
+            <h3>HTML</h3>
+            <p>房子的结构</p>
+            <small>决定页面里有什么</small>
+          </article>
+          <article>
+            <img src="assets/logos/css.svg" alt="CSS 图标" />
+            <h3>CSS</h3>
+            <p>房子的装修</p>
+            <small>决定颜色、间距和排版</small>
+          </article>
+          <article>
+            <img src="assets/logos/javascript.svg" alt="JavaScript 图标" />
+            <h3>JavaScript</h3>
+            <p>电器和机关</p>
+            <small>决定点击以后发生什么</small>
+          </article>
+        </div>
+        <aside class="speaker-note">
+          只建立直觉，不介绍标签、选择器、变量或函数。用搜索框、网站卡片和深色模式举例。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="同一个页面可以不断升级">
+        <div class="eyebrow">03 · 三层能力</div>
+        <h2>同一个页面，可以不断升级</h2>
+        <div class="upgrade-demo">
+          <article class="upgrade-step raw">
+            <span class="step-number">1</span>
+            <strong>只有 HTML</strong>
+            <a href="#" tabindex="-1">学习网站</a>
+            <small>有内容，但比较朴素</small>
+          </article>
+          <article class="upgrade-step styled">
+            <span class="step-number">2</span>
+            <strong>加入 CSS</strong>
+            <div class="mini-site-card">✦ 学习网站</div>
+            <small>开始有颜色、层次和设计感</small>
+          </article>
+          <article class="upgrade-step interactive">
+            <span class="step-number">3</span>
+            <strong>加入 JavaScript</strong>
+            <button class="mini-action" type="button">点我试试</button>
+            <small class="mini-feedback">现在可以响应你的操作</small>
+          </article>
+        </div>
+        <aside class="speaker-note">
+          现场点击第三张卡片。说明 HTML、CSS、JavaScript 各自负责不同工作，但共同组成网页。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="框架是为了管理复杂度">
+        <div class="eyebrow">04 · 为什么需要框架</div>
+        <h2>框架是为了管理复杂度</h2>
+        <div class="complexity-layout">
+          <div class="complexity-copy">
+            <p class="big-copy">页面越复杂，<br />重复和关联就越多。</p>
+            <div class="component-tree" aria-label="导航页组件结构">
+              <span>个人导航页</span>
+              <span>搜索框</span>
+              <span>分类菜单</span>
+              <span>网站卡片 × 20</span>
+              <span>设置弹窗</span>
+            </div>
+          </div>
+          <div class="lego-message">
+            <div class="lego-stack" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <p>React、Vue 和 Angular 帮我们把复杂页面拆成可以重复使用的“乐高零件”。</p>
+          </div>
+        </div>
+        <aside class="speaker-note">
+          简单网页不一定需要框架。框架解决的是页面复杂以后是否还能继续修改，而不是决定网页能不能做。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="现代前端是一套组合">
+        <div class="eyebrow">05 · 现代前端地图</div>
+        <h2>现代前端是一套组合，不是一个工具</h2>
+        <div class="stack-map">
+          <div class="stack-level level-product"><b>用户看到的产品</b><span>页面与交互</span></div>
+          <div class="stack-level"><b>组件库</b><span>按钮 · 卡片 · 弹窗</span></div>
+          <div class="stack-level"><b>前端框架</b><span>React · Vue · Angular</span></div>
+          <div class="stack-level"><b>Web 基础</b><span>HTML · CSS · JavaScript</span></div>
+          <div class="stack-level level-tools"><b>开发工具</b><span>Node.js · npm · Vite</span></div>
+        </div>
+        <p class="side-caption">无论使用什么框架，最终都要变成浏览器能够理解的 HTML、CSS 和 JavaScript。</p>
+        <aside class="speaker-note">
+          重点区分框架、组件库与工具链的位置。不要进入具体 API。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="三大框架是三条路线">
+        <div class="eyebrow">06 · React / Vue / Angular</div>
+        <h2>没有最好的框架，只有更合适的路线</h2>
+        <div class="framework-spectrum">
+          <article class="react-route">
+            <div class="route-head"><img src="assets/logos/react.svg" alt="React" /><b>React</b></div>
+            <p>自由组合的 UI 积木</p>
+            <ul><li>选择多</li><li>生态大</li><li>适合独立产品</li></ul>
+          </article>
+          <article class="vue-route">
+            <div class="route-head"><span class="vue-mark" aria-hidden="true">V</span><b>Vue</b></div>
+            <p>清楚、渐进的学习路线</p>
+            <ul><li>结构直观</li><li>官方生态清楚</li><li>适合中小项目</li></ul>
+          </article>
+          <article class="angular-route">
+            <div class="route-head"><span class="angular-mark" aria-hidden="true">A</span><b>Angular</b></div>
+            <p>规范完整的工程体系</p>
+            <ul><li>集成度高</li><li>约束更强</li><li>适合大型团队</li></ul>
+          </article>
+        </div>
+        <aside class="speaker-note">
+          不比较性能，不争论谁最好。React 讲自由，Vue 讲渐进，Angular 讲规范。来源：react.dev、vuejs.org、angular.dev。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="Node npm Vite 分别负责什么">
+        <div class="eyebrow">07 · 开发工具链</div>
+        <h2>Node.js 不负责画页面</h2>
+        <div class="toolchain">
+          <article><img src="assets/logos/nodejs.svg" alt="Node.js" /><b>Node.js</b><p>让前端开发工具运行</p></article>
+          <span class="tool-arrow">+</span>
+          <article class="npm-symbol"><span>npm</span><b>npm</b><p>安装项目需要的工具</p></article>
+          <span class="tool-arrow">+</span>
+          <article><img src="assets/logos/vite.svg" alt="Vite" /><b>Vite</b><p>启动并打包前端项目</p></article>
+        </div>
+        <div class="command-strip"><code>npm run dev</code><span>＝ 启动项目，打开开发预览</span></div>
+        <aside class="speaker-note">
+          本节课不讲 Node.js 后端。学生只需知道看到 npm run dev，就是在启动项目。来源：nodejs.org、vite.dev。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="CSS 工具和组件库不是一回事">
+        <div class="eyebrow">08 · 装修材料与成品家具</div>
+        <h2>CSS 工具和组件库不是一回事</h2>
+        <div class="materials-line">
+          <article><span class="material-icon">✎</span><b>原生 CSS</b><p>自己设计和装修</p></article>
+          <article><img src="assets/logos/tailwindcss.svg" alt="Tailwind CSS" /><b>Tailwind CSS</b><p>一盒样式积木</p></article>
+          <article><span class="material-icon">B</span><b>Bootstrap</b><p>带基础风格的成套零件</p></article>
+          <article><img src="assets/logos/antdesign.svg" alt="Ant Design" /><b>组件库</b><p>按钮、表单、弹窗等成品家具</p></article>
+          <article><span class="material-icon">⌘</span><b>shadcn/ui</b><p>把家具源码交给你</p></article>
+        </div>
+        <p class="bottom-quote">Tailwind 主要控制样式；组件库同时提供外观和交互。</p>
+        <aside class="speaker-note">
+          解释为什么 React 版组件不能直接放进 Vue。强调不要把 Tailwind 当成完整组件库。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="大厂组件库让产品快速可用" data-theme="light">
+        <div class="eyebrow">09 · 国内企业组件生态</div>
+        <h2>大厂组件库让产品快速达到“可用”</h2>
+        <div class="screenshot-triptych">
+          <figure>
+            <img src="assets/screens/ant-design.png" alt="Ant Design 官方网站" />
+            <figcaption><img src="assets/logos/antdesign.svg" alt="" />Ant Design · 蚂蚁</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/screens/semi-design.png" alt="Semi Design 官方网站" />
+            <figcaption><img src="assets/logos/bytedance.svg" alt="" />Semi Design · 字节</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/screens/arco-design.png" alt="Arco Design 官方网站" />
+            <figcaption><img src="assets/logos/bytedance.svg" alt="" />Arco Design · 字节</figcaption>
+          </figure>
+        </div>
+        <p class="bottom-quote dark">它们主要解决“完整、统一、可靠”，不等于动画特别酷炫。</p>
+        <aside class="speaker-note">
+          Ant Design 来自蚂蚁集团和开源社区；Fusion Design 更偏阿里自身企业设计体系。只展示官网，不讲安装。来源：https://ant.design/、https://semi.design/、https://arco.design/。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="动画库让组件动起来" data-theme="motion">
+        <div class="eyebrow">10 · React 动画生态</div>
+        <div class="motion-layout">
+          <div>
+            <h2>动画库负责让组件“动起来”</h2>
+            <div class="animation-rules">
+              <p><b>CSS</b><span>简单悬停</span></p>
+              <p class="recommended"><b>Motion</b><span>进出、拖拽、布局变化</span></p>
+              <p><b>AutoAnimate</b><span>列表新增、删除、排序</span></p>
+              <p><b>GSAP</b><span>复杂时间线与滚动叙事</span></p>
+              <p><b>Rive / Three</b><span>互动插画与三维场景</span></p>
+            </div>
+          </div>
+          <figure class="motion-shot">
+            <img src="assets/screens/motion.png" alt="Motion 官方网站" />
+            <figcaption>本课默认：Motion</figcaption>
+          </figure>
+        </div>
+        <code class="floating-code">&lt;motion.div whileHover={{ scale: 1.03 }} /&gt;</code>
+        <aside class="speaker-note">
+          Motion 原名 Framer Motion。简单效果优先 CSS；React UI 动画首选 Motion；GSAP 留给进阶。来源：https://motion.dev/、https://gsap.com/resources/React/。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="酷炫组件成为视觉亮点">
+        <div class="eyebrow">11 · 创意组件灵感展厅</div>
+        <h2>酷炫组件可以成为作品的视觉亮点</h2>
+        <div class="cool-gallery">
+          <figure>
+            <img src="assets/screens/react-bits.png" alt="React Bits 官方网站" />
+            <figcaption><b>React Bits</b><span>动态背景 · 文字 · 鼠标效果</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/screens/magic-ui.png" alt="Magic UI 官方网站" />
+            <figcaption><b>Magic UI</b><span>Bento · Dock · 光束 · 粒子</span></figcaption>
+          </figure>
+          <figure>
+            <img src="assets/screens/aceternity-ui.png" alt="Aceternity UI 官方网站" />
+            <figcaption><b>Aceternity UI</b><span>3D 卡片 · 视差 · 聚光灯</span></figcaption>
+          </figure>
+        </div>
+        <p class="gallery-rule">一套基础组件 + 一个动画方案 + 最多两个视觉亮点</p>
+        <aside class="speaker-note">
+          现场只展示代表效果。提醒学生不要一页叠加多个动态背景和鼠标特效。来源：https://www.reactbits.dev/、https://magicui.design/、https://ui.aceternity.com/。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="本课使用一条简单路线">
+        <div class="eyebrow">12 · 统一技术路线</div>
+        <h2>本课只走一条简单路线</h2>
+        <div class="course-stack">
+          <article><img src="assets/logos/react.svg" alt="React" /><b>React</b><span>组织组件</span></article>
+          <b>+</b>
+          <article><img src="assets/logos/vite.svg" alt="Vite" /><b>Vite</b><span>启动项目</span></article>
+          <b>+</b>
+          <article><img src="assets/logos/tailwindcss.svg" alt="Tailwind CSS" /><b>Tailwind</b><span>完成样式</span></article>
+          <b>+</b>
+          <article><img src="assets/logos/motion.svg" alt="Motion" /><b>Motion</b><span>加入动画</span></article>
+        </div>
+        <div class="optional-line"><span>按需加入</span><b>shadcn/ui</b><i>或</i><b>一个酷炫视觉组件</b></div>
+        <p class="bottom-quote">这只是本课程选择的一条路线，不代表所有网站都必须这样做。</p>
+        <aside class="speaker-note">
+          统一技术栈是为了减少安装和依赖问题。后续可以把同一页面部署成独立站，再改造成浏览器新标签页插件。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="把一句想法变成页面">
+        <div class="eyebrow">13 · 教师现场示范</div>
+        <h2>把一句想法变成页面</h2>
+        <div class="prompt-stage">
+          <div class="prompt-label">第一轮：先把页面做出来</div>
+          <blockquote>
+            使用 React、Vite 和 Tailwind CSS 创建一个个人导航页。顶部显示标题和搜索框，下面按照学习、工作、娱乐三个分类展示网站卡片。整体使用简洁的浅色风格，暂时不使用后端。
+          </blockquote>
+          <div class="prompt-label second">第二轮：再增加动画和个性</div>
+          <blockquote>
+            保留现有结构和功能，使用 Motion 为卡片增加依次进入、悬停和点击反馈。再加入一个低强度动态背景，确保文字清楚、手机端可用。
+          </blockquote>
+        </div>
+        <div class="demo-flow"><span>生成</span><b>→</b><span>运行</span><b>→</b><span>观察</span><b>→</b><span>只改一件事</span></div>
+        <aside class="speaker-note">
+          不追求第一次生成完美结果。演示如何限定修改范围，以及每次修改后回到浏览器检查。
+        </aside>
+      </section>
+
+      <section class="slide practice-slide" data-title="自由创作 40 分钟" data-theme="practice">
+        <div class="eyebrow">14 · 现在轮到你</div>
+        <div class="practice-layout">
+          <div>
+            <h2>自由创作<br /><span>40 分钟</span></h2>
+            <ul class="practice-checks">
+              <li>一个标题和搜索框</li>
+              <li>至少三个导航分类</li>
+              <li>每类至少三个网站入口</li>
+              <li>所有链接能够打开</li>
+              <li>至少完成两轮主动修改</li>
+            </ul>
+          </div>
+          <div class="timer-panel">
+            <div class="timer-display" id="timerDisplay" aria-live="polite">40:00</div>
+            <div class="timer-actions">
+              <button type="button" id="timerStart">开始 / 暂停</button>
+              <button type="button" id="timerReset">重置</button>
+            </div>
+            <p>选择一种增强方向：</p>
+            <div class="style-options"><span>产品风</span><span>酷炫风</span><span>独立站风</span><span>企业风</span></div>
+          </div>
+        </div>
+        <aside class="speaker-note">
+          实践阶段循环展示下一页的主题灵感。巡回检查项目是否运行、是否只使用一套基础组件、是否完成两轮主动修改。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="从一个主题开始">
+        <div class="eyebrow">15 · 创作方向</div>
+        <h2>不知道做什么？先选择一个主题</h2>
+        <div class="theme-wall">
+          <article class="theme-study"><b>学习导航</b><span>课程 · 工具 · AI 网站</span></article>
+          <article class="theme-work"><b>工作首页</b><span>邮箱 · 文档 · 项目</span></article>
+          <article class="theme-design"><b>设计师首页</b><span>灵感 · 配色 · 字体</span></article>
+          <article class="theme-travel"><b>旅行首页</b><span>地图 · 酒店 · 行程</span></article>
+          <article class="theme-cyber"><b>赛博朋克</b><span>深色 · 霓虹 · 动态</span></article>
+          <article class="theme-calm"><b>治愈系</b><span>柔和 · 插画 · 每日一句</span></article>
+        </div>
+        <p class="bottom-quote">没有唯一标准答案。主题越具体，AI 越容易做出有个性的页面。</p>
+        <aside class="speaker-note">
+          这页可以在学生操作时循环展示。鼓励不同主题，不提供统一视觉模板。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="让 AI 听懂四个问题">
+        <div class="eyebrow">16 · 提示词不是咒语</div>
+        <h2>让 AI 听懂你的四个问题</h2>
+        <ol class="four-questions">
+          <li><span>01</span><b>我要做什么？</b><small>产品与使用者</small></li>
+          <li><span>02</span><b>页面里有什么？</b><small>区域与内容</small></li>
+          <li><span>03</span><b>希望它长什么样？</b><small>风格、颜色与布局</small></li>
+          <li><span>04</span><b>用户可以做什么？</b><small>点击、搜索与切换</small></li>
+        </ol>
+        <blockquote class="prompt-example">“做一个治愈系个人导航页：米白背景、浅绿和橙色强调、圆润卡片；包含问候语、搜索框和三个分类；点击卡片在新标签页打开。”</blockquote>
+        <aside class="speaker-note">
+          提示词的价值是把模糊想法变得具体。进一步修改时，要求 AI 保留现有结构，只修改指定部分。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="完成第一版后的检查点">
+        <div class="eyebrow">17 · 验收比生成更重要</div>
+        <h2>完成第一版后，检查这六件事</h2>
+        <div class="qa-grid">
+          <article><span>01</span><b>页面能打开</b><p>没有空白页和报错</p></article>
+          <article><span>02</span><b>链接能使用</b><p>搜索和网站入口正确</p></article>
+          <article><span>03</span><b>文字看得清</b><p>颜色和背景有足够对比</p></article>
+          <article><span>04</span><b>手机端可用</b><p>没有明显错位和横向滚动</p></article>
+          <article><span>05</span><b>动画不打扰</b><p>不影响阅读和点击</p></article>
+          <article><span>06</span><b>完成两轮修改</b><p>作品体现你的主动选择</p></article>
+        </div>
+        <p class="error-formula"><b>出现问题时交给 AI：</b>截图 + 完整错误 + 期望效果 + 不能修改的内容</p>
+        <aside class="speaker-note">
+          强调 Vibe Coding 的核心不是一次生成，而是描述、判断、测试和迭代。
+        </aside>
+      </section>
+
+      <section class="slide" data-title="作品展示没有唯一答案">
+        <div class="eyebrow">18 · 展示与互评</div>
+        <h2>作品展示：没有唯一正确答案</h2>
+        <div class="showcase-questions">
+          <article><span>1</span><p>你做的是什么主题？</p></article>
+          <article><span>2</span><p>你主动要求 AI 修改了什么？</p></article>
+          <article><span>3</span><p>下一步你还想增加什么？</p></article>
+        </div>
+        <div class="review-line"><span>创意是否鲜明</span><span>页面是否易用</span><span>视觉是否统一</span><span>哪个细节值得借鉴</span></div>
+        <aside class="speaker-note">
+          不用代码是否高级评价作品。重点评价表达、选择、迭代与完成度。
+        </aside>
+      </section>
+
+      <section class="slide closing" data-title="完成第一个版本" data-theme="electric">
+        <div class="eyebrow">19 · 第一个版本完成</div>
+        <h2>今天，你已经开始创造</h2>
+        <div class="roadmap">
+          <article class="now"><span>今天</span><b>可运行的个人导航页</b></article>
+          <i>→</i>
+          <article><span>下一步</span><b>部署为公开独立站</b></article>
+          <i>→</i>
+          <article><span>再下一步</span><b>Chrome / Edge 新标签页插件</b></article>
+        </div>
+        <blockquote>Vibe Coding 不是让 AI 替你做决定，而是让你把更多精力放在想法、选择和迭代上。</blockquote>
+        <p class="appendix-hint">按 A 进入附录 · 按 O 打开目录</p>
+        <aside class="speaker-note">
+          收束开场：学生已经完成“想法到作品”的闭环。预告独立站部署和浏览器插件。
+        </aside>
+      </section>
+
+      <section class="slide appendix-divider appendix" data-title="附录：组件与动画地图" data-theme="light">
+        <div class="appendix-label">APPENDIX</div>
+        <h2>组件与动画生态地图</h2>
+        <p>主课不讲完，需要时回来查。</p>
+        <div class="appendix-index">
+          <span>蚂蚁 / 阿里</span><span>字节跳动</span><span>React 动画</span><span>酷炫组件</span><span>选型地图</span><span>资源链接</span>
+        </div>
+        <aside class="speaker-note">附录不进入主讲，只在学生提问或创作需要时打开。</aside>
+      </section>
+
+      <section class="slide appendix" data-title="蚂蚁与阿里组件生态" data-theme="light">
+        <div class="eyebrow">附录 A · 企业组件</div>
+        <h2>蚂蚁与阿里组件生态</h2>
+        <div class="appendix-columns">
+          <article>
+            <img src="assets/logos/antdesign.svg" alt="Ant Design" />
+            <h3>Ant Design</h3>
+            <p>企业级 React 设计系统</p>
+            <ul><li>表格、表单、菜单、弹窗</li><li>企业后台和数据产品</li><li>官方提供 AI Agent 文档</li></ul>
+          </article>
+          <article>
+            <span class="x-mark">X</span>
+            <h3>Ant Design X</h3>
+            <p>面向 AI 产品的界面方案</p>
+            <ul><li>Bubble、Sender、Prompts</li><li>引用、流式 Markdown、文件卡片</li><li>适合 AI 助手和知识问答</li></ul>
+          </article>
+          <article>
+            <img src="assets/logos/alibaba.svg" alt="Alibaba" />
+            <h3>Fusion Design</h3>
+            <p>阿里企业设计体系</p>
+            <ul><li>企业中后台</li><li>品牌主题定制</li><li>React 组件方案 Fusion Next</li></ul>
+          </article>
+        </div>
+        <aside class="speaker-note">来源：https://ant.design/、https://x.ant.design/、https://fusion.design/。</aside>
+      </section>
+
+      <section class="slide appendix" data-title="字节跳动组件生态" data-theme="light">
+        <div class="eyebrow">附录 B · 企业组件</div>
+        <h2>字节跳动组件生态</h2>
+        <div class="byte-layout">
+          <img class="byte-logo" src="assets/logos/bytedance.svg" alt="ByteDance" />
+          <article><b>Semi Design</b><p>抖音前端与设计团队</p><span>现代企业应用 · SaaS · 深色模式 · 国际化</span><code>@douyinfe/semi-ui</code></article>
+          <article><b>Arco Design</b><p>GIP UED 与基础架构前端团队</p><span>React / Vue · 主题实验室 · 物料市场 · Arco Pro</span><code>@arco-design/web-react</code></article>
+          <article><b>IconPark</b><p>两千多个可定制图标</p><span>让导航页图标保持统一风格</span><code>@icon-park/react</code></article>
+        </div>
+        <aside class="speaker-note">来源：https://semi.design/、https://arco.design/、https://github.com/bytedance/IconPark。</aside>
+      </section>
+
+      <section class="slide appendix" data-title="React 动画选型" data-theme="motion">
+        <div class="eyebrow">附录 C · 动画选型</div>
+        <h2>React 动画：从简单到专业</h2>
+        <div class="animation-matrix">
+          <article class="featured"><b>Motion</b><span>UI 动画首选</span><p>进出 · 手势 · 拖拽 · 布局 · 滚动</p></article>
+          <article><b>AutoAnimate</b><span>零配置列表</span><p>新增 · 删除 · 排序</p></article>
+          <article><b>GSAP</b><span>专业时间线</span><p>滚动叙事 · SVG · Canvas · 3D</p></article>
+          <article><b>React Spring</b><span>物理运动</span><p>回弹 · 重量感 · 自然过渡</p></article>
+          <article><b>Lottie / Rive</b><span>设计动画</span><p>加载 · 插画 · 互动吉祥物</p></article>
+          <article><b>React Three Fiber</b><span>三维网页</span><p>3D 地球 · 模型 · 粒子</p></article>
+        </div>
+        <p class="bottom-quote">第一课：CSS + Motion 足够；GSAP 和 3D 留到进阶。</p>
+        <aside class="speaker-note">来源：https://motion.dev/、https://auto-animate.formkit.com/、https://gsap.com/、https://react-spring.dev/、https://rive.app/。</aside>
+      </section>
+
+      <section class="slide appendix" data-title="酷炫 React 组件集合">
+        <div class="eyebrow">附录 D · 视觉灵感</div>
+        <h2>酷炫 React 组件集合</h2>
+        <div class="cool-list">
+          <article><b>React Bits</b><p>Aurora、动态文字、Spotlight Card、鼠标特效</p></article>
+          <article><b>Magic UI</b><p>Bento Grid、Dock、Magic Card、光束和粒子</p></article>
+          <article><b>Aceternity UI</b><p>3D Card、Spotlight、Hero Parallax、动态边框</p></article>
+          <article><b>Animate UI</b><p>Tailwind + Motion + shadcn Registry 的开放动画组件</p></article>
+          <article><b>shadcn/ui</b><p>负责可靠的基础产品组件，不以炫技动画为核心</p></article>
+        </div>
+        <figure class="animate-ui-shot"><img src="assets/screens/animate-ui.png" alt="Animate UI 官方网站" /><figcaption>Animate UI：开放、可修改、动画优先</figcaption></figure>
+        <aside class="speaker-note">来源：https://www.reactbits.dev/、https://magicui.design/、https://ui.aceternity.com/、https://animate-ui.com/、https://ui.shadcn.com/。</aside>
+      </section>
+
+      <section class="slide appendix" data-title="组件与动画选型地图">
+        <div class="eyebrow">附录 E · 快速选择</div>
+        <h2>想做这种页面，应该选什么？</h2>
+        <div class="choice-map">
+          <div><b>企业后台</b><span>Ant Design / Semi / Arco</span><i>少量 Motion</i></div>
+          <div><b>AI 聊天产品</b><span>Ant Design X</span><i>Motion</i></div>
+          <div><b>极简导航</b><span>shadcn/ui</span><i>Motion</i></div>
+          <div><b>酷炫导航</b><span>shadcn/ui</span><i>React Bits + Motion</i></div>
+          <div><b>SaaS 独立站</b><span>shadcn/ui</span><i>Magic UI + Motion</i></div>
+          <div><b>科技产品首页</b><span>自定义组件</span><i>Aceternity / GSAP</i></div>
+        </div>
+        <p class="bottom-quote">不要同时引入多套完整组件库：风格会冲突，依赖和调试成本也会增加。</p>
+        <aside class="speaker-note">让学生先选页面类型，再选一套基础组件，最后选一个动画方案。</aside>
+      </section>
+
+      <section class="slide appendix sources-slide" data-title="资源与引用" data-theme="light">
+        <div class="eyebrow">附录 F · 资源链接</div>
+        <h2>继续探索这些官方资源</h2>
+        <div class="source-columns">
+          <div>
+            <a href="https://react.dev/" target="_blank" rel="noreferrer">React</a>
+            <a href="https://vite.dev/" target="_blank" rel="noreferrer">Vite</a>
+            <a href="https://tailwindcss.com/docs" target="_blank" rel="noreferrer">Tailwind CSS</a>
+            <a href="https://motion.dev/docs/react" target="_blank" rel="noreferrer">Motion for React</a>
+            <a href="https://gsap.com/resources/React/" target="_blank" rel="noreferrer">GSAP React</a>
+          </div>
+          <div>
+            <a href="https://ant.design/" target="_blank" rel="noreferrer">Ant Design</a>
+            <a href="https://x.ant.design/" target="_blank" rel="noreferrer">Ant Design X</a>
+            <a href="https://semi.design/" target="_blank" rel="noreferrer">Semi Design</a>
+            <a href="https://arco.design/" target="_blank" rel="noreferrer">Arco Design</a>
+            <a href="https://fusion.design/" target="_blank" rel="noreferrer">Fusion Design</a>
+          </div>
+          <div>
+            <a href="https://www.reactbits.dev/" target="_blank" rel="noreferrer">React Bits</a>
+            <a href="https://magicui.design/" target="_blank" rel="noreferrer">Magic UI</a>
+            <a href="https://ui.aceternity.com/" target="_blank" rel="noreferrer">Aceternity UI</a>
+            <a href="https://animate-ui.com/" target="_blank" rel="noreferrer">Animate UI</a>
+            <a href="https://ui.shadcn.com/" target="_blank" rel="noreferrer">shadcn/ui</a>
+          </div>
+        </div>
+        <p class="asset-credit">页面截图来自各项目官方网站；技术 Logo 来自 Simple Icons，仅用于课堂识别与教学展示。</p>
+        <aside class="speaker-note">所有外部素材与主要技术判断均在此页列出来源。按 Home 返回封面。</aside>
+      </section>
+    </main>
+
+    <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+    <nav class="deck-controls" aria-label="幻灯片控制">
+      <button type="button" id="prevSlide" aria-label="上一页">←</button>
+      <button type="button" id="openOverview" aria-label="打开目录">目录</button>
+      <span id="slideCounter" aria-label="页码">1 / 27</span>
+      <button type="button" id="toggleFullscreen" aria-label="切换全屏">全屏</button>
+      <button type="button" id="nextSlide" aria-label="下一页">→</button>
+    </nav>
+
+    <dialog class="overview" id="overviewDialog">
+      <div class="overview-head"><h2>课程目录</h2><button type="button" id="closeOverview">关闭</button></div>
+      <div class="overview-grid" id="overviewGrid"></div>
+    </dialog>
+
+    <aside class="notes-panel" id="notesPanel" aria-hidden="true">
+      <div><b>讲师备注</b><button type="button" id="closeNotes">关闭</button></div>
+      <p id="notesContent"></p>
+    </aside>
+
+    <script src="app.js"></script>
+  </body>
+</html>
