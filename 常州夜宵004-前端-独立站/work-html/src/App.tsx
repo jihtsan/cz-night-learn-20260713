@@ -9,7 +9,6 @@ import {
   Grid2X2,
   Heart,
   Info,
-  Music2,
   MessagesSquare,
   Pause,
   Palette,
@@ -23,6 +22,7 @@ import {
   VolumeX,
 } from 'lucide-react'
 import {
+  SiApplemusic,
   SiAnthropic,
   SiBilibili,
   SiDribbble,
@@ -564,10 +564,10 @@ function App() {
         </section>
 
         <section className="mt-4 grid items-stretch gap-4 lg:grid-cols-[350px_minmax(0,1fr)]">
-          <Card className="music-card relative min-h-[480px] overflow-hidden border-0 p-0 text-white">
+          <Card className="music-card relative min-h-[520px] overflow-hidden border-0 p-0 text-white">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_18%,rgba(255,255,255,.34),transparent_28%),linear-gradient(145deg,#ef87a2_0%,#b467a9_40%,#42446f_100%)]" />
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/5 to-black/35" />
-            <div className="relative flex h-full min-h-[480px] flex-col p-6">
+            <div className="relative flex h-full min-h-[520px] flex-col p-5">
               <audio
                 ref={audioRef}
                 src={musicTrack.previewUrl || undefined}
@@ -592,26 +592,37 @@ function App() {
                     {musicSource === 'live' ? 'Apple Music 在线试听' : musicSource === 'fallback' ? '今日单曲' : '正在获取音乐'}
                   </p>
                 </div>
-                <Music2 className="size-5 text-white/80" />
+                <span className="grid size-10 place-items-center rounded-[14px] border border-white/15 bg-white/12 shadow-[0_10px_30px_rgba(42,24,56,.18)] backdrop-blur-xl">
+                  <SiApplemusic className="size-[19px] text-white" />
+                </span>
               </div>
 
               <motion.div
-                className="mx-auto mt-8 grid aspect-square w-full max-w-[238px] place-items-center overflow-hidden rounded-[34px] border border-white/20 bg-[radial-gradient(circle_at_35%_30%,#ffd9d0_0%,#ed91aa_24%,#925c9b_58%,#313450_100%)] shadow-[0_30px_70px_rgba(41,32,68,.38)]"
+                className="relative mx-auto mt-5 grid aspect-square w-full max-w-[190px] place-items-center overflow-hidden rounded-[30px] border border-white/20 bg-[radial-gradient(circle_at_35%_30%,#ffd9d0_0%,#ed91aa_24%,#925c9b_58%,#313450_100%)] shadow-[0_26px_60px_rgba(41,32,68,.38)]"
                 animate={isPlaying ? { scale: [1, 1.015, 1] } : { scale: 1 }}
                 transition={{ repeat: isPlaying ? Infinity : 0, duration: 3.2, ease: 'easeInOut' }}
               >
                 {musicTrack.artwork && (
                   <img src={musicTrack.artwork} alt={`${musicTrack.title} 专辑封面`} className="absolute inset-0 size-full object-cover" />
                 )}
-                <span className="absolute bottom-3 right-3 grid size-10 place-items-center rounded-full border border-white/20 bg-black/25 text-white backdrop-blur-xl">
-                  <Music2 className="size-5" />
+                <Button
+                  size="icon"
+                  disabled={!musicTrack.previewUrl}
+                  className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/35 bg-white/88 text-[#5d4f72] shadow-[0_12px_30px_rgba(28,20,48,.28)] backdrop-blur-xl hover:bg-white"
+                  onClick={togglePlayback}
+                  aria-label={isPlaying ? '暂停' : '播放'}
+                >
+                  {isPlaying ? <Pause className="size-5 fill-current" /> : <Play className="ml-0.5 size-5 fill-current" />}
+                </Button>
+                <span className="absolute bottom-3 right-3 grid size-9 place-items-center rounded-[12px] border border-white/20 bg-black/25 text-white backdrop-blur-xl">
+                  <SiApplemusic className="size-[17px]" />
                 </span>
               </motion.div>
 
-              <div className="mt-auto pt-7">
+              <div className="mt-auto pt-5">
                 <div className="flex items-end justify-between gap-4">
                   <div>
-                    <h2 className="text-[26px] font-semibold tracking-[-0.04em]">{musicTrack.title}</h2>
+                    <h2 className="text-[23px] font-semibold tracking-[-0.04em]">{musicTrack.title}</h2>
                     <p className="mt-1 text-[14px] text-white/65">{musicTrack.artist}</p>
                     <p className="mt-1 max-w-52 truncate text-[11px] text-white/45">{musicTrack.album}</p>
                   </div>
@@ -626,7 +637,7 @@ function App() {
                   max="100"
                   value={progress}
                   onChange={(event) => updateProgress(Number(event.target.value))}
-                  className="music-progress mt-5 w-full"
+                  className="music-progress mt-4 w-full"
                   style={{ '--progress': `${progress}%` } as CSSProperties}
                   aria-label="歌曲进度"
                 />
@@ -635,7 +646,7 @@ function App() {
                   <span>{formatTime(previewDuration)} 试听</span>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="mt-3 flex items-center justify-between">
                   <Button variant="ghost" size="icon" className="rounded-full text-white/70 hover:bg-white/10 hover:text-white" onClick={() => setIsMuted((value) => !value)} aria-label={isMuted ? '取消静音' : '静音'}>
                     {isMuted ? <VolumeX className="size-[18px]" /> : <Volume2 className="size-[18px]" />}
                   </Button>
@@ -652,7 +663,7 @@ function App() {
                   </div>
                   <span className="size-10" aria-hidden="true" />
                 </div>
-                <a href={musicTrack.trackUrl} target="_blank" rel="noreferrer" className="mt-4 flex items-center justify-center gap-1 text-[10px] font-medium text-white/48 transition-colors hover:text-white/75">
+                <a href={musicTrack.trackUrl} target="_blank" rel="noreferrer" className="mt-3 flex items-center justify-center gap-1 text-[10px] font-medium text-white/48 transition-colors hover:text-white/75">
                   在 Apple Music 上查看 · provided courtesy of iTunes
                   <ArrowUpRight className="size-3" />
                 </a>
