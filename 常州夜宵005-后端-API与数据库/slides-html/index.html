@@ -61,7 +61,7 @@
         <div class="dual-route">
           <article class="route-history">
             <span class="route-index">A</span>
-            <div><small>WEB HISTORY</small><strong>从静态文档到云与 AI</strong></div>
+            <div><small>WEB HISTORY</small><strong>从静态文档到多端应用</strong></div>
             <p>每一代技术，都在修补上一代的缺口。</p>
           </article>
           <article class="route-system">
@@ -169,21 +169,8 @@
         </aside>
       </section>
 
-      <section class="slide" data-title="云和 AI 没有让后端消失" data-section="history">
-        <div class="eyebrow">07 · 云与 AI</div>
-        <h2>今天，后端可以被托管、被生成，<br />但不会凭空消失</h2>
-        <figure class="cloud-visual">
-          <img src="assets/generated/cloud-backend-infrastructure.png" alt="云端后端基础设施，包含服务器、数据库、身份与 API 节点" />
-          <figcaption><span>Serverless</span><span>BaaS</span><span>Cloud DB</span><span>AI Coding</span></figcaption>
-        </figure>
-        <p class="big-question">你可以不亲手建客服中心，但必须知道电话打到了哪里。</p>
-        <aside class="speaker-note">
-          建议用时 3 分钟。这里不展开品牌。重点是：AI 降低了写后端的门槛，但不会替我们自动决定权限、价格、数据一致性和密钥保护。
-        </aside>
-      </section>
-
       <section class="slide history-map" data-title="Web 史是一条问题链" data-section="history">
-        <div class="eyebrow">08 · 历史不是年份表</div>
+        <div class="eyebrow">07 · 历史不是年份表</div>
         <h2>每当网页想多做一件事，<br />就需要新的能力补上缺口</h2>
         <div class="era-rail">
           <article><b>静态网页</b><span>分享文档</span></article>
@@ -191,7 +178,6 @@
           <article><b>数据驱动</b><span>长期记忆</span></article>
           <article><b>Ajax</b><span>局部更新</span></article>
           <article><b>API</b><span>多端复用</span></article>
-          <article><b>云 + AI</b><span>降低门槛</span></article>
         </div>
         <p class="bottom-quote">技术不是从名词开始的；技术是从“现在还做不到什么”开始的。</p>
         <aside class="speaker-note">
@@ -202,20 +188,29 @@
       <section class="slide chapter" data-title="纯前端的边界" data-section="system">
         <div class="eyebrow">PART B · HOW IT WORKS</div>
         <h2>上节课的纯前端没有错，<br />它只是到了自己的边界</h2>
-        <div class="frontend-island">
-          <div class="island-ui"><span>搜索</span><span>卡片</span><span>动画</span><span>弹窗</span></div>
-          <div class="boundary-ring"></div>
-          <span class="outside-label label-share">多人共享</span>
-          <span class="outside-label label-secret">保护密钥</span>
-          <span class="outside-label label-persist">长期保存</span>
+        <div class="boundary-bridge">
+          <div class="boundary-side browser-side">
+            <div class="boundary-heading"><img src="assets/icons/panels-top-left.svg" alt="" /><small>浏览器内已经会做</small></div>
+            <strong>展示与交互</strong>
+            <p>搜索 · 卡片 · 动画 · 弹窗</p>
+          </div>
+          <div class="browser-boundary" aria-label="浏览器边界">
+            <span>浏览器边界</span><i></i><b>→</b>
+          </div>
+          <div class="boundary-side business-side">
+            <div class="boundary-heading"><img src="assets/icons/server-cog.svg" alt="" /><small>电商系统还需要</small></div>
+            <strong>共享与可信</strong>
+            <ul><li><img src="assets/icons/database.svg" alt="" />长期保存</li><li><img src="assets/icons/users.svg" alt="" />多人共享</li><li><img src="assets/icons/shield-check.svg" alt="" />权限与密钥</li></ul>
+          </div>
         </div>
+        <p class="boundary-conclusion">不是前端做错了，而是问题已经走出了浏览器。</p>
         <aside class="speaker-note">
           建议用时 2 分钟。避免让学生觉得上节课白学了。纯前端适合作品展示、个人工具、离线小应用和原型；业务一旦需要共享状态与权限，就需要突破浏览器边界。
         </aside>
       </section>
 
       <section class="slide" data-title="三个问题把我们推向后端" data-section="system">
-        <div class="eyebrow">09 · 发现问题</div>
+        <div class="eyebrow">08 · 发现问题</div>
         <h2>电商管理系统一上线，<br />纯前端立刻遇到三道墙</h2>
         <div class="three-walls">
           <article><span>01</span><img src="assets/icons/database.svg" alt="" /><b>保存</b><p>换电脑、清缓存，商品还在吗？</p></article>
@@ -229,7 +224,7 @@
       </section>
 
       <section class="slide" data-title="前端表达意图，后端做决定" data-section="system">
-        <div class="eyebrow">10 · 职责边界</div>
+        <div class="eyebrow">09 · 职责边界</div>
         <h2>前端表达“我想做什么”，<br />后端决定“能不能做”</h2>
         <div class="responsibility-split">
           <article class="front-duty"><small>FRONTEND</small><b>看得见、点得动</b><span>展示商品</span><span>收集表单</span><span>发起请求</span><span>显示结果</span></article>
@@ -242,7 +237,7 @@
       </section>
 
       <section class="slide interactive-slide" data-title="API 就像打电话" data-section="system">
-        <div class="eyebrow">11 · API 直觉</div>
+        <div class="eyebrow">10 · API 直觉</div>
         <h2>API 就像打电话：<br />号码、内容、流程和回复都有规则</h2>
         <div class="phone-demo" id="phoneDemo">
           <div class="phone front-phone"><img class="phone-icon" src="assets/icons/phone-call.svg" alt="" /><small>前端</small><b>发布商品</b><button id="callApi" type="button">拨打 API</button></div>
@@ -258,7 +253,7 @@
       </section>
 
       <section class="slide" data-title="API 合同规定怎么说和怎么答" data-section="system">
-        <div class="eyebrow">12 · API 合同</div>
+        <div class="eyebrow">11 · API 合同</div>
         <h2>双方要约定的，<br />不只是“电话号码”</h2>
         <div class="api-contract">
           <div class="method-list"><span class="get">GET <b>查询</b></span><span class="post">POST <b>新增</b></span><span class="patch">PATCH <b>修改</b></span><span class="delete">DELETE <b>删除</b></span></div>
@@ -284,7 +279,7 @@
       </section>
 
       <section class="slide interactive-slide" data-title="前端价格只能当参考" data-section="system">
-        <div class="eyebrow">13 · 不要相信前端</div>
+        <div class="eyebrow">12 · 不要相信前端</div>
         <h2>用户把¥299改成¥1，<br />后端会照单全收吗？</h2>
         <div class="tamper-lab">
           <div class="tamper-browser"><small>浏览器发来的价格</small><label>¥ <input id="clientPrice" type="number" value="1" min="0" /></label><button id="submitOrder" type="button">提交订单</button></div>
@@ -298,7 +293,7 @@
       </section>
 
       <section class="slide" data-title="数据库是结构化的共享记忆" data-section="system">
-        <div class="eyebrow">14 · DATABASE</div>
+        <div class="eyebrow">13 · DATABASE</div>
         <h2>数据库不只是“存下来”，<br />还要让数据可查、可改、可关联</h2>
         <div class="data-table-wrap">
           <table>
@@ -317,7 +312,7 @@
       </section>
 
       <section class="slide" data-title="关系把分散的表变成业务" data-section="system">
-        <div class="eyebrow">15 · 数据关系</div>
+        <div class="eyebrow">14 · 数据关系</div>
         <h2>一张表只记一类东西，<br />“关系”把它们连成一笔生意</h2>
         <div class="relation-map">
           <article class="entity user-entity"><small>USERS</small><b>用户 #18</b><span>小王</span></article>
@@ -333,7 +328,7 @@
       </section>
 
       <section class="slide interactive-slide" data-title="一次新增商品走完整条链" data-section="system">
-        <div class="eyebrow">16 · 端到端数据流</div>
+        <div class="eyebrow">15 · 端到端数据流</div>
         <h2>现在，让“发布商品”<br />真正走完一整条链</h2>
         <div class="end-to-end" id="flowDemo">
           <article data-flow-step="1"><small>1</small><b>前端</b><span>读取表单</span></article>
@@ -354,7 +349,7 @@
       </section>
 
       <section class="slide" data-title="框架把重复工作变成基础设施" data-section="ecosystem">
-        <div class="eyebrow">17 · 为什么需要后端框架</div>
+        <div class="eyebrow">16 · 为什么需要后端框架</div>
         <h2>每个项目都要处理同类杂事，<br />框架把它们做成“客服中心基建”</h2>
         <div class="framework-machine">
           <div class="raw-request">REQUEST</div>
@@ -375,7 +370,7 @@
       </section>
 
       <section class="slide ecosystem-map" data-title="六条常见后端路线" data-section="ecosystem">
-        <div class="eyebrow">18 · BACKEND ECOSYSTEM</div>
+        <div class="eyebrow">17 · BACKEND ECOSYSTEM</div>
         <h2>没有绝对最好的语言，<br />只有对当前问题更合适的取舍</h2>
         <div class="language-orbit">
           <article class="lang-node node-js"><img src="assets/icons/brand-nodedotjs.svg" alt="Node.js" /><div><b>JS / TS</b><span>Express · NestJS</span></div></article>
@@ -392,7 +387,7 @@
       </section>
 
       <section class="slide" data-title="六种路线，六种小白比喻" data-section="ecosystem">
-        <div class="eyebrow">19 · 优势与代价</div>
+        <div class="eyebrow">18 · 优势与代价</div>
         <h2>如果把后端当成不同类型的交通工具</h2>
         <div class="tradeoff-grid">
           <article><b>Node.js</b><strong>同语言的换乘线</strong><p>前后端都用 JavaScript，上手快；重计算需要另做安排。</p></article>
@@ -408,7 +403,7 @@
       </section>
 
       <section class="slide" data-title="本课选择 React Express SQLite" data-section="ecosystem">
-        <div class="eyebrow">20 · 今天的选择</div>
+        <div class="eyebrow">19 · 今天的选择</div>
         <h2>我们选 Node.js，<br />不是因为它永远最好</h2>
         <div class="chosen-stack">
           <article><img src="assets/icons/panels-top-left.svg" alt="" /><small>UI</small><b>React</b><span>已经熟悉的前端</span></article>
@@ -424,7 +419,7 @@
       </section>
 
       <section class="slide interactive-slide" data-title="这件事该放在哪里" data-section="closing">
-        <div class="eyebrow">21 · 快速判断</div>
+        <div class="eyebrow">20 · 快速判断</div>
         <h2>这件事，应该放在前端、<br />后端，还是数据库？</h2>
         <div class="sorting-quiz" id="sortingQuiz">
           <button type="button" data-answer="frontend"><span>显示一个动画</span><b>点击看答案</b></button>
@@ -440,7 +435,7 @@
       </section>
 
       <section class="slide closing-slide" data-title="今天为网页补上了什么" data-section="closing">
-        <div class="eyebrow">22 · 回到开场</div>
+        <div class="eyebrow">21 · 回到开场</div>
         <h2>今天，我们为“好看的网页”<br />补上了三种真实能力</h2>
         <div class="closing-triad">
           <article><small>BACKEND</small><b>处理</b><span>规则 · 权限 · 执行</span></article>
@@ -454,7 +449,7 @@
       </section>
 
       <section class="slide" data-title="下一步让数据真正流动" data-section="closing">
-        <div class="eyebrow">23 · NEXT</div>
+        <div class="eyebrow">22 · NEXT</div>
         <h2>下一步：让 AI 玄学商店<br />从假数据走向真实数据</h2>
         <div class="next-build">
           <span>01 <b>启动 Express API</b></span>
@@ -493,7 +488,7 @@
         <div class="progress-track"><span id="progressBar"></span></div>
         <button id="prevSlide" type="button" aria-label="上一页">←</button>
         <button id="openOverview" type="button" aria-label="打开目录">O</button>
-        <span id="slideCounter">1 / 28</span>
+        <span id="slideCounter">1 / 27</span>
         <button id="replayAnimation" type="button" aria-label="重播当前页动画">R</button>
         <button id="toggleFullscreen" type="button" aria-label="全屏">F</button>
         <button id="nextSlide" type="button" aria-label="下一页">→</button>
