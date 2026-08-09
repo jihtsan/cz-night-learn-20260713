@@ -40,7 +40,7 @@
         <h2>一个“发布商品”按钮，<br />背后到底发生了什么？</h2>
         <div class="commerce-stage">
           <article class="product-card">
-            <span class="product-symbol">✦</span>
+            <img class="product-image" src="assets/generated/cyber-fortune-bracelet.png" alt="赛博转运手串产品图" />
             <div><small>AI 玄学商店</small><strong>赛博转运手串</strong></div>
             <b>¥299</b>
           </article>
@@ -75,18 +75,13 @@
         </aside>
       </section>
 
-      <section class="slide chapter" data-title="Web 最初是一本互联的书" data-section="history">
+      <section class="slide chapter history-visual-slide" data-title="Web 最初是一本互联的书" data-section="history">
         <div class="eyebrow">PART A · WEB HISTORY</div>
         <h2>Web 最初要解决的，<br />是“怎样分享文档”</h2>
-        <div class="first-web">
-          <div class="paper-page">
-            <span>World Wide Web</span>
-            <u>What's out there?</u>
-            <u>Help</u>
-            <u>Software Products</u>
-          </div>
-          <div class="history-caption"><b>1989</b><span>信息 · 文档 · 超链接</span></div>
-        </div>
+        <figure class="history-hero">
+          <img src="assets/generated/web-evolution.png" alt="从早期文档网页到现代多端 Web 应用的演进插画" />
+          <figcaption><b>1989</b><i></i><span>文档与超链接</span><i></i><b>Today</b></figcaption>
+        </figure>
         <p class="bottom-quote">它像一个全球共享的资料柜，还不像今天的应用。</p>
         <aside class="speaker-note">
           建议用时 3 分钟。Tim Berners-Lee 1989 年在 CERN 提出 Web，目标是满足科研机构之间自动化信息共享的需求。第一个网站也是对 Web 项目本身的说明。来源：https://home.cern/science/computing/the-birth-of-the-web/
@@ -97,9 +92,9 @@
         <div class="eyebrow">02 · 静态 WEB</div>
         <h2>服务器像仓库管理员：<br />你要哪份，它就拿哪份</h2>
         <div class="static-delivery">
-          <div class="browser-window"><b>浏览器</b><span>请给我 <code>/about.html</code></span></div>
+          <div class="browser-window"><b><img src="assets/icons/app-window.svg" alt="" />浏览器</b><span>请给我 <code>/about.html</code></span></div>
           <div class="delivery-path"><i></i><span>HTTP</span><i></i></div>
-          <div class="file-shelf"><b>Web 服务器</b><code>index.html</code><code class="selected">about.html</code><code>contact.html</code></div>
+          <div class="file-shelf"><b><img src="assets/icons/files.svg" alt="" />Web 服务器</b><code>index.html</code><code class="selected">about.html</code><code>contact.html</code></div>
         </div>
         <div class="problem-stamp">每个人看到的几乎都一样</div>
         <aside class="speaker-note">
@@ -177,10 +172,10 @@
       <section class="slide" data-title="云和 AI 没有让后端消失" data-section="history">
         <div class="eyebrow">07 · 云与 AI</div>
         <h2>今天，后端可以被托管、被生成，<br />但不会凭空消失</h2>
-        <div class="cloud-layers">
-          <span class="cloud-chip">Serverless</span><span class="cloud-chip">BaaS</span><span class="cloud-chip">Cloud DB</span><span class="cloud-chip">AI Coding</span>
-          <div class="cloud-body"><b>被封装的后端基础设施</b><small>身份 · 规则 · 数据 · 日志 · 运行环境</small></div>
-        </div>
+        <figure class="cloud-visual">
+          <img src="assets/generated/cloud-backend-infrastructure.png" alt="云端后端基础设施，包含服务器、数据库、身份与 API 节点" />
+          <figcaption><span>Serverless</span><span>BaaS</span><span>Cloud DB</span><span>AI Coding</span></figcaption>
+        </figure>
         <p class="big-question">你可以不亲手建客服中心，但必须知道电话打到了哪里。</p>
         <aside class="speaker-note">
           建议用时 3 分钟。这里不展开品牌。重点是：AI 降低了写后端的门槛，但不会替我们自动决定权限、价格、数据一致性和密钥保护。
@@ -223,9 +218,9 @@
         <div class="eyebrow">09 · 发现问题</div>
         <h2>电商管理系统一上线，<br />纯前端立刻遇到三道墙</h2>
         <div class="three-walls">
-          <article><span>01</span><b>保存</b><p>换电脑、清缓存，商品还在吗？</p></article>
-          <article><span>02</span><b>共享</b><p>顾客下单后，仓库怎么立刻看见？</p></article>
-          <article><span>03</span><b>信任</b><p>价格、权限、API 密钥能交给浏览器吗？</p></article>
+          <article><span>01</span><img src="assets/icons/database.svg" alt="" /><b>保存</b><p>换电脑、清缓存，商品还在吗？</p></article>
+          <article><span>02</span><img src="assets/icons/users.svg" alt="" /><b>共享</b><p>顾客下单后，仓库怎么立刻看见？</p></article>
+          <article><span>03</span><img src="assets/icons/shield-check.svg" alt="" /><b>信任</b><p>价格、权限、API 密钥能交给浏览器吗？</p></article>
         </div>
         <div class="solution-line"><span>数据库</span><i></i><span>后端</span><i></i><span>API</span></div>
         <aside class="speaker-note">
@@ -250,9 +245,9 @@
         <div class="eyebrow">11 · API 直觉</div>
         <h2>API 就像打电话：<br />号码、内容、流程和回复都有规则</h2>
         <div class="phone-demo" id="phoneDemo">
-          <div class="phone front-phone"><small>前端</small><b>发布商品</b><button id="callApi" type="button">拨打 API</button></div>
+          <div class="phone front-phone"><img class="phone-icon" src="assets/icons/phone-call.svg" alt="" /><small>前端</small><b>发布商品</b><button id="callApi" type="button">拨打 API</button></div>
           <div class="call-wire"><i></i><span id="callPacket">POST /api/products</span><b></b></div>
-          <div class="phone back-phone"><small>后端</small><b>固定 SOP</b><span id="callStatus">等待来电</span></div>
+          <div class="phone back-phone"><img class="phone-icon" src="assets/icons/headset.svg" alt="" /><small>后端</small><b>固定 SOP</b><span id="callStatus">等待来电</span></div>
         </div>
         <div class="phone-legend">
           <span><b>按钮</b>拨号</span><span><b>URL</b>电话号码</span><span><b>JSON</b>通话内容</span><span><b>后端逻辑</b>客服脚本</span><span><b>Response</b>回复</span>
@@ -364,7 +359,12 @@
         <div class="framework-machine">
           <div class="raw-request">REQUEST</div>
           <div class="machine-belt">
-            <span>路由</span><span>参数解析</span><span>数据校验</span><span>身份权限</span><span>数据访问</span><span>错误日志</span>
+            <span><img src="assets/icons/route.svg" alt="" /><b>路由</b></span>
+            <span><img src="assets/icons/scan-text.svg" alt="" /><b>参数解析</b></span>
+            <span><img src="assets/icons/shield-check.svg" alt="" /><b>数据校验</b></span>
+            <span><img src="assets/icons/key-round.svg" alt="" /><b>身份权限</b></span>
+            <span><img src="assets/icons/database.svg" alt="" /><b>数据访问</b></span>
+            <span><img src="assets/icons/logs.svg" alt="" /><b>错误日志</b></span>
           </div>
           <div class="clean-response">RESPONSE</div>
         </div>
@@ -378,12 +378,12 @@
         <div class="eyebrow">18 · BACKEND ECOSYSTEM</div>
         <h2>没有绝对最好的语言，<br />只有对当前问题更合适的取舍</h2>
         <div class="language-orbit">
-          <article class="lang-node node-js"><b>JS / TS</b><span>Express · NestJS</span></article>
-          <article class="lang-node node-python"><b>Python</b><span>FastAPI · Django</span></article>
-          <article class="lang-node node-java"><b>Java</b><span>Spring Boot</span></article>
-          <article class="lang-node node-php"><b>PHP</b><span>Laravel</span></article>
-          <article class="lang-node node-go"><b>Go</b><span>Gin · Echo</span></article>
-          <article class="lang-node node-dotnet"><b>C#</b><span>ASP.NET Core</span></article>
+          <article class="lang-node node-js"><img src="assets/icons/brand-nodedotjs.svg" alt="Node.js" /><div><b>JS / TS</b><span>Express · NestJS</span></div></article>
+          <article class="lang-node node-python"><img src="assets/icons/brand-python.svg" alt="Python" /><div><b>Python</b><span>FastAPI · Django</span></div></article>
+          <article class="lang-node node-java"><img src="assets/icons/brand-springboot.svg" alt="Spring Boot" /><div><b>Java</b><span>Spring Boot</span></div></article>
+          <article class="lang-node node-php"><img src="assets/icons/brand-php.svg" alt="PHP" /><div><b>PHP</b><span>Laravel</span></div></article>
+          <article class="lang-node node-go"><img src="assets/icons/brand-go.svg" alt="Go" /><div><b>Go</b><span>Gin · Echo</span></div></article>
+          <article class="lang-node node-dotnet"><img src="assets/icons/brand-dotnet.svg" alt=".NET" /><div><b>C#</b><span>ASP.NET Core</span></div></article>
           <div class="orbit-center"><small>SAME JOB</small><b>API</b><span>JSON 返回相同，前端就能照常工作</span></div>
         </div>
         <aside class="speaker-note">
@@ -411,11 +411,11 @@
         <div class="eyebrow">20 · 今天的选择</div>
         <h2>我们选 Node.js，<br />不是因为它永远最好</h2>
         <div class="chosen-stack">
-          <article><small>UI</small><b>React</b><span>已经熟悉的前端</span></article>
+          <article><img src="assets/icons/panels-top-left.svg" alt="" /><small>UI</small><b>React</b><span>已经熟悉的前端</span></article>
           <i>+</i>
-          <article class="chosen"><small>API</small><b>Express</b><span>继续使用 JavaScript</span></article>
+          <article class="chosen"><img src="assets/icons/server-cog.svg" alt="" /><small>API</small><b>Express</b><span>继续使用 JavaScript</span></article>
           <i>+</i>
-          <article><small>DATA</small><b>SQLite</b><span>一个文件即可入门</span></article>
+          <article><img src="assets/icons/database.svg" alt="" /><small>DATA</small><b>SQLite</b><span>一个文件即可入门</span></article>
         </div>
         <div class="choice-reason"><b>这节课只增加两个新东西</b><span>后端思维</span><span>数据库思维</span></div>
         <aside class="speaker-note">
