@@ -14,11 +14,6 @@
 - 用途：Web 历史章节开场。
 - 提示词摘要：从左向右展示 1990 年代文档网页、服务器、数据库与现代多端 Web 应用，暖黄过渡到青紫霓虹，无可读文字。
 
-### `cloud-backend-infrastructure.png`
-
-- 用途：云服务与 AI 时代页。
-- 提示词摘要：深色等距 3D 云端基础设施，包含服务器、API 网关、数据库、身份防护与 AI 光点，无文字和品牌。
-
 ## 图标
 
 - [Lucide](https://lucide.dev/)，`lucide-static@1.30.0`：通用界面与技术概念图标。许可文件：`assets/icons/LUCIDE-LICENSE.txt`。
