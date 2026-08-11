@@ -387,7 +387,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 2rem); }
 .before-after > i { color: var(--lime); font-style: normal; }
 
 /* Branch tree */
-.branch-tree { position: relative; width: 86%; height: 30vh; margin: 1% auto 0; }
+.branch-slide h2 { margin-bottom: 1%; }
+.branch-tree { position: relative; width: 86%; height: 27.5vh; margin: 0 auto; }
 .branch-tree-lines { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 .branch-tree .feature-path { opacity: 0; stroke-dasharray: 100; stroke-dashoffset: 100; transition: stroke-dashoffset 0.75s cubic-bezier(0.2, 0.75, 0.2, 1), opacity 0.18s ease; }
 .branch-tree[data-state="committed"] .feature-path { opacity: 1; stroke-dashoffset: 0; }
@@ -412,8 +413,8 @@ h3 { font-size: clamp(1.25rem, 2vw, 2rem); }
 .branch-pointer { position: absolute; top: 55%; left: 60%; z-index: 3; padding: 0.42em 0.68em; border: 1px solid rgba(255, 109, 172, 0.42); border-radius: 999px; background: #130d18; color: var(--pink); font-family: ui-monospace, monospace; font-size: clamp(0.58rem, 0.76vw, 0.8rem); opacity: 0; transform: translate(-50%, 8px); transition: opacity 0.28s ease, transform 0.32s ease, box-shadow 0.25s ease; }
 .branch-tree:is([data-state="branched"], [data-state="switched"], [data-state="committed"]) .branch-pointer { opacity: 1; transform: translate(-50%, 0); }
 .branch-tree:is([data-state="switched"], [data-state="committed"]) .branch-pointer { border-color: var(--lime); color: var(--lime); box-shadow: 0 0 24px rgba(215, 255, 84, 0.16); }
-.branch-controls { display: grid; width: 94%; grid-template-columns: repeat(3, 1fr); gap: 1.2%; margin: 0.2% auto 0; }
-.branch-step { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.65rem; min-height: 6.8vh; padding: 0.6em 0.75em; border: 1px solid rgba(156, 121, 255, 0.45); border-radius: 0.55rem; background: #100e1a; text-align: left; transition: 0.22s ease; }
+.branch-controls { display: grid; width: 94%; grid-template-columns: repeat(3, 1fr); gap: 1.2%; margin: -0.45% auto 0; }
+.branch-step { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.65rem; min-height: 6.1vh; padding: 0.55em 0.75em; border: 1px solid rgba(156, 121, 255, 0.45); border-radius: 0.55rem; background: #100e1a; text-align: left; transition: 0.22s ease; }
 .branch-step:hover:not(:disabled) { border-color: var(--lime); transform: translateY(-3px); }
 .branch-step:disabled { cursor: not-allowed; opacity: 0.32; }
 .branch-step small { color: var(--muted); font-size: clamp(0.54rem, 0.68vw, 0.72rem); letter-spacing: 0.08em; }
@@ -422,7 +423,7 @@ h3 { font-size: clamp(1.25rem, 2vw, 2rem); }
 .branch-tree:is([data-state="switched"], [data-state="committed"]) ~ .branch-controls #branchCreateButton,
 .branch-tree:is([data-state="switched"], [data-state="committed"]) ~ .branch-controls #branchSwitchButton,
 .branch-tree[data-state="committed"] ~ .branch-controls #branchCommitButton { border-color: var(--green); background: rgba(85, 240, 166, 0.08); opacity: 1; }
-.branch-feedback-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; min-height: 3.8vh; color: var(--muted); font-size: clamp(0.62rem, 0.82vw, 0.86rem); }
+.branch-feedback-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; min-height: 3.1vh; color: var(--muted); font-size: clamp(0.62rem, 0.82vw, 0.86rem); }
 .branch-reset { padding: 0.48em 0.72em; border: 1px solid var(--line); border-radius: 0.45rem; background: transparent; color: var(--muted); font-size: clamp(0.6rem, 0.75vw, 0.8rem); }
 .branch-reset:hover { border-color: var(--lime); color: var(--ink); }
 .branch-reset[hidden] { display: none; }
