@@ -7,7 +7,7 @@
 1. Git × AI 封面与翻车引子；
 2. Git、GitHub、本地仓库与远程仓库；
 3. 工作区 → 暂存区 → Commit → Push；
-4. Commit 本地时间线；
+4. 可点击演示 `git add → git commit` 的本地时间线；
 5. Push 本地 / 远程双轨同步；
 6. Branch 树状分叉；
 7. 小白基础命令地图；

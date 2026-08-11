@@ -30,6 +30,7 @@ function updateOverview() {
 
 function replayCurrentSlide() {
   const slide = slides[currentIndex];
+  if (slide.querySelector('#commitDemo')) resetCommitDemo();
   slide.classList.remove('active');
   void slide.offsetWidth;
   slide.classList.add('active');
@@ -154,6 +155,40 @@ deck.addEventListener('touchend', (event) => {
   if (deltaX < 0) nextSlide();
   else previousSlide();
 }, { passive: true });
+
+const commitDemo = document.querySelector('#commitDemo');
+const demoAdd = document.querySelector('#demoAdd');
+const demoCommit = document.querySelector('#demoCommit');
+const demoReset = document.querySelector('#demoReset');
+const stageFiles = document.querySelector('#stageFiles');
+const commitFeedback = document.querySelector('#commitFeedback');
+
+function resetCommitDemo() {
+  commitDemo.dataset.state = 'working';
+  demoAdd.disabled = false;
+  demoCommit.disabled = true;
+  stageFiles.textContent = '等待 git add';
+  commitFeedback.innerHTML = '先点 <code>git add</code>，把这次要保存的改动放进暂存区。';
+}
+
+demoAdd.addEventListener('click', () => {
+  if (commitDemo.dataset.state !== 'working') return;
+  commitDemo.dataset.state = 'staged';
+  demoAdd.disabled = true;
+  demoCommit.disabled = false;
+  stageFiles.textContent = 'README.md · login.js';
+  commitFeedback.innerHTML = '暂存完成：现在点 <code>git commit</code>，时间线上才会出现新节点。';
+});
+
+demoCommit.addEventListener('click', () => {
+  if (commitDemo.dataset.state !== 'staged') return;
+  commitDemo.dataset.state = 'committed';
+  demoCommit.disabled = true;
+  stageFiles.textContent = '已保存为 C3';
+  commitFeedback.innerHTML = '完成：C3 已写入本地历史；这时还没有上传到 GitHub。';
+});
+
+demoReset.addEventListener('click', resetCommitDemo);
 
 const challengeResult = document.querySelector('#challengeResult');
 document.querySelectorAll('#challenge button').forEach((button) => {
