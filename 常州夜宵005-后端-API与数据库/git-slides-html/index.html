@@ -20,8 +20,10 @@
         <h1>Git <span>×</span> AI</h1>
         <p class="cover-subtitle">给代码一台“时光机”</p>
         <div class="cover-graph" aria-label="代码从主线分出 AI 试验分支的示意图">
-          <div class="cover-main-line"></div>
-          <div class="cover-branch-line"></div>
+          <svg class="cover-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="main-path" d="M 12 44 L 84 44" />
+            <path class="feature-path" d="M 40 44 L 58 64 L 86 84" />
+          </svg>
           <span class="commit-dot dot-c1">C1</span>
           <span class="commit-dot dot-c2">C2</span>
           <span class="commit-dot dot-c3">C3</span>
@@ -48,9 +50,8 @@
             <p>没网络也能看历史、建分支、做 Commit</p>
           </article>
           <div class="sync-bridge" aria-hidden="true">
-            <span>push →</span>
-            <i></i>
-            <span>← pull</span>
+            <div class="sync-flow push-flow"><span>push</span><i></i></div>
+            <div class="sync-flow pull-flow"><span>pull</span><i></i></div>
           </div>
           <article class="cloud-zone">
             <small>REMOTE SERVER</small>
@@ -105,14 +106,28 @@
       <section class="slide" data-title="Commit 是本地存档" data-section="core">
         <div class="eyebrow">03 · COMMIT</div>
         <h2>Commit 给本地时间线，<br />增加一个存档点</h2>
-        <div class="commit-timeline">
-          <div class="timeline-line"></div>
-          <article class="history-node node-one"><i>C1</i><b>初始页面</b><span>09:00</span></article>
-          <article class="history-node node-two"><i>C2</i><b>增加按钮</b><span>09:20</span></article>
-          <article class="history-node node-three new-commit"><i>C3</i><b>修复登录</b><span>刚刚</span></article>
-          <div class="staged-packet"><small>STAGED</small><b>README.md<br />login.js</b><span>↓ git commit</span></div>
+        <div class="commit-demo" id="commitDemo" data-state="working">
+          <div class="commit-actions" aria-label="Git add 和 commit 交互演示">
+            <article class="change-box">
+              <small>WORKING TREE</small><b>README.md · login.js</b><span>有改动，尚未选择</span>
+            </article>
+            <button id="demoAdd" class="commit-action" type="button"><small>STEP 1</small><code>git add</code></button>
+            <article class="stage-box">
+              <small>STAGING AREA</small><b id="stageFiles">等待 git add</b><span>准备本次存档内容</span>
+            </article>
+            <button id="demoCommit" class="commit-action" type="button" disabled><small>STEP 2</small><code>git commit</code></button>
+          </div>
+          <div class="commit-timeline">
+            <div class="timeline-line"></div>
+            <article class="history-node node-one"><i>C1</i><b>初始页面</b><span>09:00</span></article>
+            <article class="history-node node-two"><i>C2</i><b>增加按钮</b><span>09:20</span></article>
+            <article class="history-node node-three new-commit"><i>C3</i><b>修复登录</b><span>刚刚</span></article>
+          </div>
+          <div class="commit-feedback">
+            <span id="commitFeedback">先点 <code>git add</code>，把这次要保存的改动放进暂存区。</span>
+            <button id="demoReset" type="button">重新演示</button>
+          </div>
         </div>
-        <div class="command-strip"><code>git commit -m "fix: repair login button"</code><span>只在本地保存</span></div>
         <p class="bottom-quote">拍了照，不等于已经发朋友圈。</p>
         <aside class="speaker-note">
           建议用时 6 分钟。强调 Commit 节点表示项目在那一刻的存档，不是“上传了一个文件”。演示顺序：git status → git diff → git add README.md → git diff --staged → git commit。
@@ -130,14 +145,14 @@
           <div class="branch-lane local-lane">
             <small>LOCAL · feature/login</small>
             <div class="lane-line"></div>
-            <i>C1</i><i>C2</i><i class="latest">C3</i>
+            <i class="lane-node lane-one">C1</i><i class="lane-node lane-two">C2</i><i class="lane-node lane-three latest">C3</i>
             <b>本地已到 C3</b>
           </div>
           <div class="push-transfer"><span>git push</span><i></i><b aria-hidden="true">●</b></div>
           <div class="branch-lane remote-lane">
             <small>GITHUB · origin/feature/login</small>
             <div class="lane-line"></div>
-            <i>C1</i><i>C2</i><i class="latest incoming">C3</i>
+            <i class="lane-node lane-one">C1</i><i class="lane-node lane-two">C2</i><i class="lane-node lane-three latest incoming">C3</i>
             <b>Push 后同样到 C3</b>
           </div>
         </div>
@@ -155,8 +170,10 @@
         <div class="eyebrow">05 · BRANCH</div>
         <h2>Branch 从当前 Commit，<br />拉出一条新时间线</h2>
         <div class="branch-tree" aria-label="main 与 feature-login 从 C2 分叉的历史图">
-          <div class="main-tree-line"></div>
-          <div class="feature-tree-line"></div>
+          <svg class="branch-tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path class="main-path" d="M 6 38 L 94 38" />
+            <path class="feature-path" d="M 36 38 L 60 58 L 94 70" />
+          </svg>
           <span class="tree-node tree-c1">C1</span>
           <span class="tree-node tree-c2">C2</span>
           <span class="tree-node tree-c3">C3</span>
