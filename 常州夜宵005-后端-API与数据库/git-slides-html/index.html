@@ -169,10 +169,10 @@
       <section class="slide" data-title="Branch 拉出新时间线" data-section="core">
         <div class="eyebrow">05 · BRANCH</div>
         <h2>Branch 从当前 Commit，<br />拉出一条新时间线</h2>
-        <div class="branch-tree" aria-label="main 与 feature-login 从 C2 分叉的历史图">
+        <div class="branch-tree" id="branchDemo" data-state="main" aria-label="main 与 feature-login 从 C2 分叉的历史图">
           <svg class="branch-tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
             <path class="main-path" d="M 6 38 L 94 38" />
-            <path class="feature-path" d="M 36 38 L 60 58 L 94 70" />
+            <path class="feature-path" pathLength="100" d="M 36 38 L 60 58 L 94 70" />
           </svg>
           <span class="tree-node tree-c1">C1</span>
           <span class="tree-node tree-c2">C2</span>
@@ -183,7 +183,11 @@
           <b class="tree-feature-label">feature-login · AI 试验</b>
           <small class="fork-label">从 C2 分叉</small>
         </div>
-        <div class="branch-command"><code>git switch -c feature-login</code><span>新建并切换分支</span></div>
+        <div class="branch-command">
+          <button id="createBranchButton" type="button"><small>点击执行</small><code>git switch -c feature-login</code></button>
+          <span id="branchFeedback">现在还只有 main；点一下命令，拉出试验分支。</span>
+          <button id="resetBranchButton" class="branch-reset" type="button" hidden>重新演示</button>
+        </div>
         <p class="bottom-quote">不是复制一份“项目-副本”，而是在同一棵历史树上拉出新线。</p>
         <aside class="speaker-note">
           建议用时 7 分钟。用“平行宇宙”比喻：AI 在 feature-login 尝试新登录页，main 可以继续修文案。两条线都从 C2 出发，各自继续 Commit。本页只讲分叉，Merge 和冲突留到后续。

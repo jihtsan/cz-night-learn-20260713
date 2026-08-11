@@ -9,7 +9,7 @@
 3. 工作区 → 暂存区 → Commit → Push；
 4. 可点击演示 `git add → git commit` 的本地时间线；
 5. Push 本地 / 远程双轨同步；
-6. Branch 树状分叉；
+6. 可点击展开的 Branch 树状分叉；
 7. 小白基础命令地图；
 8. Worktree 概念；
 9. AI 安全协作流程与对话；
