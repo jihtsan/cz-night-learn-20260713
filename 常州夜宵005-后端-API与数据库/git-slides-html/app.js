@@ -231,7 +231,7 @@ branchCommitButton.addEventListener('click', () => {
   if (branchDemo.dataset.state !== 'switched') return;
   branchDemo.dataset.state = 'committed';
   branchCommitButton.disabled = true;
-  branchFeedback.textContent = '连续提交两次后，feature-login 才真正长出 F1、F2。';
+  branchFeedback.textContent = 'F1、F2 属于 feature-login；main 仍可独立 Commit，并分别 Push 到各自远程分支。';
   resetBranchButton.hidden = false;
 });
 
