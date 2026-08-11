@@ -31,6 +31,7 @@ function updateOverview() {
 function replayCurrentSlide() {
   const slide = slides[currentIndex];
   if (slide.querySelector('#commitDemo')) resetCommitDemo();
+  if (slide.querySelector('#branchDemo')) resetBranchDemo();
   slide.classList.remove('active');
   void slide.offsetWidth;
   slide.classList.add('active');
@@ -189,6 +190,31 @@ demoCommit.addEventListener('click', () => {
 });
 
 demoReset.addEventListener('click', resetCommitDemo);
+
+const branchDemo = document.querySelector('#branchDemo');
+const createBranchButton = document.querySelector('#createBranchButton');
+const createBranchButtonHint = createBranchButton.querySelector('small');
+const branchFeedback = document.querySelector('#branchFeedback');
+const resetBranchButton = document.querySelector('#resetBranchButton');
+
+function resetBranchDemo() {
+  branchDemo.dataset.state = 'main';
+  createBranchButton.disabled = false;
+  createBranchButtonHint.textContent = '点击执行';
+  branchFeedback.textContent = '现在还只有 main；点一下命令，拉出试验分支。';
+  resetBranchButton.hidden = true;
+}
+
+createBranchButton.addEventListener('click', () => {
+  if (branchDemo.dataset.state === 'created') return;
+  branchDemo.dataset.state = 'created';
+  createBranchButton.disabled = true;
+  createBranchButtonHint.textContent = '已创建 ✓';
+  branchFeedback.textContent = 'feature-login 已从 C2 分叉；接下来的 Commit 会走自己的时间线。';
+  resetBranchButton.hidden = false;
+});
+
+resetBranchButton.addEventListener('click', resetBranchDemo);
 
 const challengeResult = document.querySelector('#challengeResult');
 document.querySelectorAll('#challenge button').forEach((button) => {
