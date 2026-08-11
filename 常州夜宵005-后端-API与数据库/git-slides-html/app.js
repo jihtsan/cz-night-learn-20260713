@@ -192,25 +192,46 @@ demoCommit.addEventListener('click', () => {
 demoReset.addEventListener('click', resetCommitDemo);
 
 const branchDemo = document.querySelector('#branchDemo');
-const createBranchButton = document.querySelector('#createBranchButton');
-const createBranchButtonHint = createBranchButton.querySelector('small');
+const branchCreateButton = document.querySelector('#branchCreateButton');
+const branchSwitchButton = document.querySelector('#branchSwitchButton');
+const branchCommitButton = document.querySelector('#branchCommitButton');
+const branchPointer = document.querySelector('#branchPointer');
 const branchFeedback = document.querySelector('#branchFeedback');
 const resetBranchButton = document.querySelector('#resetBranchButton');
 
 function resetBranchDemo() {
   branchDemo.dataset.state = 'main';
-  createBranchButton.disabled = false;
-  createBranchButtonHint.textContent = '点击执行';
-  branchFeedback.textContent = '现在还只有 main；点一下命令，拉出试验分支。';
+  branchCreateButton.disabled = false;
+  branchSwitchButton.disabled = true;
+  branchCommitButton.disabled = true;
+  branchPointer.textContent = 'feature-login（未切换）';
+  branchFeedback.textContent = '先创建分支指针；这一步不会切换，也不会产生新 Commit。';
   resetBranchButton.hidden = true;
 }
 
-createBranchButton.addEventListener('click', () => {
-  if (branchDemo.dataset.state === 'created') return;
-  branchDemo.dataset.state = 'created';
-  createBranchButton.disabled = true;
-  createBranchButtonHint.textContent = '已创建 ✓';
-  branchFeedback.textContent = 'feature-login 已从 C2 分叉；接下来的 Commit 会走自己的时间线。';
+branchCreateButton.addEventListener('click', () => {
+  if (branchDemo.dataset.state !== 'main') return;
+  branchDemo.dataset.state = 'branched';
+  branchCreateButton.disabled = true;
+  branchSwitchButton.disabled = false;
+  branchFeedback.textContent = '分支指针已经建在当前 C3，但 HEAD 仍在 main；下一步再切换。';
+  resetBranchButton.hidden = false;
+});
+
+branchSwitchButton.addEventListener('click', () => {
+  if (branchDemo.dataset.state !== 'branched') return;
+  branchDemo.dataset.state = 'switched';
+  branchSwitchButton.disabled = true;
+  branchCommitButton.disabled = false;
+  branchPointer.textContent = 'HEAD → feature-login';
+  branchFeedback.textContent = '已经切到 feature-login；历史还没分叉，因为尚未产生新 Commit。';
+});
+
+branchCommitButton.addEventListener('click', () => {
+  if (branchDemo.dataset.state !== 'switched') return;
+  branchDemo.dataset.state = 'committed';
+  branchCommitButton.disabled = true;
+  branchFeedback.textContent = '连续提交两次后，feature-login 才真正长出 F1、F2。';
   resetBranchButton.hidden = false;
 });
 
