@@ -169,10 +169,10 @@
       <section class="slide" data-title="Branch 拉出新时间线" data-section="core">
         <div class="eyebrow">05 · BRANCH</div>
         <h2>Branch 从当前 Commit，<br />拉出一条新时间线</h2>
-        <div class="branch-tree" id="branchDemo" data-state="main" aria-label="main 与 feature-login 从 C2 分叉的历史图">
+        <div class="branch-tree" id="branchDemo" data-state="main" aria-label="main 与 feature-login 从当前节点 C3 分叉的历史图">
           <svg class="branch-tree-lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-            <path class="main-path" d="M 6 38 L 94 38" />
-            <path class="feature-path" pathLength="100" d="M 36 38 L 60 58 L 94 70" />
+            <path class="main-path" d="M 6 38 L 60 38" />
+            <path class="feature-path" pathLength="100" d="M 60 38 L 76 58 L 94 70" />
           </svg>
           <span class="tree-node tree-c1">C1</span>
           <span class="tree-node tree-c2">C2</span>
@@ -181,16 +181,21 @@
           <span class="tree-node tree-f2">F2</span>
           <b class="tree-main-label">main · 修改文案</b>
           <b class="tree-feature-label">feature-login · AI 试验</b>
-          <small class="fork-label">从 C2 分叉</small>
+          <small class="fork-label">从当前 C3 分叉</small>
+          <span class="branch-pointer" id="branchPointer">feature-login（未切换）</span>
         </div>
-        <div class="branch-command">
-          <button id="createBranchButton" type="button"><small>点击执行</small><code>git switch -c feature-login</code></button>
-          <span id="branchFeedback">现在还只有 main；点一下命令，拉出试验分支。</span>
+        <div class="branch-controls" aria-label="创建、切换与提交的三步演示">
+          <button id="branchCreateButton" class="branch-step" type="button"><small>01 · 创建</small><code>git branch feature-login</code></button>
+          <button id="branchSwitchButton" class="branch-step" type="button" disabled><small>02 · 切换</small><code>git switch feature-login</code></button>
+          <button id="branchCommitButton" class="branch-step" type="button" disabled><small>03 · 提交两次</small><code>git commit × 2</code></button>
+        </div>
+        <div class="branch-feedback-row">
+          <span id="branchFeedback">先创建分支指针；这一步不会切换，也不会产生新 Commit。</span>
           <button id="resetBranchButton" class="branch-reset" type="button" hidden>重新演示</button>
         </div>
         <p class="bottom-quote">不是复制一份“项目-副本”，而是在同一棵历史树上拉出新线。</p>
         <aside class="speaker-note">
-          建议用时 7 分钟。用“平行宇宙”比喻：AI 在 feature-login 尝试新登录页，main 可以继续修文案。两条线都从 C2 出发，各自继续 Commit。本页只讲分叉，Merge 和冲突留到后续。
+          建议用时 7 分钟。严格按三步演示：git branch feature-login 只在当前 C3 创建分支指针；git switch feature-login 才切换 HEAD；后续 Commit 才让新时间线长出 F1、F2。用“平行宇宙”比喻：AI 在 feature-login 尝试新登录页，main 可以继续修文案。本页只讲分叉，Merge 和冲突留到后续。
 
           [Sources]
           - https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell
