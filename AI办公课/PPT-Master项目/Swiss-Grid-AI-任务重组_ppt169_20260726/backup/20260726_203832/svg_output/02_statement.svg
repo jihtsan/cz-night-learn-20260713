@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="statement-grid" data-pptx-layout-name="Statement Grid">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="statement-top-rule" data-pptx-layer="layout" x="72" y="58" width="1136" height="8" fill="#111111"/>
+  <rect id="statement-side-rule" data-pptx-layer="layout" x="72" y="126" width="12" height="460" fill="#E2261A"/>
+  <g id="slide-no"><text x="72" y="106" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#0057FF">02 / 12</text></g>
+  <g id="statement-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="128 130 1000 160"><text data-pptx-placeholder-carrier="true" x="128" y="204" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">AI 先重组任务，不会瞬间清空岗位</text></g>
+  <g id="statement-lead" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="128 312 1030 70"><text data-pptx-placeholder-carrier="true" x="128" y="352" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#171717">真正被淘汰的，是只会完成旧任务、不会驾驭新工作流的人。</text></g>
+  <g id="statement-points" data-pptx-placeholder="body" data-pptx-placeholder-bounds="128 432 940 150"><text data-pptx-placeholder-carrier="true" x="128" y="468" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#171717"><tspan x="128" dy="0">01 任务重组：重复、可数字化、可验收的工作先被压缩</tspan><tspan x="128" dy="50">02 入口收缩：初级岗位的训练性任务正在被拆走</tspan><tspan x="128" dy="50">03 门槛抬升：判断、沟通、责任与协作更早成为要求</tspan></text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜执行摘要</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">02</text></g>
+</svg>

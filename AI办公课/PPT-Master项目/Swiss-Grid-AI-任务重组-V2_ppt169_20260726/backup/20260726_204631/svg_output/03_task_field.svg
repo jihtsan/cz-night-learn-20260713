@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Poster Master" data-pptx-layout="task-field" data-pptx-layout-name="Task Field">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F5F4EF"/>
+  <rect id="field-top" data-pptx-layer="layout" x="64" y="58" width="1152" height="3" fill="#121212"/>
+  <rect id="field-bottom" data-pptx-layer="layout" x="64" y="618" width="1152" height="3" fill="#121212"/>
+  <rect id="field-v1" data-pptx-layer="layout" x="448" y="196" width="2" height="346" fill="#C9C7C0"/>
+  <rect id="field-v2" data-pptx-layer="layout" x="832" y="196" width="2" height="346" fill="#C9C7C0"/>
+  <rect id="field-h" data-pptx-layer="layout" x="64" y="370" width="1152" height="2" fill="#C9C7C0"/>
+  <g id="field-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="64 86 970 90"><text data-pptx-placeholder-carrier="true" x="64" y="148" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#121212">最先被压缩的，是这六类任务</text></g>
+  <g id="field-label"><text x="1100" y="104" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1E4ED8">03 / 12</text></g>
+  <g id="field-words"><text x="64" y="286" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#121212"><tspan x="64" dy="0">录入</tspan><tspan x="500" dy="0">汇总</tspan><tspan x="884" dy="0" fill="#E53725">改写</tspan><tspan x="64" dy="176">检索</tspan><tspan x="500" dy="0">分流</tspan><tspan x="884" dy="0">初稿</tspan></text></g>
+  <g id="field-body" data-pptx-placeholder="body" data-pptx-placeholder-bounds="64 556 980 50"><text data-pptx-placeholder-carrier="true" x="64" y="594" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#121212">它们共同的特点：规则清楚、可复制、机器能先交出一个版本。</text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="64 678 900 20"><text data-pptx-placeholder-carrier="true" x="64" y="695" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#6A6964">来源：用户提供研究文档｜岗位与任务的变化清单</text></g>
+</svg>

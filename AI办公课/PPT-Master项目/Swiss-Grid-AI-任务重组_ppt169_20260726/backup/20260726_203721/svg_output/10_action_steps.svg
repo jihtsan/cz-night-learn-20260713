@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="action-steps" data-pptx-layout-name="Action Steps">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="action-blue" data-pptx-layer="layout" x="0" y="0" width="1280" height="86" fill="#0057FF"/>
+  <rect id="action-rule" data-pptx-layer="layout" x="72" y="248" width="1136" height="2" fill="#B8B8B2"/>
+  <g id="action-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="72 112 1100 90"><text data-pptx-placeholder-carrier="true" x="72" y="172" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">三个月，做出第一个可验证的 AI 工作流</text></g>
+  <g id="action-lead" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="72 202 1100 42"><text data-pptx-placeholder-carrier="true" x="72" y="232" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#E2261A">不要只收藏课程；做出一个“效率前后对比”的项目证据。</text></g>
+  <g id="action-body" data-pptx-placeholder="body" data-pptx-placeholder-bounds="72 300 1120 250"><text data-pptx-placeholder-carrier="true" x="72" y="346" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#171717"><tspan x="72" dy="0">01 找出每周最耗时的三个重复任务</tspan><tspan x="72" dy="56">02 用 AI 试做初稿，并保留人类复核点</tspan><tspan x="72" dy="56">03 记录错误、异常与升级路径</tspan><tspan x="72" dy="56">04 用“场景—工具—流程—结果—复核”写进简历</tspan></text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜给普通求职者的建议</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">10</text></g>
+</svg>

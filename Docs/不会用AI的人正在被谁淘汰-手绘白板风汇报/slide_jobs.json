@@ -1,0 +1,202 @@
+{
+  "run_status": "slides_recorded",
+  "deck_name": "不会用AI的人正在被谁淘汰-手绘白板风汇报",
+  "selected_backend": "built-in image tool",
+  "sample_generation_method": {
+    "backend_used": "built-in image tool",
+    "tool_name": "image_gen",
+    "mode": "generate",
+    "prompt_source": "本项目第3页经用户确认的手绘白板风生成提示词",
+    "size": "16:9 landscape, built-in default",
+    "quality": "built-in default",
+    "approved_sample_path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+    "input_context_preparation": "使用 view_image 检查已批准样张；将它作为风格参考而非内容或版式参考",
+    "handoff_rule": "子代理必须使用同一内置 image_gen 工具和 generate 模式；若不可用，返回 blocker，不得切换后端。"
+  },
+  "max_concurrent_slides": 3,
+  "slides": [
+    {
+      "slide_id": "slide_01",
+      "number": 1,
+      "title": "AI先重写任务，而非瞬间消灭所有岗位",
+      "job": "prompts/slide_01.json",
+      "out": "origin_image/slide_01.png",
+      "input_images": [
+        {
+          "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+          "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+          "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+        }
+      ],
+      "requires_context_images": true,
+      "status": "recorded",
+      "dispatch": {
+        "agent_id": "/root/slide_01",
+        "agent_nickname": "slide_01",
+        "prompt": "prompts/slide_01.json",
+        "prompt_sha256": "de2bf8af5d992efb99ef34686d4cbfef333e17ea6586ef0935f5643de04d742f",
+        "dispatched_at": "2026-07-27T13:42:41Z"
+      },
+      "result": {
+        "agent_id": "/root/slide_01",
+        "backend_used": "built-in image tool",
+        "selected_source": "/Users/joo00der/.codex/generated_images/019fa3d0-238f-70d0-9cfa-41d849ff34d3/exec-e3325ebf-5e20-463e-a9bc-b15590f0d697.png",
+        "selected_source_sha256": "3810b38a082af4f353f1158d828d0d8c35ba0709baea01573daef69cae2da1b9",
+        "final_image": "origin_image/slide_01.png",
+        "final_image_sha256": "3810b38a082af4f353f1158d828d0d8c35ba0709baea01573daef69cae2da1b9",
+        "expected_backend": "built-in image tool",
+        "expected_backend_labels": [
+          "built-in image tool",
+          "image_gen"
+        ],
+        "sample_generation_method_matched": true,
+        "qa_note": "已目视检查：中文标题与关键点清晰准确，中心岗位任务拆解构图符合开场定位且与样张保持一致的手绘白板风。",
+        "recorded_at": "2026-07-27T13:46:47Z"
+      },
+      "blocker": null
+    },
+    {
+      "slide_id": "slide_02",
+      "number": 2,
+      "title": "最先被AI吃掉的是六类标准化任务",
+      "job": "prompts/slide_02.json",
+      "out": "origin_image/slide_02.png",
+      "input_images": [
+        {
+          "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+          "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+          "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+        }
+      ],
+      "requires_context_images": true,
+      "status": "recorded",
+      "dispatch": {
+        "agent_id": "/root/slide_02",
+        "agent_nickname": "slide_02",
+        "prompt": "prompts/slide_02.json",
+        "prompt_sha256": "5dbb415c6005340dd6a600188a86fd2db3edd6f9ddffcac95df14b6969a051a5",
+        "dispatched_at": "2026-07-27T13:43:04Z"
+      },
+      "result": {
+        "agent_id": "/root/slide_02",
+        "backend_used": "built-in image tool",
+        "selected_source": "/Users/joo00der/.codex/generated_images/019fa3d0-7da8-7193-8fbd-113e5f13164f/exec-1cc00a13-0ee5-4db4-bd37-90a1ff77a8a6.png",
+        "selected_source_sha256": "76d05e04c0916ef26d898a1bca8c87993ef9d6ac792347cd77be3fa4b57c6a96",
+        "final_image": "origin_image/slide_02.png",
+        "final_image_sha256": "76d05e04c0916ef26d898a1bca8c87993ef9d6ac792347cd77be3fa4b57c6a96",
+        "expected_backend": "built-in image tool",
+        "expected_backend_labels": [
+          "built-in image tool",
+          "image_gen"
+        ],
+        "sample_generation_method_matched": true,
+        "qa_note": "已目视检查：六类任务、三组案例数字均清晰准确，横向传送带构图与已批准样张的手绘白板风保持一致。",
+        "recorded_at": "2026-07-27T13:45:10Z"
+      },
+      "blocker": null
+    },
+    {
+      "slide_id": "slide_03",
+      "number": 3,
+      "title": "先掉队的，是无法接入新工作流的人",
+      "job": "prompts/slide_03.json",
+      "out": "origin_image/slide_03.png",
+      "input_images": [
+        {
+          "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+          "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+          "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+        }
+      ],
+      "requires_context_images": true,
+      "status": "accepted",
+      "dispatch": null,
+      "result": {
+        "final_image": "origin_image/slide_03.png",
+        "accepted_sample": true
+      },
+      "blocker": null
+    },
+    {
+      "slide_id": "slide_04",
+      "number": 4,
+      "title": "未来更值钱的是“AI提速＋人类负责”",
+      "job": "prompts/slide_04.json",
+      "out": "origin_image/slide_04.png",
+      "input_images": [
+        {
+          "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+          "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+          "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+        }
+      ],
+      "requires_context_images": true,
+      "status": "recorded",
+      "dispatch": {
+        "agent_id": "/root/slide_04",
+        "agent_nickname": "slide_04",
+        "prompt": "prompts/slide_04.json",
+        "prompt_sha256": "b331a2a550c8470a028c19106a8ad1d011cd8e949f384fb1e734c7e2342fbed6",
+        "dispatched_at": "2026-07-27T13:43:23Z"
+      },
+      "result": {
+        "agent_id": "/root/slide_04",
+        "backend_used": "built-in image tool",
+        "selected_source": "/Users/joo00der/.codex/generated_images/019fa3d0-c419-7913-98d4-0d0c1ce177d3/exec-04166daa-889b-4fcf-b007-77b7c30f8652.png",
+        "selected_source_sha256": "5d97ba50fbc3f90a27854dec2f640c76b68c4e00e913daf64d1562bad2901731",
+        "final_image": "origin_image/slide_04.png",
+        "final_image_sha256": "5d97ba50fbc3f90a27854dec2f640c76b68c4e00e913daf64d1562bad2901731",
+        "expected_backend": "built-in image tool",
+        "expected_backend_labels": [
+          "built-in image tool",
+          "image_gen"
+        ],
+        "sample_generation_method_matched": true,
+        "qa_note": "已目视检查：画面与样张白板质感、马克笔配色一致，标题、三类角色与78%计划招聘新AI角色均清晰可读。",
+        "recorded_at": "2026-07-27T13:47:05Z"
+      },
+      "blocker": null
+    },
+    {
+      "slide_id": "slide_05",
+      "number": 5,
+      "title": "现在就把“会用工具”变成“能交付结果”",
+      "job": "prompts/slide_05.json",
+      "out": "origin_image/slide_05.png",
+      "input_images": [
+        {
+          "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+          "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+          "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+        }
+      ],
+      "requires_context_images": true,
+      "status": "recorded",
+      "dispatch": {
+        "agent_id": "/root/slide_05",
+        "agent_nickname": "slide_05",
+        "prompt": "prompts/slide_05.json",
+        "prompt_sha256": "3eea5daab21d079eca93fccbf1c2e4e560ab2fa3d5d687bf816a01e4de6a94b9",
+        "dispatched_at": "2026-07-27T13:45:28Z"
+      },
+      "result": {
+        "agent_id": "/root/slide_05",
+        "backend_used": "built-in image tool",
+        "selected_source": "/Users/joo00der/.codex/generated_images/019fa3d2-b2a9-74e3-8ccd-3276c2810cf8/exec-24d8b4a5-0b89-43a3-9340-023eb0e92c57.png",
+        "selected_source_sha256": "d156e457e93cd376c90564da3e41f5aea9504a57ef8f226b74100539b24839f6",
+        "final_image": "origin_image/slide_05.png",
+        "final_image_sha256": "d156e457e93cd376c90564da3e41f5aea9504a57ef8f226b74100539b24839f6",
+        "expected_backend": "built-in image tool",
+        "expected_backend_labels": [
+          "built-in image tool",
+          "image_gen"
+        ],
+        "sample_generation_method_matched": true,
+        "qa_note": "已目视检查：版式与样张的暖白白板、手绘笔触和色彩一致，中文清晰且行动清单、结果圈与收束句均完整可读。",
+        "recorded_at": "2026-07-27T13:48:59Z"
+      },
+      "blocker": null
+    }
+  ],
+  "updated_at": "2026-07-27T13:48:59Z"
+}

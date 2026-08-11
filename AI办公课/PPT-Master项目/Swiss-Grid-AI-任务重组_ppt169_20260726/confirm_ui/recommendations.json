@@ -1,0 +1,42 @@
+{
+  "stage": "stage3",
+  "lang": "zh",
+  "recommend": {
+    "canvas": "ppt169",
+    "mode": "pyramid",
+    "visual_style": "swiss-minimal",
+    "delivery_purpose": "presentation",
+    "icons": "tabler-outline",
+    "formula_policy": "text-only",
+    "image_usage": ["provided"],
+    "generation_mode": "continuous"
+  },
+  "page_count": { "value": "12 页" },
+  "audience": { "value": "常州夜校 AI 办公课学员；面向正在理解 AI 对职业与任务影响的普通职场人。" },
+  "content_divergence": { "value": "" },
+  "color": {
+    "name": "瑞士红 × 钴蓝",
+    "palette": {
+      "background": "#F8F8F5",
+      "secondary_bg": "#E9E9E3",
+      "primary": "#111111",
+      "accent": "#E2261A",
+      "secondary_accent": "#0057FF",
+      "body_text": "#171717"
+    }
+  },
+  "typography": {
+    "name": "微软雅黑 × Arial",
+    "heading": { "cjk": "Microsoft YaHei", "latin": "Arial", "css": "Arial, 'Microsoft YaHei', sans-serif" },
+    "body": { "cjk": "Microsoft YaHei", "latin": "Arial", "css": "Arial, 'Microsoft YaHei', sans-serif" },
+    "body_size": 32,
+    "body_size_unit": "px",
+    "sizes": { "title": 64, "subtitle": 42, "annotation": 20 }
+  },
+  "image_usage": ["provided"],
+  "image_notes": {
+    "value": "不使用装饰性 AI 生图。仅将原文提供的任务重组流程图作为第 5 页的信息来源；其余页面采用瑞士网格、编号、分隔线、词组与简洁几何图形完成。"
+  },
+  "generation_mode": "continuous",
+  "refine_spec": { "value": false }
+}

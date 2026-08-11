@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="cover-plane" data-pptx-layout-name="Cover Plane">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5" />
+  <rect id="cover-blue-plane" data-pptx-layer="layout" x="0" y="0" width="278" height="720" fill="#0057FF" />
+  <rect id="cover-red-rule" data-pptx-layer="layout" x="350" y="86" width="116" height="12" fill="#E2261A" />
+  <g id="cover-kicker"><text x="352" y="160" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#0057FF">AI × WORK / 2026</text></g>
+  <g id="cover-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="350 190 830 260"><text fill="#111111" font-size="112" font-family="Arial, Microsoft YaHei, sans-serif" font-weight="700" x="350" y="290">不会用 AI 的人，</text><text fill="#111111" font-size="112" font-family="Arial, Microsoft YaHei, sans-serif" font-weight="700" x="350" y="414">正在被谁淘汰？</text></g>
+  <g id="cover-subtitle" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="354 505 720 70"><text data-pptx-placeholder-carrier="true" x="354" y="540" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#171717">被替代的先是任务，不是人的全部价值。</text></g>
+  <g id="cover-footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="352 658 700 24"><text data-pptx-placeholder-carrier="true" x="352" y="676" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">常州夜校 AI 办公课｜基于用户提供研究文档整理</text></g>
+</svg>

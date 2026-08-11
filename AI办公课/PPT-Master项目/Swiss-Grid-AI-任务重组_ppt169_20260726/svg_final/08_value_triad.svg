@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="value-triad" data-pptx-layout-name="Value Triad">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5" />
+  <rect id="triad-blue" data-pptx-layer="layout" x="72" y="484" width="1136" height="108" fill="#0057FF" />
+  <rect id="triad-red" data-pptx-layer="layout" x="72" y="592" width="1136" height="10" fill="#E2261A" />
+  <g id="triad-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="72 72 1090 90"><text data-pptx-placeholder-carrier="true" x="72" y="132" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">人的价值转向判断、责任、沟通与协作</text></g>
+  <g id="triad-lead" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="72 178 1060 52"><text data-pptx-placeholder-carrier="true" x="72" y="216" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#171717">组织里会同时存在三类角色，但人的位置不再一样。</text></g>
+  <g id="triad-body" data-pptx-placeholder="body" data-pptx-placeholder-bounds="72 280 1120 170"><text fill="#171717" font-size="32" font-family="Arial, Microsoft YaHei, sans-serif" x="72" y="326">01 AI 直接替代：可标准化、错误成本可控的功能</text><text fill="#171717" font-size="32" font-family="Arial, Microsoft YaHei, sans-serif" x="72" y="382">02 AI 增强岗位：人仍需判断、签字、沟通与承担责任</text><text fill="#171717" font-size="32" font-family="Arial, Microsoft YaHei, sans-serif" x="72" y="438">03 因 AI 新增：工作流设计、治理合规、人机协同质检</text></g>
+  <g id="triad-takeaway"><text x="102" y="552" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#F8F8F5">你的升级方向：从“完成任务”转到“对结果负责”。</text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜谁在替代与谁在增值</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">08</text></g>
+</svg>

@@ -1,0 +1,42 @@
+{
+  "slide": 5,
+  "title": "现在就把“会用工具”变成“能交付结果”",
+  "prompt": "# Codex PPT Slide Image Prompt\n\n## Canvas\n{\n  \"type\": \"16:9 full-slide PowerPoint image\",\n  \"language\": \"Chinese\",\n  \"slide_number\": 5,\n  \"render_slide_number\": false\n}\n\n## Deck Goal\n用五页面向普通职场人与管理者说明：AI优先重组标准化任务，职业价值取决于能否把AI接入主任务链并承担判断、复核与沟通责任。\n\n## Required Background\n{\n  \"deck_context\": {\n    \"source_summary\": \"AI对就业的首要影响是任务重组、初级岗位入口收缩和能力门槛上移。录入、汇总、改写、检索、分流、初稿等标准化任务最先被接管。人的价值转向复核、复杂判断、责任承担、客户沟通、跨部门协作，以及AI工作流设计和治理能力。\",\n    \"core_claim\": \"AI首先淘汰的不是岗位名称，而是岗位中标准化、可数字化的任务；能把AI接入主任务链并承担复核、判断与沟通责任的人，职业价值会持续上升。\",\n    \"canonical_terms\": [\n      \"任务重组\",\n      \"主任务链\",\n      \"重复交付\",\n      \"AI协作\",\n      \"判断\",\n      \"复核\",\n      \"沟通\",\n      \"可验证的业务结果\"\n    ]\n  },\n  \"slide_local_context\": {\n    \"required_background\": \"个人在1—3个月内可先补齐提示词基础、资料检索摘要、表格和文档自动化、事实核验、隐私与版权常识。管理层应先做任务盘点和风险分层，改流程后再讨论裁员，并保留入门岗位中的学习性任务。\"\n  }\n}\n\n## Global Style\n{\n  \"name\": \"手绘白板风\",\n  \"visual_direction\": \"真实、干净、适合培训汇报的手绘白板照片；暖白白板底纹与细微马克笔痕迹，黑色粗细不一的马克笔线条，规整但自然的中文手写字，箭头、圈注、云朵、便签和简笔人物；不是数字UI卡片。\",\n  \"color_palette\": \"暖白背景 #FAFAF5；黑色为主文字和线条；红 #E74C3C、蓝 #3498DB、橙 #F39C12、绿 #27AE60 作为真实马克笔强调；淡黄 #FFF9C4 便签。\",\n  \"typography\": \"大号清晰的中文手写马克笔标题；正文少而大、准确易读；重点通过圈注、下划线、方框和便签突出。\",\n  \"texture_and_finish\": \"真实白板边框和轻微擦拭痕，适度留白、便于投影阅读；无水印、无页码、无品牌标志。\",\n  \"deck_consistency\": \"保持相同调色、笔触、白板材质、中文手写风格与教学气质；按页面语义变化构图，禁止相邻页面复用同一版式。\"\n}\n\n## Input Images\n\n- Image 1: /Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png — 已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考; 只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。\n\n\n## Slide\n{\n  \"number\": 5,\n  \"title\": \"现在就把“会用工具”变成“能交付结果”\",\n  \"role\": \"行动建议／收束\",\n  \"intent\": \"以一张手绘行动清单收束，分别给个人和管理者明确下一步，并强调用可验证结果证明能力。\"\n}\n\n## Text\n{\n  \"title\": \"现在就把“会用工具”变成“能交付结果”\",\n  \"key_points\": [\n    \"个人：提示词、检索摘要、文档表格自动化、事实核验、隐私版权\",\n    \"证明路径：业务场景—工具—流程变化—效率／质量—错误控制\",\n    \"管理者：任务盘点、风险分层、改流程后再讨论编制\",\n    \"成为能定义、验证、承担结果的人\"\n  ],\n  \"speaker_focus\": null\n}\n\n## Layout\n{\n  \"composition\": \"顶部标题；中央是一张斜放的大号手绘行动清单，左右两列分别标为“个人现在做”和“管理者现在做”；中间用一个粗黑箭头从“会用工具”指向一个被红橙色大圈圈住的“能交付结果”；最下方一条蓝绿下划线写收束句。\",\n  \"content_zones\": \"标题顶部；清单占中央大部分；中心箭头和结果圈为视觉锚点；结论在底部。\",\n  \"variation_rule\": \"使用清单与目标圈收束，不复用任何前页图形结构。\",\n  \"spacing\": \"左右每栏最多三条短语，底部结论大而醒目。\"\n}\n\n## Visual Elements\n{\n  \"main_visual\": \"打钩行动清单、粗箭头和被圈住的业务结果；简单的文件、放大镜、盾牌、流程图标。\",\n  \"supporting_elements\": \"黄色便签、绿色对勾、红橙强调圈、蓝色下划线。\"\n}\n\n## Constraints\n[\n  \"中文短语准确清晰\",\n  \"收束句必须醒目\",\n  \"不讨论或展示具体裁员数字\",\n  \"不要使用页码\"\n]\n\n## Style Reference Rule\nUse Image 1 as the approved sample-slide style reference. Match its palette, typography mood, density, texture, and overall visual identity. Do not copy its exact layout unless this slide's layout explicitly asks for it.\n\n## Input Image Handling Rules\nFor any input image marked as a strict input asset, include it visibly and preserve its content. Do not redraw, replace, relabel, or invent a similar figure. Scale and crop only as needed for composition while keeping the important labels, arrows, data, and relationships recognizable.\n\n## Universal Constraints\n- The final image itself must contain the title and key points.\n- Render Chinese text exactly and legibly; avoid garbled characters.\n- Keep the confirmed deck style consistent while varying layout by slide role.\n- No watermark, unrelated logo, or extra slide number.\n",
+  "out": "slide_05.png",
+  "input_images": [
+    {
+      "path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+      "role": "已批准的第3页样张；仅作为笔触、调色、中文书写感、白板质感、信息密度和整体视觉身份的参考",
+      "fidelity": "只匹配风格；不要复制第3页的分岔路径、人物位置或具体内容。"
+    }
+  ],
+  "requires_context_images": true,
+  "expected_backend": "built-in image tool",
+  "sample_generation_method": {
+    "backend_used": "built-in image tool",
+    "tool_name": "image_gen",
+    "mode": "generate",
+    "prompt_source": "本项目第3页经用户确认的手绘白板风生成提示词",
+    "size": "16:9 landscape, built-in default",
+    "quality": "built-in default",
+    "approved_sample_path": "/Users/joo00der/Documents/cz-night-learn-20260713/Docs/不会用AI的人正在被谁淘汰-手绘白板风汇报/origin_image/slide_03.png",
+    "input_context_preparation": "使用 view_image 检查已批准样张；将它作为风格参考而非内容或版式参考",
+    "handoff_rule": "子代理必须使用同一内置 image_gen 工具和 generate 模式；若不可用，返回 blocker，不得切换后端。"
+  },
+  "generation_contract": {
+    "must_use_selected_image_backend": true,
+    "must_match_sample_generation_method": true,
+    "forbidden_final_image_methods": [
+      "local drawing/rendering scripts",
+      "Pillow-generated slides",
+      "SVG/HTML/CSS/canvas screenshots",
+      "python-pptx/PptxGenJS/native PPT layout screenshots",
+      "manually composited text/image overlays"
+    ],
+    "must_return": [
+      "backend_used",
+      "selected_source",
+      "qa_note"
+    ]
+  }
+}

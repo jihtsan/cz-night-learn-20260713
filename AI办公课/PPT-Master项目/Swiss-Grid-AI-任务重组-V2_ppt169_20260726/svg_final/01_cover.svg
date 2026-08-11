@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Poster Master" data-pptx-layout="poster-cover" data-pptx-layout-name="Poster Cover">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F5F4EF" />
+  <rect id="cover-grid-rule" data-pptx-layer="layout" x="64" y="58" width="1152" height="3" fill="#121212" />
+  <rect id="cover-red-field" data-pptx-layer="layout" x="64" y="510" width="1152" height="146" fill="#E53725" />
+  <g id="cover-meta"><text x="64" y="104" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1E4ED8">03 / AI × WORK / 2026</text></g>
+  <g id="cover-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="64 150 920 245"><text fill="#121212" font-family="Arial, Microsoft YaHei, sans-serif" font-weight="700" font-size="96" x="64" y="240">不会用 AI 的人，</text><text fill="#121212" font-family="Arial, Microsoft YaHei, sans-serif" font-weight="700" font-size="96" x="64" y="352">正在被谁淘汰？</text></g>
+  <g id="cover-task"><text x="974" y="442" font-family="Arial, Microsoft YaHei, sans-serif" font-size="160" font-weight="700" fill="#E53725">任务</text></g>
+  <g id="cover-subtitle" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="92 547 1060 56"><text data-pptx-placeholder-carrier="true" x="92" y="590" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#F5F4EF">被重新定价的，先是工作里的那一段“重复任务”。</text></g>
+  <g id="cover-footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="64 678 900 20"><text data-pptx-placeholder-carrier="true" x="64" y="695" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#6A6964">常州夜校｜AI 办公课｜视觉样张 V2</text></g>
+</svg>

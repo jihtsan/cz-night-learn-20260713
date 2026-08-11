@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="workflow-loop" data-pptx-layout-name="Workflow Loop">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="workflow-left" data-pptx-layer="layout" x="72" y="72" width="216" height="520" fill="#111111"/>
+  <rect id="workflow-line" data-pptx-layer="layout" x="340" y="360" width="800" height="6" fill="#B8B8B2"/>
+  <g id="workflow-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="340 80 820 90"><text data-pptx-placeholder-carrier="true" x="340" y="140" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">真正的升级，是把 AI 接入主任务链</text></g>
+  <g id="workflow-lead" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="340 190 800 60"><text data-pptx-placeholder-carrier="true" x="340" y="232" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#E2261A">会用工具，不等于能交付结果。</text></g>
+  <g id="workflow-steps"><text x="340" y="334" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#171717"><tspan x="340" dy="0">01 让 AI 先做初稿</tspan><tspan x="560" dy="0">02 人做复核</tspan><tspan x="780" dy="0">03 异常升级</tspan><tspan x="1000" dy="0">04 结果表达</tspan></text></g>
+  <g id="workflow-side"><text x="104" y="172" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#F8F8F5"><tspan x="104" dy="0">从</tspan><tspan x="104" dy="58">初稿</tspan><tspan x="104" dy="58">走向</tspan><tspan x="104" dy="58">主任务</tspan><tspan x="104" dy="58">链。</tspan></text></g>
+  <g id="workflow-body"><text x="340" y="510" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#171717">你要能说清：业务场景、工具、流程变化、结果与复核方式。</text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜个人路线图</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">09</text></g>
+</svg>

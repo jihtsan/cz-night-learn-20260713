@@ -1,0 +1,28 @@
+{
+  "schema": "ppt-master.source_to_md.profile.v1",
+  "converter": "doc_to_md.py",
+  "conversion_type": "docx",
+  "source": {
+    "path": "/Users/joo00der/Library/Containers/com.tencent.xinWeChat/Data/Documents/xwechat_files/jihaotian1996320_e1b4/temp/RWTemp/2026-07/2d4611b43a57863a12ccf4954bf85e6c/不会用AI的人，正在被谁淘汰(1).docx",
+    "name": "不会用AI的人，正在被谁淘汰(1).docx",
+    "suffix": ".docx",
+    "kind": "file",
+    "exists": true,
+    "size_bytes": 90186
+  },
+  "outputs": {
+    "markdown": "不会用AI的人，正在被谁淘汰(1).md",
+    "asset_dir": "不会用AI的人，正在被谁淘汰(1)_files",
+    "image_manifest": "不会用AI的人，正在被谁淘汰(1)_files/image_manifest.json",
+    "image_count": 2
+  },
+  "markdown": {
+    "line_count": 227,
+    "char_count": 27839,
+    "heading_count": 0,
+    "table_count": 5,
+    "image_ref_count": 2,
+    "link_count": 26
+  },
+  "warnings": []
+}

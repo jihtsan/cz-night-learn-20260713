@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kimi K3 国产大模型优势、发展历史、技术路线、风险与应用建议调研报告">
+  <title>Kimi K3 国产大模型调研报告</title>
+  <style>
+    :root {
+      --paper: #f4f1e8;
+      --paper-2: #ebe7db;
+      --ink: #152336;
+      --muted: #5f6975;
+      --line: #c9c5b9;
+      --blue: #164b72;
+      --blue-2: #0f7690;
+      --cyan: #81d7dc;
+      --orange: #ea7b36;
+      --red: #b54a3d;
+      --green: #357a67;
+      --white: #fffef8;
+      --shadow: 0 18px 60px rgba(21, 35, 54, .12);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(129, 215, 220, .22), transparent 26rem),
+        linear-gradient(180deg, var(--paper), var(--paper-2));
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.75;
+    }
+    a { color: var(--blue-2); text-underline-offset: 3px; }
+    a:hover { color: var(--orange); }
+    .page { max-width: 1180px; margin: 0 auto; padding: 28px 28px 72px; }
+    .topline {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+      padding: 8px 0 18px; border-bottom: 1px solid var(--line);
+      color: var(--muted); font-size: 13px; letter-spacing: .08em;
+    }
+    .mark { display: flex; gap: 9px; align-items: center; font-weight: 700; color: var(--blue); }
+    .mark::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 14px 0 0 var(--cyan); margin-right: 14px; }
+    .hero {
+      position: relative; overflow: hidden; margin-top: 22px; min-height: 520px;
+      padding: 72px 64px 48px; color: var(--white); border-radius: 28px;
+      background: linear-gradient(135deg, #102b43 0%, #164b72 50%, #0f7690 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: "K3"; position: absolute; right: -28px; top: -84px;
+      font-size: 320px; line-height: 1; font-weight: 900; letter-spacing: -.12em;
+      color: rgba(255,255,255,.055); transform: rotate(-4deg); pointer-events: none;
+    }
+    .eyebrow { color: var(--cyan); font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; }
+    h1 { max-width: 860px; margin: 18px 0 20px; font-size: clamp(44px, 7vw, 82px); line-height: 1.02; letter-spacing: -.055em; }
+    .deck { max-width: 800px; margin: 0; color: rgba(255,255,255,.82); font-size: clamp(17px, 2vw, 23px); line-height: 1.55; }
+    .hero-note { max-width: 790px; margin-top: 32px; padding: 16px 20px; border-left: 4px solid var(--orange); background: rgba(3, 21, 34, .24); border-radius: 0 12px 12px 0; }
+    .hero-note strong { color: #ffd6b9; }
+    .metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 40px; }
+    .metric { padding: 18px; border: 1px solid rgba(255,255,255,.16); border-radius: 16px; background: rgba(255,255,255,.08); backdrop-filter: blur(8px); }
+    .metric b { display: block; font-size: 27px; line-height: 1.1; color: var(--white); }
+    .metric span { display: block; margin-top: 7px; color: rgba(255,255,255,.68); font-size: 12px; }
+    .toc { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 52px; }
+    .toc a { padding: 7px 13px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; color: var(--ink); background: rgba(255,255,255,.34); font-size: 13px; }
+    section { scroll-margin-top: 24px; margin: 76px 0; }
+    .section-kicker { margin: 0 0 7px; color: var(--orange); font-weight: 800; font-size: 12px; letter-spacing: .15em; text-transform: uppercase; }
+    h2 { margin: 0 0 24px; font-size: clamp(28px, 4vw, 45px); line-height: 1.18; letter-spacing: -.035em; }
+    h3 { margin: 0 0 9px; font-size: 20px; line-height: 1.35; }
+    p { margin: 0 0 14px; }
+    .lead { max-width: 900px; font-size: 19px; color: #344251; }
+    .callout { margin: 26px 0; padding: 20px 24px; border-radius: 16px; background: #dcebed; border-left: 5px solid var(--blue-2); }
+    .callout.warning { background: #f2dfd1; border-left-color: var(--orange); }
+    .callout p:last-child { margin-bottom: 0; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+    .card { padding: 24px; background: rgba(255,254,248,.72); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 8px 24px rgba(21,35,54,.05); }
+    .card .num { display: inline-grid; place-items: center; width: 35px; height: 35px; margin-bottom: 17px; border-radius: 10px; color: var(--white); background: var(--blue); font-weight: 800; }
+    .card p { color: var(--muted); font-size: 14px; }
+    .tag { display: inline-block; margin-top: 8px; padding: 3px 8px; border-radius: 999px; background: #e7e2d4; color: var(--muted); font-size: 11px; }
+    .evidence-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 22px; margin-top: 28px; }
+    .panel { padding: 26px; border: 1px solid var(--line); border-radius: 20px; background: rgba(255,254,248,.7); }
+    .rank-row { display: grid; grid-template-columns: 128px 1fr 54px; gap: 12px; align-items: center; margin: 18px 0; }
+    .bar { height: 11px; background: #d8d5cb; border-radius: 999px; overflow: hidden; }
+    .bar > i { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+    .rank-row strong { text-align: right; }
+    .big-score { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; margin-top: 20px; }
+    .big-score b { display: grid; place-items: center; width: 98px; height: 98px; border-radius: 50%; border: 13px solid var(--cyan); background: var(--blue); color: white; font-size: 34px; }
+    .big-score p { color: var(--muted); }
+    .timeline { position: relative; margin-top: 34px; padding-left: 28px; }
+    .timeline::before { content: ""; position: absolute; left: 6px; top: 9px; bottom: 14px; width: 2px; background: linear-gradient(var(--blue), var(--cyan), var(--orange)); }
+    .event { position: relative; display: grid; grid-template-columns: 120px 1fr; gap: 22px; padding: 0 0 28px; }
+    .event::before { content: ""; position: absolute; left: -27px; top: 8px; width: 12px; height: 12px; border-radius: 50%; background: var(--paper); border: 3px solid var(--blue-2); }
+    .event time { font-weight: 800; color: var(--blue); }
+    .event p { margin: 4px 0 0; color: var(--muted); }
+    .flow-wrap { overflow-x: auto; margin-top: 28px; padding: 10px; border-radius: 22px; background: #102b43; box-shadow: var(--shadow); }
+    .flow-wrap svg { display: block; min-width: 980px; width: 100%; height: auto; }
+    .flow-legend { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 13px; color: var(--muted); font-size: 12px; }
+    .flow-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: 6px; border-radius: 3px; vertical-align: -1px; background: var(--blue); }
+    .flow-legend span:nth-child(2)::before { background: var(--orange); }
+    .flow-legend span:nth-child(3)::before { background: var(--green); }
+    table { width: 100%; border-collapse: collapse; margin-top: 24px; background: rgba(255,254,248,.55); }
+    th, td { padding: 15px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { background: rgba(22,75,114,.08); color: var(--blue); font-size: 13px; }
+    td { font-size: 14px; }
+    .status { display: inline-block; padding: 2px 8px; border-radius: 999px; white-space: nowrap; font-size: 11px; font-weight: 800; }
+    .status.good { color: #1f5947; background: #d6e7df; }
+    .status.watch { color: #7b421e; background: #f3dccd; }
+    .status.limit { color: #7d2d2d; background: #edd1ce; }
+    .decision { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 28px; }
+    .decision > div { padding: 22px; border-radius: 18px; border-top: 6px solid var(--green); background: rgba(255,254,248,.75); }
+    .decision > div:nth-child(2) { border-top-color: var(--orange); }
+    .decision > div:nth-child(3) { border-top-color: var(--red); }
+    .decision ul { margin: 12px 0 0; padding-left: 19px; color: var(--muted); font-size: 14px; }
+    .source-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px 28px; margin: 26px 0 0; padding: 0; list-style: none; counter-reset: sources; }
+    .source-list li { position: relative; padding-left: 34px; font-size: 13px; color: var(--muted); counter-increment: sources; }
+    .source-list li::before { content: counter(sources); position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 23px; height: 23px; border-radius: 50%; color: white; background: var(--blue); font-size: 11px; font-weight: 800; }
+    sup a { text-decoration: none; font-weight: 800; }
+    footer { margin-top: 74px; padding-top: 22px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 28px; color: var(--muted); font-size: 12px; }
+    @media (max-width: 860px) {
+      .page { padding: 16px 16px 48px; }
+      .hero { min-height: auto; padding: 48px 28px 32px; border-radius: 20px; }
+      .hero::before { font-size: 210px; top: -24px; }
+      .metrics, .cards, .decision { grid-template-columns: repeat(2, 1fr); }
+      .evidence-grid { grid-template-columns: 1fr; }
+      .source-list { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .topline { align-items: flex-start; flex-direction: column; }
+      .metrics, .cards, .decision { grid-template-columns: 1fr; }
+      .event { grid-template-columns: 1fr; gap: 3px; }
+      .rank-row { grid-template-columns: 105px 1fr 45px; gap: 8px; }
+      footer { flex-direction: column; }
+    }
+    @media print {
+      body { background: white; color: #111; }
+      .page { max-width: none; padding: 0; }
+      .hero { box-shadow: none; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .toc { display: none; }
+      section { margin: 42px 0; break-inside: avoid; }
+      a { color: inherit; text-decoration: none; }
+      .card, .panel, .flow-wrap { break-inside: avoid; box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="topline">
+      <div class="mark">MOONSHOT AI / MODEL RESEARCH</div>
+      <div>研究快照 · 2026-07-22 · Asia/Shanghai</div>
+    </div>
+
+    <header class="hero">
+      <div class="eyebrow">China frontier model brief / No. 01</div>
+      <h1>Kimi K3<br>国产大模型调研报告</h1>
+      <p class="deck">从“长文本助手”到“开放前沿智能”：K3 的核心优势、技术路线、发展历史、真实边界与企业选型建议。</p>
+      <div class="hero-note">
+        <strong>口径说明：</strong>本报告将用户所称“国产 K3 模型”理解为北京月之暗面（Moonshot AI）于 2026 年 7 月 16 日发布的 <strong>Kimi K3</strong>。截至本报告日期，产品与 API 已上线，但完整模型权重仍计划于 7 月 27 日发布，因此当前更准确的表述是“承诺开放权重的前沿模型”。<sup><a href="#s1">[1]</a></sup>
+      </div>
+      <div class="metrics" aria-label="Kimi K3 核心指标">
+        <div class="metric"><b>2.8T</b><span>总参数规模</span></div>
+        <div class="metric"><b>1M</b><span>Token 上下文窗口</span></div>
+        <div class="metric"><b>16 / 896</b><span>每 Token 激活专家数</span></div>
+        <div class="metric"><b>57</b><span>AA Intelligence Index</span></div>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="报告目录">
+      <a href="#summary">结论摘要</a><a href="#advantages">核心优势</a><a href="#history">发展历史</a><a href="#flow">流程图</a><a href="#evidence">证据与对比</a><a href="#risks">局限风险</a><a href="#decision">选型建议</a><a href="#sources">资料来源</a>
+    </nav>
+
+    <section id="summary">
+      <p class="section-kicker">Executive summary</p>
+      <h2>一句话结论：K3 的真正突破，不只是“参数更大”</h2>
+      <p class="lead">Kimi K3 把月之暗面过去三年的长上下文、稀疏 MoE、推理、视觉理解和 Agent 工程积累，组合成一个面向长时间任务的前沿模型。它最有竞争力的场景是：大型代码库、深度研究、复杂办公交付物、视觉参与的软件工程，以及需要多轮工具调用的长链路任务。</p>
+      <div class="callout">
+        <p><strong>综合判断：</strong>K3 已进入全球前沿模型梯队。独立评测中，Artificial Analysis Intelligence Index 得分 57；Code Arena 的 WebDev 总榜以 1679±17 暂列第一。但它并非所有维度都领先：官方承认整体体验仍落后于最强闭源模型，第三方还测得其速度偏慢、输出偏长、非缓存价格并不低。<sup><a href="#s8">[8]</a></sup><sup><a href="#s9">[9]</a></sup></p>
+      </div>
+    </section>
+
+    <section id="advantages">
+      <p class="section-kicker">Advantages</p>
+      <h2>六项核心优势</h2>
+      <div class="cards">
+        <article class="card"><div class="num">01</div><h3>前沿级综合能力</h3><p>第三方 Intelligence Index 得分 57，处于第一梯队；在 Agentic 知识工作与前端生成中尤其强。优势来自“模型能力 + 工具链 + 长时执行”，而不只是单轮问答。</p><span class="tag">第三方证据较强</span></article>
+        <article class="card"><div class="num">02</div><h3>长程 Agent 与代码执行</h3><p>面向大型仓库、终端工具、迭代调试和跨小时任务优化。官方案例覆盖 GPU 内核、编译器、芯片设计、科学计算与前端生成，体现跨工具闭环能力。</p><span class="tag">适合复杂工程任务</span></article>
+        <article class="card"><div class="num">03</div><h3>1M 上下文 + 原生视觉</h3><p>百万 Token 让超长代码库、文件集与历史轨迹进入同一任务窗口；原生视觉使模型可以基于截图、图表和界面结果继续修改代码，形成“看—改—验证”循环。</p><span class="tag">长文档 / 多文件</span></article>
+        <article class="card"><div class="num">04</div><h3>高稀疏 MoE 架构</h3><p>总参数 2.8T，但每个 Token 仅路由到 896 个专家中的 16 个。KDA、Attention Residuals 与 Stable LatentMoE 共同服务于长序列、深层信息流与稀疏扩展。</p><span class="tag">架构创新</span></article>
+        <article class="card"><div class="num">05</div><h3>缓存场景成本突出</h3><p>官方 API 的缓存命中输入价为 0.30 美元/百万 Token，较未命中输入价 3 美元低 90%。对反复读取同一代码库、知识库的任务，缓存收益明显。</p><span class="tag">依赖高缓存命中率</span></article>
+        <article class="card"><div class="num">06</div><h3>开放生态潜力</h3><p>完整权重计划发布，并与 vLLM 社区、推理伙伴协作；若按期开放，将为国产模型的私有化、微调和推理优化提供新的前沿底座。但报告日尚不能视为既成事实。</p><span class="tag">截至 7 月 22 日仍待兑现</span></article>
+      </div>
+    </section>
+
+    <section id="history">
+      <p class="section-kicker">Evolution</p>
+      <h2>发展历史：三条技术线在 K3 汇合</h2>
+      <p class="lead">K3 不是一次孤立的“大参数发布”。它沿着三条路线连续演化：长上下文与推理基础设施、开放 MoE 模型、能使用工具并持续执行的 Agent。</p>
+      <div class="timeline">
+        <article class="event"><time>2023 年初</time><div><h3>月之暗面成立</h3><p>团队聚集 Transformer-XL、RoPE、Group Normalization、ShuffleNet 等技术背景，明确以基础模型和“能量到智能”的效率为长期方向。<sup><a href="#s2">[2]</a></sup></p></div></article>
+        <article class="event"><time>2023 年 10 月</time><div><h3>Kimi 从长文本切入</h3><p>首代产品以约 20 万汉字长上下文建立差异化，围绕论文、财报、合同与多文档阅读形成产品心智。</p></div></article>
+        <article class="event"><time>2024 年 3–6 月</time><div><h3>长上下文扩容，Mooncake 基础设施成型</h3><p>Kimi 开启 200 万字上下文内测；随后 Mooncake 论文披露 KVCache 中心化的分离式推理架构，真实负载下可承载更多长上下文请求。<sup><a href="#s3">[3]</a></sup><sup><a href="#s4">[4]</a></sup></p></div></article>
+        <article class="event"><time>2025 年 1 月</time><div><h3>Kimi k1.5：强化学习与多模态推理</h3><p>技术报告把长上下文强化学习、推理扩展和多模态能力结合，奠定“会想”的技术路线。<sup><a href="#s5">[5]</a></sup></p></div></article>
+        <article class="event"><time>2025 年 7 月</time><div><h3>Kimi K2：1T MoE 与开放 Agentic Intelligence</h3><p>32B 激活 / 1T 总参数，开放 Base 与 Instruct 权重；模型定位从回答问题转向理解工具并执行任务。<sup><a href="#s6">[6]</a></sup></p></div></article>
+        <article class="event"><time>2025 年 11 月</time><div><h3>K2 Thinking：边推理边调用工具</h3><p>强调测试时扩展，可连续执行约 200–300 次工具调用，形成“思考—搜索—浏览—代码—再思考”的长链路。<sup><a href="#s7">[7]</a></sup></p></div></article>
+        <article class="event"><time>2026 年 1–4 月</time><div><h3>K2.5 / K2.6：视觉 Agent 与群体协作</h3><p>K2.5 走向原生多模态与最多 100 个子 Agent；K2.6 强化长程编程、持续执行，并把 Agent Swarm 扩展至最多 300 个子 Agent。<sup><a href="#s10">[10]</a></sup><sup><a href="#s11">[11]</a></sup></p></div></article>
+        <article class="event"><time>2026 年 6 月</time><div><h3>K2.7 Code：专项优化长程编程</h3><p>在 1T MoE 基座上提升长上下文指令遵循，并把平均思考 Token 降低约 30%，为 K3 的代码 Agent 产品化积累经验。<sup><a href="#s12">[12]</a></sup></p></div></article>
+        <article class="event"><time>2026 年 7 月 16 日</time><div><h3>Kimi K3 发布</h3><p>2.8T 总参数、1M 上下文、原生视觉；产品、Kimi Work、Kimi Code 和 API 同步上线。完整权重与技术报告计划后续发布。<sup><a href="#s1">[1]</a></sup></p></div></article>
+      </div>
+    </section>
+
+    <section id="flow">
+      <p class="section-kicker">Process diagram</p>
+      <h2>K3 复杂任务工作流程图</h2>
+      <p class="lead">下图把“模型架构”与“Agent 执行”放在同一条链路上：K3 的优势发生在持续循环中——理解大上下文、选择专家、调用工具、观察结果、纠错，再把产物交付。</p>
+      <div class="flow-wrap">
+        <svg viewBox="0 0 1160 610" role="img" aria-labelledby="flowTitle flowDesc" xmlns="http://www.w3.org/2000/svg">
+          <title id="flowTitle">Kimi K3 复杂任务执行流程</title>
+          <desc id="flowDesc">任务和多模态输入进入百万 Token 上下文，经 KDA 与 Attention Residuals 处理，MoE 路由器选择 16 个专家，模型规划并调用搜索、浏览器、终端和办公工具，观察验证后循环纠错，最后交付代码、报告、表格、幻灯片或网页。</desc>
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#1a5c86"/><stop offset="1" stop-color="#14849a"/></linearGradient>
+            <linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#d9652b"/><stop offset="1" stop-color="#ef9b4a"/></linearGradient>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-color="#071b2a" flood-opacity=".35"/></filter>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#81d7dc"/></marker>
+            <marker id="arrowOrange" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#ef9b4a"/></marker>
+          </defs>
+          <rect width="1160" height="610" rx="22" fill="#102b43"/>
+          <text x="44" y="50" fill="#81d7dc" font-size="13" font-weight="700" letter-spacing="2">INPUT &amp; CONTEXT</text>
+          <text x="410" y="50" fill="#81d7dc" font-size="13" font-weight="700" letter-spacing="2">MODEL CORE</text>
+          <text x="790" y="50" fill="#ef9b4a" font-size="13" font-weight="700" letter-spacing="2">AGENT LOOP</text>
+          <g filter="url(#shadow)">
+            <rect x="40" y="86" width="255" height="116" rx="18" fill="#f7f3e8"/>
+            <text x="66" y="122" fill="#164b72" font-size="18" font-weight="800">复杂任务输入</text>
+            <text x="66" y="151" fill="#4d5a68" font-size="13">文本 · 代码库 · 图像 · 表格</text>
+            <text x="66" y="176" fill="#4d5a68" font-size="13">历史轨迹 · 工具返回结果</text>
+            <rect x="40" y="250" width="255" height="116" rx="18" fill="url(#g1)"/>
+            <text x="66" y="288" fill="#fff" font-size="18" font-weight="800">1M Token 上下文</text>
+            <text x="66" y="317" fill="#d9f6f5" font-size="13">长文档与仓库级信息进入同一窗口</text>
+            <text x="66" y="342" fill="#d9f6f5" font-size="13">保留思考历史，维持长程一致性</text>
+          </g>
+          <path d="M168 202 V238" stroke="#81d7dc" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <g filter="url(#shadow)">
+            <rect x="374" y="86" width="320" height="116" rx="18" fill="#f7f3e8"/>
+            <text x="400" y="120" fill="#164b72" font-size="18" font-weight="800">KDA + Attention Residuals</text>
+            <text x="400" y="150" fill="#4d5a68" font-size="13">高效处理长序列，选择性检索深层表示</text>
+            <text x="400" y="176" fill="#4d5a68" font-size="13">改善序列长度与网络深度上的信息流</text>
+            <rect x="374" y="250" width="320" height="116" rx="18" fill="url(#g1)"/>
+            <text x="400" y="286" fill="#fff" font-size="18" font-weight="800">Stable LatentMoE 路由</text>
+            <text x="400" y="317" fill="#d9f6f5" font-size="13">896 个专家池 → 每 Token 激活 16 个</text>
+            <text x="400" y="342" fill="#d9f6f5" font-size="13">大容量知识 + 稀疏计算</text>
+          </g>
+          <path d="M295 308 H360" stroke="#81d7dc" stroke-width="3" marker-end="url(#arrow)"/>
+          <path d="M534 202 V238" stroke="#81d7dc" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <g filter="url(#shadow)">
+            <rect x="782" y="86" width="330" height="116" rx="18" fill="url(#g2)"/>
+            <text x="808" y="122" fill="#fff" font-size="18" font-weight="800">① 规划与任务分解</text>
+            <text x="808" y="152" fill="#fff4e9" font-size="13">建立目标、步骤、约束与验证条件</text>
+            <text x="808" y="177" fill="#fff4e9" font-size="13">选择下一步工具和执行策略</text>
+            <rect x="782" y="250" width="330" height="116" rx="18" fill="#f7f3e8"/>
+            <text x="808" y="286" fill="#164b72" font-size="18" font-weight="800">② 工具调用与行动</text>
+            <text x="808" y="317" fill="#4d5a68" font-size="13">搜索 / 浏览 / 终端 / 代码 / 文档 / 表格</text>
+            <text x="808" y="342" fill="#4d5a68" font-size="13">执行真实操作并获得环境反馈</text>
+            <rect x="782" y="414" width="330" height="116" rx="18" fill="#357a67"/>
+            <text x="808" y="450" fill="#fff" font-size="18" font-weight="800">③ 观察、验证与纠错</text>
+            <text x="808" y="480" fill="#e7fff7" font-size="13">测试结果 · 截图 · 报错 · 数据校验</text>
+            <text x="808" y="505" fill="#e7fff7" font-size="13">未达标则带着新证据返回规划阶段</text>
+          </g>
+          <path d="M694 308 H768" stroke="#ef9b4a" stroke-width="3" marker-end="url(#arrowOrange)"/>
+          <path d="M947 202 V238" stroke="#ef9b4a" stroke-width="3" marker-end="url(#arrowOrange)"/>
+          <path d="M947 366 V402" stroke="#ef9b4a" stroke-width="3" marker-end="url(#arrowOrange)"/>
+          <path d="M1113 471 C1145 471,1145 144,1125 144" fill="none" stroke="#ef9b4a" stroke-width="3" stroke-dasharray="8 7" marker-end="url(#arrowOrange)"/>
+
+          <g filter="url(#shadow)">
+            <rect x="40" y="438" width="654" height="92" rx="18" fill="#f7f3e8"/>
+            <text x="66" y="474" fill="#164b72" font-size="18" font-weight="800">交付物</text>
+            <text x="66" y="504" fill="#4d5a68" font-size="14">代码与应用　·　深度研究报告　·　表格 / 幻灯片　·　网页与可视化　·　工程优化结果</text>
+          </g>
+          <path d="M782 491 H708" stroke="#81d7dc" stroke-width="3" marker-end="url(#arrow)"/>
+          <text x="40" y="574" fill="#9cb5c4" font-size="12">关键：总参数决定容量上限；每 Token 激活专家与缓存/推理架构决定实际计算和服务效率。</text>
+        </svg>
+      </div>
+      <div class="flow-legend"><span>信息与模型计算</span><span>Agent 决策与执行</span><span>验证与纠错</span></div>
+    </section>
+
+    <section id="evidence">
+      <p class="section-kicker">Evidence</p>
+      <h2>“强”在哪里：独立证据与厂商证据分开看</h2>
+      <div class="evidence-grid">
+        <div class="panel">
+          <h3>同一第三方指数下的 Kimi 系列能力跃迁</h3>
+          <p style="color:var(--muted);font-size:13px">Artificial Analysis 当前模型页数据；专用代码模型 K2.7 不宜直接视为通用能力倒退。</p>
+          <div class="rank-row"><span>Kimi K2.5</span><div class="bar"><i style="width:58%"></i></div><strong>35</strong></div>
+          <div class="rank-row"><span>Kimi K2.7 Code</span><div class="bar"><i style="width:70%"></i></div><strong>42</strong></div>
+          <div class="rank-row"><span>Kimi K2.6</span><div class="bar"><i style="width:73%"></i></div><strong>44</strong></div>
+          <div class="rank-row"><span>Kimi K3</span><div class="bar"><i style="width:95%"></i></div><strong>57</strong></div>
+          <p style="margin-top:20px;font-size:13px">K3 相比 K2.6 提升 13 分，说明跃迁并非仅来自参数标签；但指数由多个基准合成，不能替代企业自身任务集测试。<sup><a href="#s8">[8]</a></sup></p>
+        </div>
+        <div class="panel">
+          <h3>当前最强信号：长程知识工作</h3>
+          <div class="big-score"><b>1543</b><div><strong>AA‑Briefcase Elo</strong><p>在私有、真实文件驱动的知识工作任务上仅次于 Claude Fable 5（1574），较 K2.6 提升 727 Elo。</p></div></div>
+          <div class="callout" style="margin-bottom:0"><p><strong>为什么重要：</strong>该评测要求产出表格、演示文稿和 UI 原型，同时考察正确性、分析质量与呈现质量，比单轮知识问答更接近企业办公。<sup><a href="#s13">[13]</a></sup></p></div>
+        </div>
+      </div>
+      <table aria-label="Kimi K3 关键证据表">
+        <thead><tr><th>维度</th><th>结果</th><th>证据类型</th><th>如何解读</th></tr></thead>
+        <tbody>
+          <tr><td>WebDev 前端生成</td><td>1679±17，榜首（Preliminary）</td><td><span class="status good">独立公开榜</span></td><td>用户盲评信号强，但“初步排名”仍可能随票数变化。<sup><a href="#s9">[9]</a></sup></td></tr>
+          <tr><td>综合智能</td><td>AA Index 57，全球前沿梯队</td><td><span class="status good">独立复测</span></td><td>与顶级模型接近，但不是所有子项都领先。</td></tr>
+          <tr><td>架构扩展效率</td><td>相对 K2 约 2.5×</td><td><span class="status watch">厂商声明</span></td><td>定义、训练预算与完整技术报告仍需进一步核验。</td></tr>
+          <tr><td>长程工程案例</td><td>内核、编译器、芯片、科研工作流</td><td><span class="status watch">厂商案例</span></td><td>展示能力上限，不等于普通用户每次可稳定复现。</td></tr>
+          <tr><td>开放状态</td><td>权重计划 7 月 27 日发布</td><td><span class="status limit">尚未完成</span></td><td>截至 7 月 22 日仍按 API/产品模型评估，许可证与部署成本待权重落地后确认。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="risks">
+      <p class="section-kicker">Risks &amp; limitations</p>
+      <h2>不可忽略的六个边界</h2>
+      <table aria-label="Kimi K3 风险与应对表">
+        <thead><tr><th>边界</th><th>已知事实</th><th>建议</th></tr></thead>
+        <tbody>
+          <tr><td><strong>权重尚未落地</strong></td><td>官方承诺 7 月 27 日发布完整权重；报告日第三方仍将其标为 Proprietary。</td><td>需要私有化时，把许可证、权重体积、推理框架兼容性列为前置验收项。</td></tr>
+          <tr><td><strong>部署门槛高</strong></td><td>官方建议使用至少 64 个加速器的超节点；2.8T 模型不属于常规单机本地部署范畴。</td><td>中小团队优先 API；私有部署先做总拥有成本与容量规划。</td></tr>
+          <tr><td><strong>速度与输出成本</strong></td><td>第三方实测约 36.1 Token/s，输出偏长；未缓存输入 3 美元、输出 15 美元/百万 Token。</td><td>设置输出预算、缓存策略、任务路由；简单任务继续使用小模型。</td></tr>
+          <tr><td><strong>评测可比性</strong></td><td>官方基准混用了 KimiCode、Claude Code、Codex 等不同 harness，部分对手有 fallback 或硬件调整。</td><td>不要把发布表格当成严格同条件联赛；必须用自己的任务、工具与权限复测。</td></tr>
+          <tr><td><strong>思考历史敏感</strong></td><td>官方提示：若工具框架没有完整回传历史 reasoning，或会话中途切换模型，质量可能明显波动。</td><td>使用已验证的 Kimi Code/兼容框架，避免任务中途换模。</td></tr>
+          <tr><td><strong>过度主动</strong></td><td>为长程任务训练后，K3 可能在意图不清时替用户做出意外决定；官方也承认总体 UX 尚有差距。</td><td>系统提示写明边界、审批点、不可逆操作和交付验收标准。</td></tr>
+        </tbody>
+      </table>
+      <div class="callout warning"><p><strong>现实压力测试：</strong>发布后需求快速涌入，月之暗面曾暂停新订阅以保护现有用户体验，说明“模型能力强”不等于“服务容量已成熟”。企业采购时应把并发、限流、SLA、数据驻留和故障降级一起评估。<sup><a href="#s14">[14]</a></sup></p></div>
+    </section>
+
+    <section id="decision">
+      <p class="section-kicker">Decision guide</p>
+      <h2>企业选型：先看任务形态，再看排行榜</h2>
+      <div class="decision">
+        <div><h3>优先试用 K3</h3><ul><li>大型代码库与跨文件重构</li><li>深度研究与多文件知识工作</li><li>截图参与的前端 / CAD / 游戏开发</li><li>需要长时间、多工具闭环的任务</li></ul></div>
+        <div><h3>先做小规模 POC</h3><ul><li>大量重复上下文、可从缓存获益</li><li>办公交付物质量比即时响应更重要</li><li>计划未来私有化，但可先接受 API</li><li>对国产供应链与开放权重有要求</li></ul></div>
+        <div><h3>暂不建议直接替换</h3><ul><li>高并发、低延迟的短问答</li><li>成本极敏感且缓存命中率低</li><li>单机或少量 GPU 私有部署</li><li>高风险操作却缺少审批与审计</li></ul></div>
+      </div>
+      <div class="callout"><p><strong>推荐验证方法：</strong>用 30–50 个真实任务建立内部评测集，分别记录一次成功率、人工接管次数、总 Token、墙钟时间、工具失败恢复率与最终交付物质量。K3 的长项应体现在“更少人类干预地完成整件事”，而不仅是某次回答更漂亮。</p></div>
+    </section>
+
+    <section id="sources">
+      <p class="section-kicker">Sources</p>
+      <h2>主要资料来源</h2>
+      <p class="lead">优先采用官方技术博客、论文和独立评测；厂商自测与第三方复测在正文中已明确区分。网页信息均核对至 2026 年 7 月 22 日。</p>
+      <ol class="source-list">
+        <li id="s1"><a href="https://www.kimi.com/blog/kimi-k3" target="_blank" rel="noreferrer">Kimi K3: Open Frontier Intelligence</a> — 月之暗面官方发布、架构、价格、限制与开放计划。</li>
+        <li id="s2"><a href="https://www.moonshot.ai/about" target="_blank" rel="noreferrer">Moonshot AI About</a> — 公司成立时间与团队技术背景。</li>
+        <li id="s3"><a href="https://www.nbd.com.cn/articles/2024-03-18/3285223.html" target="_blank" rel="noreferrer">每日经济新闻：Kimi 200 万字上下文内测</a> — 2024 年长上下文产品节点。</li>
+        <li id="s4"><a href="https://arxiv.org/abs/2407.00079" target="_blank" rel="noreferrer">Mooncake: A KVCache-centric Disaggregated Architecture</a> — Kimi 长上下文推理基础设施论文。</li>
+        <li id="s5"><a href="https://arxiv.org/abs/2501.12599" target="_blank" rel="noreferrer">Kimi k1.5: Scaling Reinforcement Learning with LLMs</a> — 强化学习与多模态推理技术报告。</li>
+        <li id="s6"><a href="https://www.kimi.com/blog/kimi-k2" target="_blank" rel="noreferrer">Kimi K2: Open Agentic Intelligence</a> — 1T MoE、开放权重与工具使用路线。</li>
+        <li id="s7"><a href="https://www.kimi.com/blog/kimi-k2-thinking" target="_blank" rel="noreferrer">Introducing Kimi K2 Thinking</a> — 长思考与 200–300 次连续工具调用。</li>
+        <li id="s8"><a href="https://artificialanalysis.ai/models/kimi-k3" target="_blank" rel="noreferrer">Artificial Analysis: Kimi K3</a> — 综合智能、速度、价格、上下文与开放状态。</li>
+        <li id="s9"><a href="https://arena.ai/leaderboard/code/webdev?rankBy=labs" target="_blank" rel="noreferrer">Code Arena WebDev Leaderboard</a> — 前端生成盲评排名。</li>
+        <li id="s10"><a href="https://www.kimi.com/zh-cn/blog/kimi-k2-5" target="_blank" rel="noreferrer">Kimi K2.5: Visual Agentic Intelligence</a> — 原生多模态与 Agent Swarm。</li>
+        <li id="s11"><a href="https://www.kimi.com/blog/kimi-k2-6" target="_blank" rel="noreferrer">Kimi K2.6: Advancing Open-Source Coding</a> — 长程编程与 Agent Swarm 扩展。</li>
+        <li id="s12"><a href="https://www.kimi.com/resources/kimi-k2-7-code" target="_blank" rel="noreferrer">Kimi K2.7 Code</a> — 长程代码专项模型与推理效率。</li>
+        <li id="s13"><a href="https://artificialanalysis.ai/articles/kimi-k3-agentic-knowledge-benchmark" target="_blank" rel="noreferrer">Artificial Analysis: K3 on AA‑Briefcase</a> — 真实知识工作独立评测。</li>
+        <li id="s14"><a href="https://apnews.com/article/4c66a2e0f557ce79d3cc2d769c9a6226" target="_blank" rel="noreferrer">AP: Kimi K3 demand overwhelms capacity</a> — 发布初期订阅与服务容量情况。</li>
+      </ol>
+    </section>
+
+    <footer>
+      <span>研究主题：Kimi K3 国产大模型 · 优势 / 历史 / 技术流程 / 风险 / 选型</span>
+      <span>本报告不构成采购或投资建议；模型、价格与排行榜可能持续更新。</span>
+    </footer>
+  </main>
+</body>
+</html>
