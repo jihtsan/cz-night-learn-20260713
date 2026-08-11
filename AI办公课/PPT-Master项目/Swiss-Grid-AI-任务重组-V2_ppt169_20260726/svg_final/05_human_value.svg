@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Poster Master" data-pptx-layout="human-value" data-pptx-layout-name="Human Value">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F5F4EF"/>
+  <rect id="human-dark-bg" data-pptx-layer="slide" x="0" y="0" width="1280" height="720" fill="#121212"/>
+  <rect id="human-red-block" data-pptx-layer="layout" x="64" y="58" width="286" height="3" fill="#E53725"/>
+  <rect id="human-v1" data-pptx-layer="layout" x="640" y="202" width="2" height="330" fill="#6A6964"/>
+  <rect id="human-h1" data-pptx-layer="layout" x="64" y="368" width="1152" height="2" fill="#6A6964"/>
+  <g id="human-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="64 86 1050 82"><text data-pptx-placeholder-carrier="true" x="64" y="148" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">人的价值，转向高判断密度区域</text></g>
+  <g id="human-label"><text x="1100" y="104" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1E4ED8">05 / 12</text></g>
+  <g id="human-words"><text x="64" y="326" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">判断</text><text x="686" y="326" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#E53725">责任</text><text x="64" y="492" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">沟通</text><text x="686" y="492" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">协作</text></g>
+  <g id="human-caption"><text x="64" y="590" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#F5F4EF">AI 可以给出初稿；</text><text x="350" y="590" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#E53725">谁来判断、谁来负责，仍然是人。</text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="64 678 900 20"><text data-pptx-placeholder-carrier="true" x="64" y="695" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#C9C7C0">来源：用户提供研究文档｜人的不可替代性来自高质量判断</text></g>
+</svg>

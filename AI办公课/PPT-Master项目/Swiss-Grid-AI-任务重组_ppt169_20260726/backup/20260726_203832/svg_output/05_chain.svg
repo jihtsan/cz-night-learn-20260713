@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="chain-strip" data-pptx-layout-name="Chain Strip">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="chain-blue-band" data-pptx-layer="layout" x="0" y="0" width="1280" height="94" fill="#0057FF"/>
+  <rect id="chain-red-rule" data-pptx-layer="layout" x="72" y="198" width="1136" height="6" fill="#E2261A"/>
+  <g id="chain-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="72 112 1080 80"><text data-pptx-placeholder-carrier="true" x="72" y="164" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">自动化任务会沿着一条组织链条传导</text></g>
+  <g id="chain-figure" data-pptx-placeholder="picture" data-pptx-placeholder-bounds="316 242 648 150"><image data-pptx-placeholder-carrier="true" href="../images/image_001.png" x="316" y="296" width="648" height="84" preserveAspectRatio="xMidYMid meet"/></g>
+  <g id="chain-body" data-pptx-placeholder="body" data-pptx-placeholder-bounds="72 468 1120 122"><text data-pptx-placeholder-carrier="true" x="72" y="514" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" fill="#171717"><tspan x="72" dy="0">模板化任务被接管 → 入门训练价值被抽空 → 留岗者门槛提高 → 岗位变成“少人、强复核”。</tspan><tspan x="72" dy="54">最明显的场景：客服、文职、初级内容与初级知识工作。</tspan></text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜原文流程图与替代路径说明</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">05</text></g>
+</svg>

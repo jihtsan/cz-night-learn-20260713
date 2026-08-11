@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="task-matrix" data-pptx-layout-name="Task Matrix">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="task-blue-band" data-pptx-layer="layout" x="72" y="58" width="214" height="604" fill="#0057FF"/>
+  <rect id="task-grid-v" data-pptx-layer="layout" x="610" y="260" width="2" height="330" fill="#B8B8B2"/>
+  <rect id="task-grid-h" data-pptx-layer="layout" x="330" y="425" width="808" height="2" fill="#B8B8B2"/>
+  <g id="task-label"><text x="104" y="105" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#F8F8F5">03 / 12</text></g>
+  <g id="task-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="330 72 800 130"><text data-pptx-placeholder-carrier="true" x="330" y="132" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#111111">最先承压的是“可标准化”的信息任务</text></g>
+  <g id="task-lead" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="330 180 770 62"><text data-pptx-placeholder-carrier="true" x="330" y="218" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#E2261A">六个关键词，正在抽走初级岗位的训练价值。</text></g>
+  <g id="task-list"><text x="330" y="335" font-family="Arial, Microsoft YaHei, sans-serif" font-size="32" font-weight="700" fill="#171717"><tspan x="330" dy="0">01 录入</tspan><tspan x="660" dy="0">02 汇总</tspan><tspan x="330" dy="112">03 改写</tspan><tspan x="660" dy="0">04 检索</tspan><tspan x="330" dy="112">05 分流</tspan><tspan x="660" dy="0">06 初稿</tspan></text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 670 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#60615F">来源：用户提供研究文档｜岗位与任务的变化清单</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#0057FF">03</text></g>
+</svg>

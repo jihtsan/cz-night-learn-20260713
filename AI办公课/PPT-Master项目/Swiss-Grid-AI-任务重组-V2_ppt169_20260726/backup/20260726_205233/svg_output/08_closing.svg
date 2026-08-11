@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Poster Master" data-pptx-layout="closing-page" data-pptx-layout-name="Closing Page">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F5F4EF"/>
+  <rect id="closing-dark-bg" data-pptx-layer="slide" x="0" y="0" width="1280" height="720" fill="#121212"/>
+  <rect id="closing-top" data-pptx-layer="layout" x="64" y="58" width="1152" height="3" fill="#F5F4EF"/>
+  <rect id="closing-red-line" data-pptx-layer="layout" x="64" y="355" width="748" height="14" fill="#E53725"/>
+  <rect id="closing-blue-block" data-pptx-layer="layout" x="1048" y="510" width="168" height="146" fill="#1E4ED8"/>
+  <g id="closing-label"><text x="64" y="104" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#1E4ED8">08 / 12 — AI × WORK</text></g>
+  <g id="closing-main"><text x="64" y="258" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">被替代的，</text><text x="64" y="342" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#E53725">是低判断密度任务。</text><text x="64" y="450" font-family="Arial, Microsoft YaHei, sans-serif" font-size="64" font-weight="700" fill="#F5F4EF">不是人的全部价值。</text></g>
+  <g id="closing-call"><text x="64" y="584" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" font-weight="700" fill="#F5F4EF">从一项高频任务开始。</text><text x="64" y="626" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" fill="#C9C7C0">先拆解，再交给 AI；先复核，再改变流程。</text></g>
+  <g id="footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="64 678 900 20"><text data-pptx-placeholder-carrier="true" x="64" y="695" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#C9C7C0">常州夜校 003｜PPT × Skill｜2026</text></g>
+</svg>

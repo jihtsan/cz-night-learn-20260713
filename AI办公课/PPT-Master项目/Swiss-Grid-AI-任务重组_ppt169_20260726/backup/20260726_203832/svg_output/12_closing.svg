@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720" data-pptx-master="master-default" data-pptx-master-name="Swiss Grid Master" data-pptx-layout="closing-plane" data-pptx-layout-name="Closing Plane">
+  <rect id="master-bg" data-pptx-layer="master" x="0" y="0" width="1280" height="720" fill="#F8F8F5"/>
+  <rect id="closing-black" data-pptx-layer="layout" x="0" y="0" width="1280" height="720" fill="#111111"/>
+  <rect id="closing-red" data-pptx-layer="layout" x="72" y="80" width="140" height="12" fill="#E2261A"/>
+  <rect id="closing-blue" data-pptx-layer="layout" x="0" y="634" width="1280" height="86" fill="#0057FF"/>
+  <g id="closing-kicker"><text x="72" y="146" font-family="Arial, Microsoft YaHei, sans-serif" font-size="20" font-weight="700" fill="#F8F8F5">THE TAKEAWAY</text></g>
+  <g id="closing-title" data-pptx-placeholder="title" data-pptx-placeholder-bounds="72 190 1060 260"><text data-pptx-placeholder-carrier="true" x="72" y="286" font-family="Arial, Microsoft YaHei, sans-serif" font-size="112" font-weight="700" fill="#F8F8F5"><tspan x="72" dy="0">被替代的是</tspan><tspan x="72" dy="124">低判断密度任务。</tspan></text></g>
+  <g id="closing-subtitle" data-pptx-placeholder="subtitle" data-pptx-placeholder-bounds="72 500 1020 72"><text data-pptx-placeholder-carrier="true" x="72" y="548" font-family="Arial, Microsoft YaHei, sans-serif" font-size="42" fill="#F8F8F5">越早把 AI 接入主任务链，越能站到复核、决策、客户与组织价值的一侧。</text></g>
+  <g id="closing-footer" data-pptx-placeholder="footer" data-pptx-placeholder-bounds="72 668 900 24"><text data-pptx-placeholder-carrier="true" x="72" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#F8F8F5">从自己的一项高频任务开始。</text></g>
+  <g id="page-number" data-pptx-placeholder="slide-number" data-pptx-placeholder-bounds="1140 670 68 24"><text data-pptx-placeholder-carrier="true" x="1168" y="686" font-family="Arial, Microsoft YaHei, sans-serif" font-size="16" fill="#F8F8F5">12</text></g>
+</svg>

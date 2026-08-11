@@ -10,3 +10,10 @@ GLM/002/ppt-master/
 Thumbs.db
 Desktop.ini
 .DS_Store
+
+# Local dependencies and generated inspection state
+node_modules/
+.tmp-ai-ppt/
+*.inspect.ndjson
+.slide_jobs.json.lock
+.slide_run_state.json.lock
