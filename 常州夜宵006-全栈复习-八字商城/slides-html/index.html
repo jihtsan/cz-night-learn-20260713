@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="常州夜宵第6课开场复习：用八字商城串起用户、前端、后端与数据库"
+      content="常州夜宵第6课开场复习：用八字商城的商品发布串起商家、前端、后端与数据库"
     />
     <meta name="theme-color" content="#101114" />
-    <title>一笔订单的旅程｜第6课开场复习</title>
+    <title>一件商品如何发布｜第6课开场复习</title>
     <link rel="icon" href="data:," />
     <style>
       :root {
@@ -636,15 +636,15 @@
   </head>
   <body>
     <main class="deck" id="deck" aria-live="polite">
-      <section class="scene cover active" data-title="一笔订单的旅程" data-reveals="0">
+      <section class="scene cover active" data-title="一件商品如何发布" data-reveals="0">
         <p class="eyebrow">常州夜宵 006 · REVIEW</p>
-        <h1>一笔订单<br />的<em>旅程</em></h1>
-        <p class="cover-lead">用八字商城，重新串起前端、后端与数据库</p>
+        <h1>一件商品<br />如何<em>发布</em></h1>
+        <p class="cover-lead">用八字商城，重新串起商家、前端、后端与数据库</p>
         <div class="cover-flow" aria-label="四个角色">
-          <span>用户</span><span>前端</span><span>后端</span><span>数据库</span>
+          <span>商家</span><span>前端</span><span>后端</span><span>数据库</span>
         </div>
         <p class="cover-time">15–20 MIN · 点击“下一步”或按空格键</p>
-        <aside class="speaker-note">建议用时 1 分钟。开场只说任务：“今天我们不背概念，只追踪一笔订单。”</aside>
+        <aside class="speaker-note">建议用时 1 分钟。开场只说任务：“今天我们不背概念，只追踪一件商品是怎样发布出去的。”</aside>
       </section>
 
       <section class="scene" data-title="15–20 分钟安排" data-reveals="0">
@@ -659,12 +659,12 @@
           <article>
             <small>05–09 MIN</small>
             <strong>四个角色</strong>
-            <p>用户、前端、后端、数据库。</p>
+            <p>商家、前端、后端、数据库。</p>
           </article>
           <article>
             <small>09–16 MIN</small>
-            <strong>订单路线</strong>
-            <p>从点击购买，追到页面显示成功。</p>
+            <strong>发布路线</strong>
+            <p>从点击发布，追到商品列表更新。</p>
           </article>
           <article>
             <small>16–18 MIN</small>
@@ -681,7 +681,7 @@
         <div class="question-stage">
           <div class="question-index"><span id="questionNumber">01</span><small>QUESTION</small></div>
           <div class="question-copy">
-            <blockquote id="questionText">用户填好出生日期，点击“立即测算”后，谁最先接到这个操作？</blockquote>
+            <blockquote id="questionText">商家填好商品信息，点击“发布商品”后，谁最先接到这个操作？</blockquote>
             <p id="questionPrompt">请先点一位学员回答，再请另一位补充理由。</p>
           </div>
         </div>
@@ -695,8 +695,8 @@
         <div class="role-grid">
           <article class="role-card" data-reveal="1">
             <span class="number">ROLE 01</span><span class="role-icon">人</span>
-            <h3>用户</h3><strong>发出意图</strong>
-            <p>填写出生信息、选择服务、点击购买。</p>
+            <h3>商家</h3><strong>发出发布意图</strong>
+            <p>填写商品名称、价格与介绍，点击发布。</p>
           </article>
           <article class="role-card" data-reveal="2">
             <span class="number">ROLE 02</span><span class="role-icon">UI</span>
@@ -706,37 +706,37 @@
           <article class="role-card" data-reveal="3">
             <span class="number">ROLE 03</span><span class="role-icon">IF</span>
             <h3>后端</h3><strong>判断与执行</strong>
-            <p>校验身份、商品和价格，执行下单规则。</p>
+            <p>检查商品数据，执行发布规则并要求保存。</p>
           </article>
           <article class="role-card" data-reveal="4">
             <span class="number">ROLE 04</span><span class="role-icon">DB</span>
             <h3>数据库</h3><strong>长期记住</strong>
-            <p>保存用户、商品、订单和报告记录。</p>
+            <p>保存商品名称、价格、介绍和发布状态。</p>
           </article>
         </div>
-        <div class="role-bridge"><span>用户提需求</span><i></i><span>API 负责按约定传话</span><i></i><span>数据一路往返</span></div>
+        <div class="role-bridge"><span>商家提出发布需求</span><i></i><span>API 负责按约定传话</span><i></i><span>数据一路往返</span></div>
         <aside class="speaker-note">建议用时 4 分钟。每点一次显示一个角色。可以让四位学员各自用一句话重复自己的职责。</aside>
       </section>
 
-      <section class="scene" id="flowScene" data-title="一笔订单的完整路线" data-reveals="7">
+      <section class="scene" id="flowScene" data-title="一件商品的完整发布路线" data-reveals="7">
         <p class="eyebrow">03 · END-TO-END FLOW</p>
-        <h2>现在，让一笔订单真正跑起来</h2>
+        <h2>现在，让一件商品真正发布出去</h2>
         <div class="flow-layout">
-          <div class="flow-map" aria-label="八字商城订单数据流">
-            <div class="flow-node" data-role="user"><strong>用户</strong><small>选择“事业详批”</small></div>
+          <div class="flow-map" aria-label="八字商城商品发布数据流">
+            <div class="flow-node" data-role="user"><strong>商家</strong><small>填写商品信息</small></div>
             <span class="flow-arrow arrow-1" data-arrow="frontend">→</span>
             <div class="flow-node" data-role="frontend"><strong>前端</strong><small>表单与结果页</small></div>
             <span class="flow-arrow arrow-2" data-arrow="backend">→</span>
-            <div class="flow-node" data-role="backend"><strong>后端</strong><small>下单规则</small></div>
+            <div class="flow-node" data-role="backend"><strong>后端</strong><small>发布规则</small></div>
             <span class="flow-arrow arrow-3" data-arrow="database">→</span>
-            <div class="flow-node" data-role="database"><strong>数据库</strong><small>订单记录</small></div>
+            <div class="flow-node" data-role="database"><strong>数据库</strong><small>商品记录</small></div>
             <div class="api-note"><span><b>API</b> 不是第五个业务角色</span><span>它是前端与后端约定好的“传话方式”</span></div>
           </div>
           <div class="step-panel">
-            <small id="flowKicker">STEP 01 / 08 · USER</small>
-            <strong id="flowTitle">填信息，点击购买</strong>
-            <p id="flowDescription">用户选择“事业详批”，填写出生日期和时辰。</p>
-            <p><code id="flowData">意图：我想购买这项服务</code></p>
+            <small id="flowKicker">STEP 01 / 08 · MERCHANT</small>
+            <strong id="flowTitle">填写商品，点击发布</strong>
+            <p id="flowDescription">商家填写“AI 事业分析报告”的名称、价格和介绍。</p>
+            <p><code id="flowData">意图：我想发布这件商品</code></p>
             <div class="flow-meter" id="flowMeter" aria-label="路线进度"></div>
           </div>
         </div>
@@ -747,7 +747,7 @@
         <p class="eyebrow">04 · WRAP-UP</p>
         <h2>最后只记住四句话</h2>
         <div class="summary-grid">
-          <article data-reveal="1"><b>用户</b><span>提出“我想做什么”。</span></article>
+          <article data-reveal="1"><b>商家</b><span>提出“我想发布什么”。</span></article>
           <article data-reveal="2"><b>前端</b><span>负责看得见、点得动。</span></article>
           <article data-reveal="3"><b>后端</b><span>负责判断能不能做、怎么做。</span></article>
           <article data-reveal="4"><b>数据库</b><span>负责把需要的信息长期记住。</span></article>
@@ -780,36 +780,36 @@
 
       const questions = [
         {
-          text: '用户填好出生日期，点击“立即测算”后，谁最先接到这个操作？',
+          text: '商家填好商品信息，点击“发布商品”后，谁最先接到这个操作？',
           prompt: '请先点一位学员回答，再请另一位补充理由。',
         },
         {
-          text: '表单中的“出生时间”没有填，谁可以先提醒用户？',
+          text: '商品名称没有填，谁可以先提醒商家？',
           prompt: '追问：前端提醒了，后端还需要再检查吗？',
         },
         {
-          text: '页面显示 99 元，有人把请求里的价格改成 0.01 元，谁应该最终把关？',
-          prompt: '追问：为什么不能相信浏览器传来的价格？',
+          text: '前端收集好商品名称、价格和介绍后，通过什么方式交给后端？',
+          prompt: '追问：前端和后端需要事先约定哪些内容？',
         },
         {
-          text: '下单后关掉网页，第二天订单仍然存在，说明它长期保存在哪里？',
-          prompt: '追问：只存在当前页面的变量里，关掉页面会怎样？',
+          text: '商品发布后刷新页面仍然存在，说明它长期保存在哪里？',
+          prompt: '追问：如果只放在当前页面的变量里，刷新后会怎样？',
         },
         {
-          text: '前端可以为了省事，直接连接数据库并写入订单吗？',
-          prompt: '不只回答“可以”或“不可以”，请说出一个风险。',
+          text: '数据库保存成功后，“发布成功”这个结果要怎样回到页面？',
+          prompt: '请从数据库开始，按顺序说出它经过的角色。',
         },
       ];
 
       const flowSteps = [
-        { role: 'user', kicker: 'STEP 01 / 08 · USER', title: '填信息，点击购买', description: '用户选择“事业详批”，填写出生日期和时辰。', data: '意图：我想购买这项服务' },
-        { role: 'frontend', arrow: 'frontend', kicker: 'STEP 02 / 08 · FRONTEND', title: '前端先接住操作', description: '检查必填项，把用户输入和商品编号整理好。', data: '表单 + productId: career-report' },
-        { role: 'backend', arrow: 'backend', kicker: 'STEP 03 / 08 · API', title: '前端向后端发请求', description: '两边按约定好的 API 格式传递数据。', data: 'POST /api/orders' },
-        { role: 'backend', kicker: 'STEP 04 / 08 · BACKEND', title: '后端做真正的判断', description: '重新检查商品、价格、身份与出生信息是否合法。', data: '规则：不相信前端传来的价格' },
-        { role: 'database', arrow: 'database', kicker: 'STEP 05 / 08 · DATABASE', title: '数据库保存订单', description: '后端通过验证后，要求数据库写入一条待支付订单。', data: 'order #20260816 · status: pending' },
-        { role: 'database', arrow: 'database', reverse: true, kicker: 'STEP 06 / 08 · DATABASE', title: '数据库返回记录', description: '数据库告诉后端：已经保存成功，这是订单编号。', data: 'saved: true · id: 20260816' },
-        { role: 'backend', arrow: 'backend', reverse: true, kicker: 'STEP 07 / 08 · RESPONSE', title: '后端返回下单结果', description: '后端把订单编号和状态交还给前端。', data: '201 Created · orderId: 20260816' },
-        { role: 'frontend', arrow: 'frontend', reverse: true, kicker: 'STEP 08 / 08 · FRONTEND', title: '前端显示“下单成功”', description: '用户终于看到结果；完整的数据往返到此结束。', data: '页面：订单 #20260816 待支付' },
+        { role: 'user', kicker: 'STEP 01 / 08 · MERCHANT', title: '填写商品，点击发布', description: '商家填写“AI 事业分析报告”的名称、价格和介绍。', data: '意图：我想发布这件商品' },
+        { role: 'frontend', arrow: 'frontend', kicker: 'STEP 02 / 08 · FRONTEND', title: '前端先接住操作', description: '检查必填项，把商品名称、价格和介绍整理好。', data: '表单：name + price + description' },
+        { role: 'backend', arrow: 'backend', kicker: 'STEP 03 / 08 · API', title: '前端向后端发请求', description: '两边按约定好的 API 格式传递商品数据。', data: 'POST /api/products' },
+        { role: 'backend', kicker: 'STEP 04 / 08 · BACKEND', title: '后端检查发布数据', description: '后端再次检查名称、价格和介绍是否完整，准备保存。', data: '规则：必填字段完整，价格格式正确' },
+        { role: 'database', arrow: 'database', kicker: 'STEP 05 / 08 · DATABASE', title: '数据库保存商品', description: '后端检查通过后，要求数据库写入一条已发布商品。', data: 'product · status: published' },
+        { role: 'database', arrow: 'database', reverse: true, kicker: 'STEP 06 / 08 · DATABASE', title: '数据库返回保存结果', description: '数据库告诉后端：已经保存成功，这是商品编号。', data: 'saved: true · productId: 24' },
+        { role: 'backend', arrow: 'backend', reverse: true, kicker: 'STEP 07 / 08 · RESPONSE', title: '后端返回发布结果', description: '后端把商品编号和已发布状态交还给前端。', data: '201 Created · productId: 24' },
+        { role: 'frontend', arrow: 'frontend', reverse: true, kicker: 'STEP 08 / 08 · FRONTEND', title: '前端显示“发布成功”', description: '商品列表增加一张新卡片；完整的数据往返到此结束。', data: '页面：商品 #24 已发布' },
       ];
 
       let sceneIndex = 0;
