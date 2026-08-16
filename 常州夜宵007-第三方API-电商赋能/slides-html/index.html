@@ -76,27 +76,38 @@
         </aside>
       </section>
 
-      <section class="slide" data-title="第三方 API 是一份接入合同" data-reset="api-parts">
+      <section class="slide" data-title="订单消息需要逐层接通第三方平台" data-reset="api-parts">
         <p class="eyebrow">04 · 接入方式</p>
-        <h2>第三方 API，本质上是<br />一份<em>接入合同</em></h2>
+        <h2>要第一时间收到订单提醒，<br />需要<em>一层一层接通</em></h2>
         <div class="api-contract" id="apiContract">
-          <div class="contract-callout">
-            <small id="contractStepLabel">点击“下一步”</small>
-            <strong id="contractStepTitle">接入前，要先知道哪五件事？</strong>
-            <p id="contractStepText">平台会规定入口、身份、请求、回复和回调方式。</p>
+          <div class="contract-layer-stage">
+            <div class="contract-empty" id="contractEmpty">
+              <small>ORDER_CREATED</small>
+              <b>订单 #2048 已保存</b>
+              <span>点击“接通第一层”，开始连接 IM 平台</span>
+            </div>
+            <ol class="contract-parts" aria-label="订单消息接入层级">
+              <li data-contract-step="0"><small>01</small><b>平台入口</b><span>创建飞书 / 企业微信应用</span></li>
+              <li data-contract-step="1"><small>02</small><b>身份凭证</b><span>Webhook · App ID · Secret</span></li>
+              <li data-contract-step="2"><small>03</small><b>消息请求</b><span>订单信息组成 JSON</span></li>
+              <li data-contract-step="3"><small>04</small><b>发送结果</b><span>成功记录 · 失败重试</span></li>
+              <li data-contract-step="4"><small>05</small><b>可选回调</b><span>点击卡片后通知后端</span></li>
+            </ol>
           </div>
-          <ol class="contract-parts">
-            <li data-contract-step="0"><b>入口</b><span>URL / SDK</span></li>
-            <li data-contract-step="1"><b>身份</b><span>API Key / Token</span></li>
-            <li data-contract-step="2"><b>请求</b><span>参数 / JSON</span></li>
-            <li data-contract-step="3"><b>回复</b><span>结果 / 错误码</span></li>
-            <li data-contract-step="4"><b>回调</b><span>Webhook</span></li>
-          </ol>
+          <div class="contract-detail" aria-live="polite">
+            <small id="contractStepLabel">业务问题</small>
+            <strong id="contractStepTitle">用户下单后，商家怎样第一时间知道？</strong>
+            <p id="contractStepText">自己的后端要把“订单创建成功”转换成一条企业 IM 消息。</p>
+            <div class="contract-example">
+              <span id="contractExampleLabel">订单事件</span>
+              <code id="contractExampleText">等待连接消息平台</code>
+            </div>
+          </div>
         </div>
-        <button class="action-button" id="nextContractStep" type="button">下一步</button>
+        <button class="action-button" id="nextContractStep" type="button">接通第一层</button>
         <aside class="speaker-note">
-          建议用时 4 分钟。逐次点击，让学生先猜下一项。入口可能是 HTTP URL，也可能是 SDK；身份用于确认谁在调用；请求和回复共同构成合同；Webhook 则是平台反过来通知我们的地址。提醒：不是所有接口都有回调。
-          [Sources] 通用概念参考各平台官方 API 调用文档；Webhook 在飞书机器人、支付通知和物流订阅等官方文档中广泛使用。
+          建议用时 4 分钟。初始画面只有“订单已保存”，不预先展示灰色步骤。每次点击新增一层，让学生观察从订单事件到企业 IM 消息的完整接入：先在飞书或企业微信创建应用，再配置后端凭证，订单成功后发送 JSON，检查平台回复并在失败时重试。只有消息卡片需要点击、审批等交互时，才继续接收平台回调。
+          [Sources] 飞书开放平台：https://open.feishu.cn/document/client-docs/intro?lang=zh-CN；企业微信开发者中心：https://developer.work.weixin.qq.com/。
         </aside>
       </section>
 
