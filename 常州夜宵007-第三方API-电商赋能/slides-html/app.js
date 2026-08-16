@@ -123,33 +123,44 @@ const contractParts = [...document.querySelectorAll('[data-contract-step]')];
 const contractStepLabel = document.querySelector('#contractStepLabel');
 const contractStepTitle = document.querySelector('#contractStepTitle');
 const contractStepText = document.querySelector('#contractStepText');
+const contractEmpty = document.querySelector('#contractEmpty');
+const contractExampleLabel = document.querySelector('#contractExampleLabel');
+const contractExampleText = document.querySelector('#contractExampleText');
 const nextContractStep = document.querySelector('#nextContractStep');
 let contractStep = -1;
 const contractCopy = [
-  ['01 · 入口', '先找到平台提供的入口', '它可能是一个 HTTP URL，也可能是官方 SDK。'],
-  ['02 · 身份', '平台要知道“谁在调用”', 'API Key、Access Token 或请求签名用于识别调用者。'],
-  ['03 · 请求', '按合同提交参数', '请求方法、字段名称和 JSON 结构不能凭感觉填写。'],
-  ['04 · 回复', '读取结果与错误码', '成功结果要使用，失败原因也要进入自己的处理逻辑。'],
-  ['05 · 回调', '有些结果会稍后送回来', 'Webhook 是平台反过来调用我们的后端，例如支付或物流通知。'],
+  ['01 · 平台入口', '先创建第三方应用或机器人', '在飞书或企业微信开放平台创建应用，获得后端可以调用的消息入口。', '可选平台', '飞书 / 企业微信'],
+  ['02 · 身份凭证', '让平台识别我们的后端', 'Webhook 地址、App ID、Secret 或 Token 只保存在自己的服务端。', '凭证位置', '仅服务端保存'],
+  ['03 · 消息请求', '订单成功后，再组装消息', '把订单号、商品、金额和门店组成 JSON，由自己的后端发送。', '请求示例', 'POST message { orderId: 2048, amount: 299 }'],
+  ['04 · 发送结果', '确认消息有没有送出去', '读取平台返回码；成功记录日志，失败进入重试，但不能把订单回滚。', '处理结果', 'ok → 已发送 / error → 记录并重试'],
+  ['05 · 可选回调', '需要交互时，再接收平台回调', '纯提醒到发送结果即可；点击卡片或审批等操作才需要平台反向通知后端。', '交互示例', '点击“查看订单” → 自己的后端'],
 ];
 
 function resetContract() {
   contractStep = -1;
   contractParts.forEach((part) => part.classList.remove('visible', 'current'));
-  contractStepLabel.textContent = '点击“下一步”';
-  contractStepTitle.textContent = '接入前，要先知道哪五件事？';
-  contractStepText.textContent = '平台会规定入口、身份、请求、回复和回调方式。';
-  nextContractStep.textContent = '下一步';
+  contractEmpty.classList.remove('is-hidden');
+  contractStepLabel.textContent = '业务问题';
+  contractStepTitle.textContent = '用户下单后，商家怎样第一时间知道？';
+  contractStepText.textContent = '自己的后端要把“订单创建成功”转换成一条企业 IM 消息。';
+  contractExampleLabel.textContent = '订单事件';
+  contractExampleText.textContent = '等待连接消息平台';
+  nextContractStep.textContent = '接通第一层';
 }
 
 nextContractStep.addEventListener('click', () => {
-  contractStep = (contractStep + 1) % contractCopy.length;
+  if (contractStep === contractCopy.length - 1) {
+    resetContract();
+    return;
+  }
+  contractStep += 1;
+  contractEmpty.classList.add('is-hidden');
   contractParts.forEach((part, index) => {
     part.classList.toggle('visible', index <= contractStep);
     part.classList.toggle('current', index === contractStep);
   });
-  [contractStepLabel.textContent, contractStepTitle.textContent, contractStepText.textContent] = contractCopy[contractStep];
-  nextContractStep.textContent = contractStep === contractCopy.length - 1 ? '重新开始' : '下一步';
+  [contractStepLabel.textContent, contractStepTitle.textContent, contractStepText.textContent, contractExampleLabel.textContent, contractExampleText.textContent] = contractCopy[contractStep];
+  nextContractStep.textContent = contractStep === contractCopy.length - 1 ? '重新开始' : '接通下一层';
 });
 
 // Platform explorer.
@@ -206,6 +217,7 @@ mapPins.forEach((pin) => pin.addEventListener('click', () => selectStore(pin.dat
 
 // Weather chained API reveal.
 const weatherSteps = [...document.querySelectorAll('[data-weather-step]')];
+const weatherArrows = [...document.querySelectorAll('#weatherFlow > i')];
 const weatherResult = document.querySelector('#weatherResult');
 const nextWeatherStep = document.querySelector('#nextWeatherStep');
 let weatherStep = -1;
@@ -213,17 +225,23 @@ let weatherStep = -1;
 function resetWeather() {
   weatherStep = -1;
   weatherSteps.forEach((step) => step.classList.remove('visible', 'current'));
+  weatherArrows.forEach((arrow) => arrow.classList.remove('visible'));
   weatherResult.classList.remove('visible');
   nextWeatherStep.textContent = '运行下一步';
 }
 
 nextWeatherStep.addEventListener('click', () => {
-  weatherStep = (weatherStep + 1) % weatherSteps.length;
+  if (weatherStep === weatherSteps.length - 1) {
+    resetWeather();
+    return;
+  }
+  weatherStep += 1;
   if (weatherStep === 0) weatherResult.classList.remove('visible');
   weatherSteps.forEach((step, index) => {
     step.classList.toggle('visible', index <= weatherStep);
     step.classList.toggle('current', index === weatherStep);
   });
+  weatherArrows.forEach((arrow, index) => arrow.classList.toggle('visible', index < weatherStep));
   if (weatherStep === weatherSteps.length - 1) {
     weatherResult.classList.add('visible');
     nextWeatherStep.textContent = '重新运行';
@@ -293,7 +311,11 @@ function resetFullFlow() {
 }
 
 nextFullStep.addEventListener('click', () => {
-  fullStep = (fullStep + 1) % fullSteps.length;
+  if (fullStep === fullSteps.length - 1) {
+    resetFullFlow();
+    return;
+  }
+  fullStep += 1;
   fullSteps.forEach((step, index) => {
     step.classList.toggle('visible', index <= fullStep);
     step.classList.toggle('current', index === fullStep);
