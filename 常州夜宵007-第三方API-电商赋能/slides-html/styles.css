@@ -370,8 +370,8 @@ blockquote { margin: 2.5% 0 0; font-size: clamp(1.15rem, 2vw, 2rem); font-weight
 .order-pipeline b { color: #ff806d; font-size: clamp(1.45rem, 2.3vw, 2.35rem); }
 .order-pipeline span { margin: .3em 0; font-size: clamp(.85rem, 1.08vw, 1.1rem); font-weight: 900; }
 .order-pipeline small { color: rgba(255,255,255,.5); }
-.notification-card { display: grid; align-content: center; padding: 9%; background: #e9eef5; opacity: .16; transform: translateX(8%); transition: opacity .35s ease, transform .35s ease; }
-.notification-card.visible { opacity: 1; transform: translateX(0); }
+.notification-card { display: grid; align-content: center; padding: 9%; background: #e9eef5; visibility: hidden; opacity: 0; transform: translateX(8%); transition: opacity .35s ease, transform .35s ease; }
+.notification-card.visible { visibility: visible; opacity: 1; transform: translateX(0); }
 .notification-card > small { color: var(--muted); }
 .notification-card h3 { margin: .45em 0 .65em; }
 .notification-card dl { margin: 0; }

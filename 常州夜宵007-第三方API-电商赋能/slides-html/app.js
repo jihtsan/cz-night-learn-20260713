@@ -1,6 +1,6 @@
 const deck = document.querySelector('#deck');
 const sourceSlides = [...document.querySelectorAll('.slide')];
-const slideOrder = [0, 1, 2, 5, 3, 6, 7, 8, 9, 10, 11, 14, 12, 13, 4, 15, 16];
+const slideOrder = [0, 1, 2, 8, 3, 9, 5, 6, 7, 10, 11, 14, 12, 13, 4, 15, 16];
 const slides = slideOrder.map((index) => sourceSlides[index]);
 const firstDeckControl = deck.querySelector('.deck-progress');
 slides.forEach((slide) => deck.insertBefore(slide, firstDeckControl));
@@ -220,14 +220,18 @@ const weatherSteps = [...document.querySelectorAll('[data-weather-step]')];
 const weatherArrows = [...document.querySelectorAll('#weatherFlow > i')];
 const weatherResult = document.querySelector('#weatherResult');
 const nextWeatherStep = document.querySelector('#nextWeatherStep');
-let weatherStep = -1;
+let weatherStep = 0;
+const weatherNextLabels = ['查询城市编码', '查询天气', '展示提醒'];
 
 function resetWeather() {
-  weatherStep = -1;
-  weatherSteps.forEach((step) => step.classList.remove('visible', 'current'));
+  weatherStep = 0;
+  weatherSteps.forEach((step, index) => {
+    step.classList.toggle('visible', index === 0);
+    step.classList.toggle('current', index === 0);
+  });
   weatherArrows.forEach((arrow) => arrow.classList.remove('visible'));
   weatherResult.classList.remove('visible');
-  nextWeatherStep.textContent = '运行下一步';
+  nextWeatherStep.textContent = weatherNextLabels[0];
 }
 
 nextWeatherStep.addEventListener('click', () => {
@@ -236,7 +240,6 @@ nextWeatherStep.addEventListener('click', () => {
     return;
   }
   weatherStep += 1;
-  if (weatherStep === 0) weatherResult.classList.remove('visible');
   weatherSteps.forEach((step, index) => {
     step.classList.toggle('visible', index <= weatherStep);
     step.classList.toggle('current', index === weatherStep);
@@ -246,7 +249,7 @@ nextWeatherStep.addEventListener('click', () => {
     weatherResult.classList.add('visible');
     nextWeatherStep.textContent = '重新运行';
   } else {
-    nextWeatherStep.textContent = '运行下一步';
+    nextWeatherStep.textContent = weatherNextLabels[weatherStep];
   }
 });
 
@@ -293,7 +296,7 @@ placeOrder.addEventListener('click', () => {
 const fullSteps = [...document.querySelectorAll('[data-full-step]')];
 const nextFullStep = document.querySelector('#nextFullStep');
 const fullFlowCaption = document.querySelector('#fullFlowCaption');
-let fullStep = -1;
+let fullStep = 0;
 const fullCaptions = [
   '用户在前端选择门店，不直接决定订单是否成立。',
   '地图平台提供位置数据，可以替换，但要遵守平台合同。',
@@ -304,9 +307,12 @@ const fullCaptions = [
 ];
 
 function resetFullFlow() {
-  fullStep = -1;
-  fullSteps.forEach((step) => step.classList.remove('visible', 'current'));
-  fullFlowCaption.textContent = '先从用户的一次选择开始。';
+  fullStep = 0;
+  fullSteps.forEach((step, index) => {
+    step.classList.toggle('visible', index === 0);
+    step.classList.toggle('current', index === 0);
+  });
+  fullFlowCaption.textContent = fullCaptions[0];
   nextFullStep.textContent = '下一步';
 }
 
