@@ -213,30 +213,19 @@ blockquote { margin: 2.5% 0 0; font-size: clamp(1.15rem, 2vw, 2rem); font-weight
 .lesson-bridge b { color: var(--muted); }
 .lesson-bridge strong { font-size: clamp(0.9rem, 1.2vw, 1.25rem); }
 
-/* Island */
+/* Concrete order problems */
 .dark-slide { background: var(--dark); color: var(--white); }
 .dark-slide .eyebrow { color: #ff745f; }
-.island-stage { position: relative; height: 45%; margin-top: 2.5%; }
-.island-core {
-  position: absolute;
-  top: 12%; left: 34%;
-  display: grid;
-  width: 32%; height: 72%;
-  place-content: center;
-  border: 2px solid rgba(255,255,255,.22);
-  border-radius: 48% 52% 52% 42%;
-  background: rgba(229,65,45,.16);
-  text-align: center;
-}
-.island-core::after { position: absolute; inset: -13%; z-index: -1; border: 1px dashed rgba(255,255,255,.16); border-radius: 48%; content: ""; }
-.island-core small { color: rgba(255,255,255,.5); }
-.island-core b { margin-top: .5em; font-size: clamp(1.25rem, 2vw, 2.1rem); }
-.outside-ring span { position: absolute; padding: .6em .9em; border: 1px solid rgba(255,255,255,.17); color: rgba(255,255,255,.72); font-size: clamp(.78rem, 1.05vw, 1.08rem); font-weight: 800; }
-.outside-ring span:nth-child(1) { top: 3%; left: 6%; }
-.outside-ring span:nth-child(2) { top: 55%; left: 10%; }
-.outside-ring span:nth-child(3) { top: 8%; right: 8%; }
-.outside-ring span:nth-child(4) { top: 58%; right: 6%; }
-.outside-ring span:nth-child(5) { bottom: -5%; left: 44%; }
+.problem-stage { display: grid; grid-template-columns: .76fr 1.24fr; min-height: 43%; margin-top: 2.5%; border-top: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
+.problem-order { display: grid; align-content: center; padding: 9%; border-right: 1px solid rgba(255,255,255,.2); background: rgba(229,65,45,.14); }
+.problem-order small { color: rgba(255,255,255,.5); font-weight: 900; }
+.problem-order b { display: block; margin: .45em 0 .7em; font-size: clamp(1.2rem, 1.85vw, 1.9rem); }
+.problem-order span { width: fit-content; padding: .5em .7em; background: rgba(255,255,255,.08); color: #ff9b8b; font-family: ui-monospace, monospace; font-size: clamp(.7rem, .9vw, .92rem); }
+.problem-questions { display: grid; margin: 0; padding: 0; list-style: none; }
+.problem-questions li { display: grid; grid-template-columns: 3.5em 1fr; align-items: center; padding: 0 7%; border-bottom: 1px solid rgba(255,255,255,.14); }
+.problem-questions li:last-child { border-bottom: 0; }
+.problem-questions b { color: #ff745f; font-size: clamp(.78rem, 1vw, 1rem); }
+.problem-questions span { font-size: clamp(1rem, 1.5vw, 1.52rem); font-weight: 900; }
 .big-answer { margin: 2.3% 0 0; color: #ff806d; font-size: clamp(1.25rem, 2vw, 2rem); font-weight: 900; text-align: center; }
 
 /* API contract */
@@ -287,6 +276,7 @@ blockquote { margin: 2.5% 0 0; font-size: clamp(1.15rem, 2vw, 2rem); font-weight
 /* Map */
 .map-demo { display: grid; grid-template-columns: 1.35fr .65fr; height: 53%; margin-top: 1.8%; border-top: 4px solid var(--ink); border-bottom: 1px solid var(--line); }
 .mock-map { position: relative; overflow: hidden; background: #dfe4d5; }
+.provider-badge { position: absolute; top: 3%; left: 3%; z-index: 4; padding: .52em .74em; background: rgba(23,23,19,.86); color: var(--white); font-size: clamp(.7rem, .86vw, .88rem); font-weight: 850; }
 .mock-map::before,
 .mock-map::after { position: absolute; background: rgba(255,255,255,.68); content: ""; transform: rotate(-13deg); }
 .mock-map::before { top: 34%; left: -10%; width: 120%; height: 7%; }

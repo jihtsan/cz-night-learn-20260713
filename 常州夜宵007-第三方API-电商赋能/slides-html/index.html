@@ -27,7 +27,7 @@
         </div>
         <p class="cover-caption">60 分钟互动课件</p>
         <aside class="speaker-note">
-          建议用时 2 分钟。开场先问：第五节搭好的商品、订单、后端和数据库，能不能自己完成地图导航、天气预报和企业群提醒？今天不是重新开发这些能力，而是学习怎样把成熟平台接进来。
+          建议用时 2 分钟。开场只说明今天继续第五节的订单案例。先问“订单创建成功以后，接下来会发生什么”，不要从平台名录讲起；让问题自然带出后续三种外部能力。
           [Sources] 本页无外部非平凡主张。
         </aside>
       </section>
@@ -49,36 +49,35 @@
           <strong>订单创建之后，谁来通知商家？</strong>
         </div>
         <aside class="speaker-note">
-          建议用时 4 分钟。快速复习第五节的三层：前端收集和展示，后端验证和执行，数据库长期保存。强调第五节的 POST /orders 是“自己的 API”。随后追问：路线、天气、群提醒难道都要自己造吗？
+          建议用时 3 分钟。快速复习第五节的三层：前端收集和展示，后端验证和执行，数据库长期保存。强调第五节的 POST /orders 是“自己的 API”。随后追问：订单保存之后，用户和商家接下来还需要什么？
           [Sources] 内容来自本仓库第五节课件的前端、后端、数据库职责与订单案例。
         </aside>
       </section>
 
-      <section class="slide dark-slide" data-title="一个系统不可能自己造完所有能力" data-reset="none">
+      <section class="slide dark-slide" data-title="订单创建后还有三个问题" data-reset="none">
         <p class="eyebrow">02 · 新问题</p>
-        <h2>系统已经能下单，<br />但它还是一座<em>孤岛</em></h2>
-        <div class="island-stage">
-          <div class="island-core">
-            <small>我们已经拥有</small>
-            <b>商品 · 订单 · 库存</b>
+        <h2>订单 #2048 创建成功，<br />接下来还有<em>三个问题</em></h2>
+        <div class="problem-stage">
+          <div class="problem-order">
+            <small>我们已经做到</small>
+            <b>商品下单 · 保存订单</b>
+            <span>POST /orders → 201 Created</span>
           </div>
-          <div class="outside-ring">
-            <span>地图数据</span>
-            <span>实时天气</span>
-            <span>企业消息</span>
-            <span>支付网络</span>
-            <span>物流轨迹</span>
-          </div>
+          <ol class="problem-questions">
+            <li><b>01</b><span>用户应该去哪个门店？</span></li>
+            <li><b>02</b><span>天气会不会影响自提或配送？</span></li>
+            <li><b>03</b><span>商家怎样第一时间知道？</span></li>
+          </ol>
         </div>
-        <p class="big-answer">成熟平台开放能力，我们按规则接入。</p>
+        <p class="big-answer">先看业务缺什么，再决定接什么。</p>
         <aside class="speaker-note">
-          建议用时 3 分钟。不要把第三方平台讲成依赖或偷懒，而是专业分工：地图公司维护道路和位置，气象平台维护实时数据，企业通信平台负责把消息送到人。我们只负责把这些能力和订单业务连接起来。
-          [Sources] 平台能力概述见高德、和风天气、飞书等官方文档，完整链接位于附录。
+          建议用时 4 分钟。先只呈现订单 #2048，让学生回答“订单创建之后还缺什么”。逐条出现三个问题，此时不要先说高德、和风或飞书，也不要展示平台名录。目标是先建立业务问题，再寻找解决方式。
+          [Sources] 本页为课程订单场景，无外部数据主张。
         </aside>
       </section>
 
       <section class="slide" data-title="第三方 API 是一份接入合同" data-reset="api-parts">
-        <p class="eyebrow">03 · API 直觉</p>
+        <p class="eyebrow">04 · 接入方式</p>
         <h2>第三方 API，本质上是<br />一份<em>接入合同</em></h2>
         <div class="api-contract" id="apiContract">
           <div class="contract-callout">
@@ -96,14 +95,14 @@
         </div>
         <button class="action-button" id="nextContractStep" type="button">下一步</button>
         <aside class="speaker-note">
-          建议用时 5 分钟。逐次点击，让学生先猜下一项。入口可能是 HTTP URL，也可能是 SDK；身份用于确认谁在调用；请求和回复共同构成合同；Webhook 则是平台反过来通知我们的地址。提醒：不是所有接口都有回调。
+          建议用时 4 分钟。逐次点击，让学生先猜下一项。入口可能是 HTTP URL，也可能是 SDK；身份用于确认谁在调用；请求和回复共同构成合同；Webhook 则是平台反过来通知我们的地址。提醒：不是所有接口都有回调。
           [Sources] 通用概念参考各平台官方 API 调用文档；Webhook 在飞书机器人、支付通知和物流订阅等官方文档中广泛使用。
         </aside>
       </section>
 
-      <section class="slide platform-slide" data-title="主流平台提供不同的专业能力" data-reset="platform-tabs">
-        <p class="eyebrow">04 · 能力地图</p>
-        <h2>主流第三方平台，<br />分别补上<em>哪块能力</em>？</h2>
+      <section class="slide platform-slide" data-title="做完三个接入再看完整平台地图" data-reset="platform-tabs">
+        <p class="eyebrow">14 · 平台全景</p>
+        <h2>三个问题解决以后，<br />再看完整的<em>开放平台地图</em></h2>
         <div class="platform-explorer">
           <nav class="platform-list" aria-label="第三方平台能力分类">
             <button class="active" type="button" data-platform="location">地图位置</button>
@@ -125,47 +124,48 @@
           </div>
         </div>
         <aside class="speaker-note">
-          建议用时 6 分钟。不要逐项念平台名称，让学生先选“电商现在缺什么”，再点对应能力。地图、天气、通信是本期实战；支付、电商渠道、物流、云与 AI 只建立认知。平台名称代表常见选择，不做市场排名。
+          建议用时 4 分钟。前面所有内容都从具体问题出发；到这里才把地图、天气、通信、支付、电商渠道、物流、云与 AI 归纳成完整全景。点击不同类别，总结“业务问题—平台能力—界面展示”的对应关系。平台名称代表常见选择，不做市场排名。
           [Sources] 高德 https://lbs.amap.com/api/；和风天气 https://dev.qweather.com/docs/api/；飞书 https://open.feishu.cn/document/client-docs/intro?lang=zh-CN；微信支付 https://pay.wechatpay.cn/doc/v3/merchant/4012068590；淘宝 https://open.taobao.com/；顺丰 https://open.sf-express.com/Api；快递100 https://api.kuaidi100.com/document/。
         </aside>
       </section>
 
-      <section class="slide commerce-chain-slide" data-title="第三方能力要落到交易节点" data-reset="none">
-        <p class="eyebrow">05 · 电商交易链</p>
-        <h2>平台不是装饰，<br />要落到<em>交易节点</em></h2>
+      <section class="slide commerce-chain-slide" data-title="先拆问题再寻找三种外部能力" data-reset="none">
+        <p class="eyebrow">03 · 解决思路</p>
+        <h2>先把问题拆开，<br />再寻找<em>三种外部能力</em></h2>
         <div class="commerce-chain">
           <article class="chain-step">
-            <small>逛</small><b>商品与门店</b><span>地图展示附近门店</span>
-            <em>地图 API</em>
+            <small>问题 1</small><b>门店在哪里？</b><span>需要搜索、定位与路线</span>
+            <em>位置能力</em>
           </article>
           <i>→</i>
           <article class="chain-step">
-            <small>选</small><b>地址与时间</b><span>天气影响自提与配送</span>
-            <em>天气 API</em>
+            <small>问题 2</small><b>现在天气怎样？</b><span>需要实时天气与提醒</span>
+            <em>天气数据</em>
           </article>
           <i>→</i>
           <article class="chain-step focus">
-            <small>买</small><b>创建订单</b><span>自己的后端保存订单</span>
+            <small>核心业务</small><b>创建订单</b><span>自己的后端仍负责保存</span>
             <em>自有 API</em>
           </article>
           <i>→</i>
           <article class="chain-step">
-            <small>办</small><b>商家履约</b><span>新订单主动通知商家</span>
-            <em>通信 API</em>
+            <small>问题 3</small><b>怎样通知商家？</b><span>需要消息主动触达人</span>
+            <em>企业通信</em>
           </article>
         </div>
-        <p class="chain-rule">第三方能力围绕订单工作，但订单仍由自己的后端负责。</p>
+        <p class="chain-rule">先定义“需要什么能力”，下一步才是“选择哪家平台”。</p>
         <aside class="speaker-note">
-          建议用时 4 分钟。把能力放进用户旅程，而不是孤立讲接口。指出地图和天气主要帮助“逛”和“选”，自己的后端完成“买”，企业通信帮助商家开始“办”。这也是后面完整演示的路线。
+          建议用时 4 分钟。把上一页三个问题翻译成位置、天气、企业通信三种能力。这里仍然先说能力类型，不急着罗列所有厂商。强调创建订单没有外包出去，第三方能力围绕自己的核心业务工作。
           [Sources] 本页为课程业务模型，无外部数据主张。
         </aside>
       </section>
 
       <section class="slide map-slide" data-title="地图让地址从文字变成可计算的位置" data-reset="map-demo">
-        <p class="eyebrow">06 · 地图 API</p>
+        <p class="eyebrow">05 · 解决问题一</p>
         <h2>地图让地址从一行文字，<br />变成<em>可计算的位置</em></h2>
         <div class="map-demo">
           <div class="mock-map" id="mockMap" aria-label="模拟门店地图">
+            <span class="provider-badge">可选平台：高德 · 百度地图 · 腾讯位置</span>
             <div class="river"></div>
             <div class="road road-a"></div>
             <div class="road road-b"></div>
@@ -195,14 +195,14 @@
       </section>
 
       <section class="slide weather-slide" data-title="地图结果可以成为天气请求的输入" data-reset="weather-flow">
-        <p class="eyebrow">07 · 天气 API</p>
+        <p class="eyebrow">06 · 解决问题二</p>
         <h2>一个 API 的结果，<br />可以成为<em>下一个 API 的输入</em></h2>
         <div class="weather-flow" id="weatherFlow">
           <article data-weather-step="0"><small>STEP 1</small><b>用户选择门店</b><span>新北体验店</span></article>
           <i>→</i>
-          <article data-weather-step="1"><small>STEP 2</small><b>地图返回城市编码</b><span>常州 · 320400</span></article>
+          <article data-weather-step="1"><small>STEP 2</small><b>高德返回城市编码</b><span>常州 · 320400</span></article>
           <i>→</i>
-          <article data-weather-step="2"><small>STEP 3</small><b>后端查询天气</b><span>weather API</span></article>
+          <article data-weather-step="2"><small>STEP 3</small><b>请求天气平台</b><span>高德 / 和风天气</span></article>
           <i>→</i>
           <article data-weather-step="3"><small>STEP 4</small><b>页面展示提醒</b><span>多云 · 31℃</span></article>
         </div>
@@ -218,7 +218,7 @@
       </section>
 
       <section class="slide message-slide" data-title="订单通知把后台事件送到人面前" data-reset="none">
-        <p class="eyebrow">08 · 企业通信 API</p>
+        <p class="eyebrow">07 · 解决问题三</p>
         <h2>订单已经进数据库，<br />还要让它<em>主动找到商家</em></h2>
         <div class="message-contrast">
           <div class="silent-order">
@@ -246,7 +246,7 @@
       </section>
 
       <section class="slide order-demo-slide" data-title="模拟一笔订单如何触发群提醒" data-reset="order-demo">
-        <p class="eyebrow">09 · 互动演示</p>
+        <p class="eyebrow">08 · 互动演示</p>
         <h2>现在，模拟一笔订单<br />如何触发<em>群提醒</em></h2>
         <div class="order-demo" id="orderDemo">
           <div class="checkout-card">
@@ -282,7 +282,7 @@
       </section>
 
       <section class="slide" data-title="完整链路仍然有清晰边界" data-reset="full-flow">
-        <p class="eyebrow">10 · 完整链路</p>
+        <p class="eyebrow">09 · 完整链路</p>
         <h2>第三方越来越多，<br />系统边界仍要<em>清清楚楚</em></h2>
         <div class="full-flow" id="fullFlow">
           <article data-full-step="0"><small>用户</small><b>选择门店</b><span>前端交互</span></article>
@@ -295,13 +295,13 @@
         <button class="action-button" id="nextFullStep" type="button">下一步</button>
         <p class="flow-caption" id="fullFlowCaption">先从用户的一次选择开始。</p>
         <aside class="speaker-note">
-          建议用时 5 分钟。这是全课最重要的复盘页。逐步揭示并强调：地图、天气和通信都能替换，但“订单是否成立”必须由自己的后端和数据库决定。要求学生用一句话描述每个节点的职责。
+          建议用时 4 分钟。这是全课最重要的复盘页。逐步揭示并强调：地图、天气和通信都能替换，但“订单是否成立”必须由自己的后端和数据库决定。要求学生用一句话描述每个节点的职责。
           [Sources] 本页为课程架构模型，无外部非平凡主张。
         </aside>
       </section>
 
       <section class="slide admin-slide" data-title="第三方能力最终要出现在业务界面" data-reset="admin-tabs">
-        <p class="eyebrow">11 · 后台赋能</p>
+        <p class="eyebrow">10 · 后台赋能</p>
         <h2>接入成功不算完成，<br />还要出现在<em>业务界面</em></h2>
         <div class="admin-mock">
           <nav class="admin-nav" aria-label="电商后台模块">
@@ -341,7 +341,7 @@
           <span>商户资质</span><span>证书密钥</span><span>回调验签</span><span>查单对账</span>
         </div>
         <aside class="speaker-note">
-          建议用时 3 分钟。不要深入支付代码，只强调它与普通 API 最大的区别：钱和订单状态必须可靠，不能相信前端“支付成功”。正式接入通常涉及商户主体、商户号、证书或密钥、回调验签与对账，因此后续独立展开更合适。
+          建议用时 2 分钟。不要深入支付代码，只强调它与普通 API 最大的区别：钱和订单状态必须可靠，不能相信前端“支付成功”。正式接入通常涉及商户主体、商户号、证书或密钥、回调验签与对账，因此后续独立展开更合适。
           [Sources] 微信支付产品与模式：https://pay.wechatpay.cn/doc/v3/merchant/4012068590；支付宝网页/移动应用：https://open.alipay.com/module/webApp。
         </aside>
       </section>
@@ -361,13 +361,13 @@
           <div class="future-example"><span>展示位置</span><strong id="futureUse">订单来源 · 渠道库存 · 多店铺看板</strong></div>
         </div>
         <aside class="speaker-note">
-          建议用时 4 分钟。点击三个平台并讲清区别：淘宝是销售渠道开放；顺丰是单一承运商的深度寄件与履约能力；快递100偏向聚合多家快递的查询与订阅。后续项目可以从淘宝进入订单、用顺丰发货、用快递100显示轨迹。
+          建议用时 3 分钟。点击三个平台并讲清区别：淘宝是销售渠道开放；顺丰是单一承运商的深度寄件与履约能力；快递100偏向聚合多家快递的查询与订阅。后续项目可以从淘宝进入订单、用顺丰发货、用快递100显示轨迹。
           [Sources] 淘宝开放平台：https://open.taobao.com/；顺丰开放平台：https://open.sf-express.com/Api；快递100 API：https://api.kuaidi100.com/document/。
         </aside>
       </section>
 
       <section class="slide safety-slide" data-title="密钥和失败处理决定系统是否可靠" data-reset="none">
-        <p class="eyebrow">14 · 安全与可靠性</p>
+        <p class="eyebrow">11 · 安全与可靠性</p>
         <h2>会调用只是开始，<br />可靠接入还要守住<em>四条线</em></h2>
         <div class="safety-lines">
           <article><small>01</small><b>密钥不进前端</b><span>Secret、私钥和永久凭证只放后端</span></article>
@@ -400,7 +400,7 @@
         </div>
         <p class="closing-line">自己的系统负责业务真相，第三方平台提供专业能力。</p>
         <aside class="speaker-note">
-          建议用时 3 分钟。让学生回答页面上的问题。最后用一句话收束：第五节让系统拥有自己的业务和数据；第七节让系统借助开放平台连接现实世界。不要以“谢谢”结束，停在可复述的判断上。
+          建议用时 2 分钟。让学生回答页面上的问题。最后用一句话收束：第五节让系统拥有自己的业务和数据；第七节让系统借助开放平台连接现实世界。不要以“谢谢”结束，停在可复述的判断上。
           [Sources] 本页为课程总结，无外部非平凡主张。
         </aside>
       </section>
@@ -435,7 +435,7 @@
       <div class="deck-chrome">
         <button id="prevSlide" type="button" aria-label="上一页">←</button>
         <button id="openOverview" type="button">目录</button>
-        <span id="slideCounter">1 / 16</span>
+        <span id="slideCounter">1 / 17</span>
         <button id="replayAnimation" type="button">重播</button>
         <button id="toggleNotes" type="button">备注</button>
         <button id="toggleFullscreen" type="button">全屏</button>
