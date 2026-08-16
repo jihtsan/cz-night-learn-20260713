@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#101114" />
     <title>第三方 API 与电商赋能｜第7课</title>
     <link rel="icon" href="data:," />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css?v=55" />
   </head>
   <body>
     <main id="deck" class="deck" aria-live="polite">
@@ -54,9 +54,9 @@
         </aside>
       </section>
 
-      <section class="slide dark-slide" data-title="订单创建后还有三个问题" data-reset="none">
+      <section class="slide dark-slide" data-title="订单保存后商家仍然不知道" data-reset="none">
         <p class="eyebrow">02 · 新问题</p>
-        <h2>订单 #2048 创建成功，<br />接下来还有<em>三个问题</em></h2>
+        <h2>订单 #2048 已经保存，<br />商家却还<em>不知道</em></h2>
         <div class="problem-stage">
           <div class="problem-order">
             <small>我们已经做到</small>
@@ -64,14 +64,14 @@
             <span>POST /orders → 201 Created</span>
           </div>
           <ol class="problem-questions">
-            <li><b>01</b><span>用户应该去哪个门店？</span></li>
-            <li><b>02</b><span>天气会不会影响自提或配送？</span></li>
-            <li><b>03</b><span>商家怎样第一时间知道？</span></li>
+            <li><b>01</b><span>新订单只安静地躺在数据库里</span></li>
+            <li><b>02</b><span>商家不会一直刷新管理后台</span></li>
+            <li><b>03</b><span>怎样把消息主动送到商家眼前？</span></li>
           </ol>
         </div>
-        <p class="big-answer">先看业务缺什么，再决定接什么。</p>
+        <p class="big-answer">先解决最紧急的一件事：订单通知。</p>
         <aside class="speaker-note">
-          建议用时 4 分钟。先只呈现订单 #2048，让学生回答“订单创建之后还缺什么”。逐条出现三个问题，此时不要先说高德、和风或飞书，也不要展示平台名录。目标是先建立业务问题，再寻找解决方式。
+          建议用时 4 分钟。先只呈现订单 #2048 已保存，再追问商家如何第一时间知道。强调数据库负责保存事实，但不会主动把消息送到人面前。这里先聚焦订单通知，不提前展开地图和天气。
           [Sources] 本页为课程订单场景，无外部数据主张。
         </aside>
       </section>
@@ -140,39 +140,39 @@
         </aside>
       </section>
 
-      <section class="slide commerce-chain-slide" data-title="先拆问题再寻找三种外部能力" data-reset="none">
-        <p class="eyebrow">03 · 解决思路</p>
-        <h2>先把问题拆开，<br />再寻找<em>三种外部能力</em></h2>
+      <section class="slide commerce-chain-slide" data-title="订单通知完成后继续扩展地图和天气" data-reset="none">
+        <p class="eyebrow">06 · 能力扩展</p>
+        <h2>订单通知跑通以后，<br />再解决<em>用户侧的两个问题</em></h2>
         <div class="commerce-chain">
+          <article class="chain-step focus">
+            <small>已经解决</small><b>通知商家</b><span>订单成功后主动触达人</span>
+            <em>企业通信</em>
+          </article>
+          <i>→</i>
           <article class="chain-step">
-            <small>问题 1</small><b>门店在哪里？</b><span>需要搜索、定位与路线</span>
+            <small>接下来</small><b>门店在哪里？</b><span>需要搜索、定位与路线</span>
             <em>位置能力</em>
           </article>
           <i>→</i>
           <article class="chain-step">
-            <small>问题 2</small><b>现在天气怎样？</b><span>需要实时天气与提醒</span>
+            <small>再串联</small><b>现在天气怎样？</b><span>需要实时天气与提醒</span>
             <em>天气数据</em>
           </article>
           <i>→</i>
-          <article class="chain-step focus">
-            <small>核心业务</small><b>创建订单</b><span>自己的后端仍负责保存</span>
+          <article class="chain-step">
+            <small>始终不变</small><b>核心订单</b><span>仍由自己的后端负责</span>
             <em>自有 API</em>
           </article>
-          <i>→</i>
-          <article class="chain-step">
-            <small>问题 3</small><b>怎样通知商家？</b><span>需要消息主动触达人</span>
-            <em>企业通信</em>
-          </article>
         </div>
-        <p class="chain-rule">先定义“需要什么能力”，下一步才是“选择哪家平台”。</p>
+        <p class="chain-rule">教学顺序：通知 → 地图 → 天气；核心订单始终归自己的后端。</p>
         <aside class="speaker-note">
-          建议用时 4 分钟。把上一页三个问题翻译成位置、天气、企业通信三种能力。这里仍然先说能力类型，不急着罗列所有厂商。强调创建订单没有外包出去，第三方能力围绕自己的核心业务工作。
+          建议用时 4 分钟。前面已经完整跑通订单通知，现在把视角转向用户侧：先用地图回答门店在哪里，再把地图得到的城市信息交给天气平台。提醒学生：这是课程讲解顺序，不是说第三方平台可以决定订单是否成立。
           [Sources] 本页为课程业务模型，无外部数据主张。
         </aside>
       </section>
 
       <section class="slide map-slide" data-title="地图让地址从文字变成可计算的位置" data-reset="map-demo">
-        <p class="eyebrow">05 · 解决问题一</p>
+        <p class="eyebrow">07 · 地图 API</p>
         <h2>地图让地址从一行文字，<br />变成<em>可计算的位置</em></h2>
         <div class="map-demo">
           <div class="mock-map" id="mockMap" aria-label="模拟门店地图">
@@ -206,7 +206,7 @@
       </section>
 
       <section class="slide weather-slide" data-title="地图结果可以成为天气请求的输入" data-reset="weather-flow">
-        <p class="eyebrow">06 · 解决问题二</p>
+        <p class="eyebrow">08 · 天气 API</p>
         <h2>一个 API 的结果，<br />可以成为<em>下一个 API 的输入</em></h2>
         <div class="weather-flow" id="weatherFlow">
           <article data-weather-step="0"><small>STEP 1</small><b>用户选择门店</b><span>新北体验店</span></article>
@@ -229,7 +229,7 @@
       </section>
 
       <section class="slide message-slide" data-title="订单通知把后台事件送到人面前" data-reset="none">
-        <p class="eyebrow">07 · 解决问题三</p>
+        <p class="eyebrow">03 · 通知价值</p>
         <h2>订单已经进数据库，<br />还要让它<em>主动找到商家</em></h2>
         <div class="message-contrast">
           <div class="silent-order">
@@ -257,7 +257,7 @@
       </section>
 
       <section class="slide order-demo-slide" data-title="模拟一笔订单如何触发群提醒" data-reset="order-demo">
-        <p class="eyebrow">08 · 互动演示</p>
+        <p class="eyebrow">05 · 互动演示</p>
         <h2>现在，模拟一笔订单<br />如何触发<em>群提醒</em></h2>
         <div class="order-demo" id="orderDemo">
           <div class="checkout-card">
@@ -397,11 +397,11 @@
         <p class="eyebrow">15 · 收束</p>
         <h2>一笔订单，已经连接了<br /><em>三个外部能力</em></h2>
         <div class="closing-equation">
+          <span>企业通信<br /><small>通知谁</small></span>
+          <b>＋</b>
           <span>地图<br /><small>在哪里</small></span>
           <b>＋</b>
           <span>天气<br /><small>现在怎样</small></span>
-          <b>＋</b>
-          <span>企业通信<br /><small>通知谁</small></span>
           <b>＝</b>
           <strong>更完整的<br />电商交易体验</strong>
         </div>
@@ -466,6 +466,6 @@
       <p id="notesContent"></p>
     </aside>
 
-    <script src="app.js"></script>
+    <script src="app.js?v=55"></script>
   </body>
 </html>
