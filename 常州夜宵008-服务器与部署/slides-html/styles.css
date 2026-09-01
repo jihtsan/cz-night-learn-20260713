@@ -777,11 +777,12 @@ blockquote {
 .term-layers {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 22em auto;
   gap: 0.8em;
 }
 .term-layers article {
   display: flex;
-  min-height: 22em;
+  min-height: 0;
   flex-direction: column;
   justify-content: space-between;
   border-top: 0.22em solid var(--ink);
@@ -793,12 +794,10 @@ blockquote {
 .term-layers strong { font-size: 1.55em; line-height: 1.12; }
 .term-layers span { color: var(--muted); font-size: 0.95em; }
 .term-layers .reveal-conclusion {
-  position: absolute;
-  right: 5.8em;
-  bottom: 8.3em;
-  left: 5.8em;
+  grid-row: 2;
+  grid-column: 1 / -1;
   border-top: 0.18em solid var(--green);
-  padding-top: 0.8em;
+  padding: 0.8em 1.2em 0;
 }
 .layers-slide > .action-button { position: absolute; bottom: 4.4em; left: 5.8em; }
 
